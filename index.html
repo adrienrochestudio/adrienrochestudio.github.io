@@ -5,254 +5,423 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Adrien Roche</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-size: 14px; line-height: 1.6; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-  /* NAV */
-  nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 28px; border-bottom: 1px solid #ccc; background: #f5f4f0; position: sticky; top: 0; z-index: 100; }
-  nav .name { font-size: 15px; letter-spacing: 0.03em; font-weight: normal; cursor: pointer; }
-  nav ul { list-style: none; display: flex; gap: 28px; }
-  nav ul li a { text-decoration: none; color: #1a1a1a; font-size: 13px; letter-spacing: 0.05em; opacity: 0.7; transition: opacity 0.2s; }
-  nav ul li a:hover { opacity: 1; }
+body {
+  font-family: 'Georgia', serif;
+  background: #f5f4f0;
+  color: #1a1a1a;
+  font-size: 14px;
+  line-height: 1.45;
+  overflow: hidden;
+}
 
-  /* PAGES */
-  .page { display: none; }
-  .page.active { display: block; }
+.site {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  height: 100vh;
+  width: 100vw;
+}
 
-  /* GALLERY PAGE */
-  #page-oeuvres { padding: 0; }
-  .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-left: 1px solid #ccc; }
-  .work-col { border-right: 1px solid #ccc; border-top: 1px solid #ccc; padding: 0; }
-  .work-image { width: 100%; aspect-ratio: 3/4; background: #e8e6e0; display: flex; align-items: center; justify-content: center; overflow: hidden; border-bottom: 1px solid #ccc; }
-  .work-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .work-image .placeholder { text-align: center; color: #aaa; font-size: 12px; line-height: 2; }
-  .work-image .placeholder span { display: block; font-size: 32px; margin-bottom: 8px; opacity: 0.3; }
-  .work-info { padding: 18px 20px 28px; }
-  .work-num { font-size: 12px; color: #888; margin-bottom: 6px; }
-  .work-title { font-size: 14px; font-style: italic; margin-bottom: 2px; }
-  .work-subtitle { font-size: 12px; color: #555; margin-bottom: 12px; }
-  .work-desc { font-size: 12px; color: #444; line-height: 1.65; }
-  .work-more { display: inline-block; margin-top: 10px; font-size: 12px; color: #888; cursor: pointer; }
+.column {
+  height: 100vh;
+  overflow-y: auto;
+  border-right: 1px solid #ccc;
+  background: #f5f4f0;
+}
 
-  /* ABOUT PAGE */
-  #page-about { display: none; }
-  #page-about.active { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 1px solid #ccc; min-height: calc(100vh - 60px); }
-  .about-left { border-right: 1px solid #ccc; padding: 40px 36px; }
-  .about-right { padding: 40px 36px; }
-  .about-photo { width: 100%; aspect-ratio: 1; background: #e8e6e0; margin-bottom: 28px; display: flex; align-items: center; justify-content: center; }
-  .about-photo .placeholder { color: #aaa; font-size: 12px; text-align: center; }
-  .about-label { font-size: 11px; letter-spacing: 0.1em; color: #999; text-transform: uppercase; margin-bottom: 10px; margin-top: 28px; }
-  .about-label:first-child { margin-top: 0; }
-  .about-name-big { font-size: 22px; font-weight: normal; margin-bottom: 6px; }
-  .about-contact-line { font-size: 13px; color: #555; margin-bottom: 4px; }
-  .about-bio { font-size: 13px; color: #333; line-height: 1.75; margin-bottom: 20px; }
-  .cv-entry { margin-bottom: 18px; }
-  .cv-entry .cv-title { font-size: 13px; font-style: italic; }
-  .cv-entry .cv-detail { font-size: 12px; color: #666; }
-  .cv-entry .cv-year { font-size: 12px; color: #999; }
+.column:last-child { border-right: none; }
 
-  /* CONTACT PAGE */
-  #page-contact { display: none; }
-  #page-contact.active { display: flex; align-items: flex-start; justify-content: center; padding: 60px 36px; border-top: 1px solid #ccc; min-height: calc(100vh - 60px); }
-  .contact-inner { width: 100%; max-width: 480px; }
-  .contact-title { font-size: 18px; font-weight: normal; margin-bottom: 30px; }
-  .form-group { margin-bottom: 20px; }
-  .form-group label { display: block; font-size: 12px; color: #888; letter-spacing: 0.08em; margin-bottom: 6px; }
-  .form-group input, .form-group textarea { width: 100%; padding: 10px 0; background: transparent; border: none; border-bottom: 1px solid #ccc; font-family: 'Georgia', serif; font-size: 13px; color: #1a1a1a; outline: none; resize: none; transition: border-color 0.2s; }
-  .form-group input:focus, .form-group textarea:focus { border-bottom-color: #1a1a1a; }
-  .form-group textarea { height: 100px; }
-  .submit-btn { margin-top: 10px; padding: 10px 28px; background: #1a1a1a; color: #f5f4f0; border: none; font-family: 'Georgia', serif; font-size: 13px; cursor: pointer; letter-spacing: 0.04em; transition: opacity 0.2s; }
-  .submit-btn:hover { opacity: 0.75; }
-  .contact-info { margin-top: 40px; padding-top: 28px; border-top: 1px solid #ccc; }
-  .contact-info p { font-size: 13px; color: #555; margin-bottom: 6px; }
+.column-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: 34px;
+  padding: 6px 10px;
+  border-bottom: 1px solid #ccc;
+  background: #f5f4f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+}
 
-  /* FOOTER */
-  footer { padding: 16px 28px; border-top: 1px solid #ccc; font-size: 11px; color: #aaa; }
+.menu {
+  font-size: 16px;
+  line-height: 1;
+  opacity: 0.65;
+}
+
+.work {
+  border-bottom: 1px solid #ccc;
+}
+
+.work-image {
+  width: 100%;
+  aspect-ratio: 4 / 4.35;
+  background: #e8e6e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.work-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.placeholder {
+  color: #999;
+  text-align: center;
+  font-size: 12px;
+}
+
+.placeholder span {
+  display: block;
+  font-size: 34px;
+  opacity: 0.35;
+  margin-bottom: 8px;
+}
+
+.work-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding: 10px 12px 34px;
+  font-size: 13px;
+}
+
+.work-title {
+  font-size: 13px;
+}
+
+.work-meta {
+  font-size: 13px;
+}
+
+.work-name {
+  font-style: italic;
+}
+
+.work-desc {
+  margin-top: 18px;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.work-more {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 12px;
+}
+
+.bio-column {
+  padding-bottom: 40px;
+}
+
+.bio-top {
+  min-height: 42vh;
+  padding: 0 0 34px;
+  border-bottom: 1px solid #ccc;
+}
+
+.bio-title-row {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  height: 34px;
+  border-bottom: 1px solid #ccc;
+  background: #f5f4f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bio-badge {
+  background: #f4f2b6;
+  border: 1px solid #d6d28c;
+  padding: 3px 12px;
+  font-size: 18px;
+}
+
+.bio-grid {
+  display: grid;
+  grid-template-columns: 34% 66%;
+  gap: 0;
+  padding-top: 8px;
+}
+
+.bio-contact {
+  padding: 0 8px;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.bio-text {
+  padding: 0 16px 0 8px;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.bio-text p {
+  margin-bottom: 14px;
+}
+
+.cv-section {
+  display: grid;
+  grid-template-columns: 34% 66%;
+  border-bottom: 1px solid #ccc;
+  min-height: 190px;
+}
+
+.cv-label {
+  padding: 12px 8px;
+  font-size: 13px;
+}
+
+.cv-content {
+  padding: 12px 16px 18px 8px;
+}
+
+.cv-entry {
+  margin-bottom: 18px;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.cv-entry strong {
+  font-weight: normal;
+}
+
+.cv-entry em {
+  font-style: italic;
+}
+
+.cv-small {
+  color: #444;
+}
+
+@media (max-width: 900px) {
+  body { overflow: auto; }
+
+  .site {
+    display: block;
+    height: auto;
+  }
+
+  .column {
+    height: auto;
+    overflow: visible;
+    border-right: none;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .work-info,
+  .bio-grid,
+  .cv-section {
+    grid-template-columns: 1fr;
+  }
+
+  .bio-contact,
+  .bio-text,
+  .cv-label,
+  .cv-content {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
 </style>
 </head>
+
 <body>
+<main class="site">
 
-<nav>
-  <span class="name" onclick="showPage('oeuvres')">Adrien Roche</span>
-  <ul>
-    <li><a href="#" onclick="showPage('oeuvres');return false;">Œuvres</a></li>
-    <li><a href="#" onclick="showPage('about');return false;">À propos</a></li>
-    <li><a href="#" onclick="showPage('contact');return false;">Contact</a></li>
-  </ul>
-</nav>
+  <section class="column">
+    <div class="column-header">
+      <span>Accumulation</span>
+      <span class="menu">≡</span>
+    </div>
 
-<!-- OEUVRES -->
-<div id="page-oeuvres" class="page active">
-  <div class="gallery-grid">
-
-    <div class="work-col">
-      <div class="work-image">
-        <div class="placeholder"><span>◻</span>Remplacez par<br>votre image</div>
-      </div>
+    <article class="work">
+      <div class="work-image"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
       <div class="work-info">
-        <div class="work-num">1.</div>
-        <div class="work-title">Sans titre I</div>
-        <div class="work-subtitle">Huile sur toile — 2023<br>80 × 60 cm</div>
-        <div class="work-desc">Une exploration des contrastes entre lumière et matière, où la surface peinte devient un territoire à part entière. La couche picturale s'accumule, se stratifie, révèle.</div>
-        <span class="work-more">[Plus...]</span>
+        <div class="work-title">1. Œuvre à nommer</div>
+        <div class="work-meta">
+          <div class="work-name">Titre provisoire</div>
+          <div>Technique à préciser</div>
+          <div>Année</div>
+          <p class="work-desc">Description provisoire. Nous travaillerons ensuite chaque texte autour de la matière, de l’accumulation, de la mémoire visuelle et des tensions entre objet culturel et trace intime.</p>
+          <span class="work-more">[More...]</span>
+        </div>
       </div>
-    </div>
+    </article>
 
-    <div class="work-col">
-      <div class="work-image">
-        <div class="placeholder"><span>◻</span>Remplacez par<br>votre image</div>
-      </div>
+    <article class="work">
+      <div class="work-image"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
       <div class="work-info">
-        <div class="work-num">2.</div>
-        <div class="work-title">Strate n° 4</div>
-        <div class="work-subtitle">Acrylique et encre — 2023<br>100 × 70 cm</div>
-        <div class="work-desc">La répétition du geste comme méthode. Une série de couches translucides qui dialoguent entre elles et interrogent la notion de profondeur dans l'image.</div>
-        <span class="work-more">[Plus...]</span>
+        <div class="work-title">2. Œuvre à nommer</div>
+        <div class="work-meta"><div class="work-name">Titre provisoire</div><div>Technique à préciser</div><div>Année</div><p class="work-desc">Description provisoire.</p><span class="work-more">[More...]</span></div>
       </div>
-    </div>
+    </article>
 
-    <div class="work-col">
-      <div class="work-image">
-        <div class="placeholder"><span>◻</span>Remplacez par<br>votre image</div>
-      </div>
+    <article class="work">
+      <div class="work-image"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
       <div class="work-info">
-        <div class="work-num">3.</div>
-        <div class="work-title">Paysage intérieur</div>
-        <div class="work-subtitle">Techniques mixtes — 2022<br>120 × 90 cm</div>
-        <div class="work-desc">Entre figuration et abstraction, cette pièce navigue dans un espace mental, celui d'une géographie imaginée, nourrie de souvenirs et de fragments visuels.</div>
-        <span class="work-more">[Plus...]</span>
+        <div class="work-title">3. Œuvre à nommer</div>
+        <div class="work-meta"><div class="work-name">Titre provisoire</div><div>Technique à préciser</div><div>Année</div><p class="work-desc">Description provisoire.</p><span class="work-more">[More...]</span></div>
       </div>
-    </div>
+    </article>
 
-    <div class="work-col">
-      <div class="work-image">
-        <div class="placeholder"><span>◻</span>Remplacez par<br>votre image</div>
-      </div>
+    <article class="work">
+      <div class="work-image"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
       <div class="work-info">
-        <div class="work-num">4.</div>
-        <div class="work-title">Résidu I</div>
-        <div class="work-subtitle">Encre sur papier — 2024<br>42 × 29,7 cm</div>
-        <div class="work-desc">Série de dessins à l'encre explorant la trace, l'effacement et ce qui subsiste après le geste initial. Le papier, froissé puis déroulé, conserve la mémoire.</div>
-        <span class="work-more">[Plus...]</span>
+        <div class="work-title">4. Œuvre à nommer</div>
+        <div class="work-meta"><div class="work-name">Titre provisoire</div><div>Technique à préciser</div><div>Année</div><p class="work-desc">Description provisoire.</p><span class="work-more">[More...]</span></div>
       </div>
-    </div>
+    </article>
 
-    <div class="work-col">
-      <div class="work-image">
-        <div class="placeholder"><span>◻</span>Remplacez par<br>votre image</div>
-      </div>
+    <article class="work">
+      <div class="work-image"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
       <div class="work-info">
-        <div class="work-num">5.</div>
-        <div class="work-title">Archipel</div>
-        <div class="work-subtitle">Huile sur toile — 2024<br>150 × 120 cm</div>
-        <div class="work-desc">Un ensemble de formes isolées qui coexistent dans un même plan. La tension entre les masses de couleur crée une narration silencieuse, ouverte à l'interprétation.</div>
-        <span class="work-more">[Plus...]</span>
+        <div class="work-title">5. Œuvre à nommer</div>
+        <div class="work-meta"><div class="work-name">Titre provisoire</div><div>Technique à préciser</div><div>Année</div><p class="work-desc">Description provisoire.</p><span class="work-more">[More...]</span></div>
       </div>
+    </article>
+  </section>
+
+  <section class="column">
+    <div class="column-header">
+      <span>Beyond accumulation</span>
+      <span class="menu">≡</span>
     </div>
 
-    <div class="work-col">
-      <div class="work-image">
-        <div class="placeholder"><span>◻</span>Remplacez par<br>votre image</div>
-      </div>
+    <article class="work">
+      <div class="work-image"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
       <div class="work-info">
-        <div class="work-num">6.</div>
-        <div class="work-title">Fond commun</div>
-        <div class="work-subtitle">Techniques mixtes — 2022<br>60 × 60 cm</div>
-        <div class="work-desc">Collage, peinture et photographie s'articulent pour questionner l'image collective et le regard partagé. Une pièce sur la construction visuelle du commun.</div>
-        <span class="work-more">[Plus...]</span>
+        <div class="work-title">1. Œuvre à nommer</div>
+        <div class="work-meta"><div class="work-name">Titre provisoire</div><div>Technique à préciser</div><div>Année</div><p class="work-desc">Description provisoire.</p><span class="work-more">[More...]</span></div>
       </div>
+    </article>
+
+    <article class="work">
+      <div class="work-image"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
+      <div class="work-info">
+        <div class="work-title">2. Œuvre à nommer</div>
+        <div class="work-meta"><div class="work-name">Titre provisoire</div><div>Technique à préciser</div><div>Année</div><p class="work-desc">Description provisoire.</p><span class="work-more">[More...]</span></div>
+      </div>
+    </article>
+
+    <article class="work">
+      <div class="work-image"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
+      <div class="work-info">
+        <div class="work-title">3. Œuvre à nommer</div>
+        <div class="work-meta"><div class="work-name">Titre provisoire</div><div>Technique à préciser</div><div>Année</div><p class="work-desc">Description provisoire.</p><span class="work-more">[More...]</span></div>
+      </div>
+    </article>
+  </section>
+
+  <aside class="column bio-column">
+    <div class="bio-title-row">
+      <span class="bio-badge">Profile</span>
     </div>
 
-  </div>
-</div>
+    <section class="bio-top">
+      <div class="bio-grid">
+        <div class="bio-contact">
+          <p>Adrien Roche</p>
+          <p>adrienroche6@gmail.com</p>
+          <p>Instagram</p>
+          <p>Paris</p>
+        </div>
 
-<!-- À PROPOS -->
-<div id="page-about" class="page">
-  <div class="about-left">
-    <div class="about-photo">
-      <div class="placeholder">Photo de l'artiste<br><span style="font-size:11px;color:#bbb">(à remplacer)</span></div>
-    </div>
-    <div class="about-label">Artiste</div>
-    <div class="about-name-big">Adrien Roche</div>
-    <div class="about-contact-line">adrien@exemple.com</div>
-    <div class="about-contact-line">Instagram</div>
-    <div class="about-contact-line">Paris, France</div>
-  </div>
-  <div class="about-right">
-    <div class="about-label">Biographie</div>
-    <div class="about-bio">
-      Adrien Roche est un artiste plasticien basé à Paris. Sa pratique oscille entre peinture, dessin et techniques mixtes, traversée par une interrogation constante sur la matière, la trace et la mémoire visuelle.<br><br>
-      Son travail puise dans la répétition du geste, l'accumulation de couches et la tension entre figuration et abstraction. Il a exposé dans plusieurs galeries et espaces indépendants en France et à l'étranger.<br><br>
-      <em>— Remplacez ce texte par votre propre biographie.</em>
-    </div>
+        <div class="bio-text">
+          <p>Adrien Roche développe une pratique visuelle nourrie par l’accumulation, les objets culturels, la mémoire matérielle et les formes contemporaines du désir. Son travail circule entre dessin, peinture, image populaire et références industrielles.</p>
 
-    <div class="about-label">Formation</div>
-    <div class="cv-entry">
-      <div class="cv-title">École Nationale Supérieure des Beaux-Arts</div>
-      <div class="cv-detail">DNSEP mention félicitations</div>
-      <div class="cv-year">2018</div>
-    </div>
-    <div class="cv-entry">
-      <div class="cv-title">École des Arts Décoratifs</div>
-      <div class="cv-detail">Classe préparatoire</div>
-      <div class="cv-year">2014 – 2016</div>
-    </div>
+          <p>En parallèle de sa pratique artistique, il construit un parcours dans les industries culturelles internationales. Il travaille sur les liens entre cinéma, transition écologique, coopération européenne et développement de projets. Cette double position donne à son travail une densité particulière : les œuvres ne relèvent pas seulement de l’intuition plastique, mais aussi d’une lecture aiguë des systèmes culturels, économiques et symboliques qui produisent les images.</p>
 
-    <div class="about-label">Expositions</div>
-    <div class="cv-entry">
-      <div class="cv-title">Galerie [Nom à compléter]</div>
-      <div class="cv-detail">Exposition personnelle — Paris</div>
-      <div class="cv-year">2024</div>
-    </div>
-    <div class="cv-entry">
-      <div class="cv-title">[Exposition collective]</div>
-      <div class="cv-detail">Nom du lieu — Ville</div>
-      <div class="cv-year">2023</div>
-    </div>
-    <div class="cv-entry">
-      <div class="cv-title">[Résidence artistique]</div>
-      <div class="cv-detail">Lieu et description</div>
-      <div class="cv-year">2022</div>
-    </div>
-  </div>
-</div>
+          <p>Formé à Emlyon Business School après une classe préparatoire, il a travaillé entre Paris, New York et plusieurs pays européens. Il a contribué à des projets soutenus par des institutions publiques, des fonds de cinéma, des producteurs et des acteurs internationaux de la sustainability dans le film industry.</p>
+        </div>
+      </div>
+    </section>
 
-<!-- CONTACT -->
-<div id="page-contact" class="page">
-  <div class="contact-inner">
-    <div class="contact-title">Me contacter</div>
-    <div class="form-group">
-      <label>NOM</label>
-      <input type="text" placeholder="Votre nom">
-    </div>
-    <div class="form-group">
-      <label>EMAIL</label>
-      <input type="email" placeholder="votre@email.com">
-    </div>
-    <div class="form-group">
-      <label>SUJET</label>
-      <input type="text" placeholder="Objet de votre message">
-    </div>
-    <div class="form-group">
-      <label>MESSAGE</label>
-      <textarea placeholder="Votre message..."></textarea>
-    </div>
-    <button class="submit-btn">Envoyer</button>
-    <div class="contact-info">
-      <p>adrien@exemple.com</p>
-      <p>Instagram : @adrienroche</p>
-      <p>Paris, France</p>
-    </div>
-  </div>
-</div>
+    <section class="cv-section">
+      <div class="cv-label">Current work</div>
+      <div class="cv-content">
+        <div class="cv-entry">
+          <strong>Ecoprod</strong><br>
+          Chargé de projets internationaux<br>
+          <span class="cv-small">International strategy, partnerships, European projects, StepUP with Eurimages, sustainability for cinema and television.</span><br>
+          2024 - 2025
+        </div>
+      </div>
+    </section>
 
-<footer>© Adrien Roche 2024</footer>
+    <section class="cv-section">
+      <div class="cv-label">Cinema & sustainability</div>
+      <div class="cv-content">
+        <div class="cv-entry">
+          <strong>Nausicä, pour un cinéma durable</strong><br>
+          Co-founder<br>
+          <span class="cv-small">Five months across eight European countries. More than 140 meetings with producers, institutions, funds and sustainability experts.</span><br>
+          2023
+        </div>
+      </div>
+    </section>
 
-<script>
-function showPage(id) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById('page-' + id).classList.add('active');
-}
-</script>
+    <section class="cv-section">
+      <div class="cv-label">Education</div>
+      <div class="cv-content">
+        <div class="cv-entry">
+          <strong>Emlyon Business School</strong><br>
+          Programme Grande École, Master in Management<br>
+          <span class="cv-small">Corporate finance, governance, strategy, international relations, entrepreneurship, web design.</span><br>
+          2020 - 2024
+        </div>
+
+        <div class="cv-entry">
+          <strong>Lycée Ampère</strong><br>
+          Classes préparatoires, economics and scientific track<br>
+          2018 - 2020
+        </div>
+      </div>
+    </section>
+
+    <section class="cv-section">
+      <div class="cv-label">Art market</div>
+      <div class="cv-content">
+        <div class="cv-entry">
+          <strong>Twenty First Gallery, New York</strong><br>
+          CEO right hand<br>
+          <span class="cv-small">Artist development on the American market, client relations, Art Basel Miami, Salon New York, logistics and data analysis.</span><br>
+          2021
+        </div>
+      </div>
+    </section>
+
+    <section class="cv-section">
+      <div class="cv-label">Public speaking</div>
+      <div class="cv-content">
+        <div class="cv-entry">
+          <strong>Conferences and interventions</strong><br>
+          Babelsberg University, ESCP Business School, Entreprendre dans la Culture, EPI, Festival de la Ciotat, Fest Anča and other professional contexts.
+        </div>
+      </div>
+    </section>
+
+    <section class="cv-section">
+      <div class="cv-label">Languages</div>
+      <div class="cv-content">
+        <div class="cv-entry">
+          French, native<br>
+          English, TOEIC 985/990<br>
+          German, B2
+        </div>
+      </div>
+    </section>
+  </aside>
+
+</main>
 </body>
 </html>
