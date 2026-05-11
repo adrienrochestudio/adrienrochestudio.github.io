@@ -30,7 +30,6 @@ body {
   border-right: 1px solid #ccc;
   background: #f5f4f0;
 }
-
 .column:last-child { border-right: none; }
 
 .column-header {
@@ -47,317 +46,530 @@ body {
   font-size: 13px;
   font-style: italic;
 }
+.menu { font-size: 16px; line-height: 1; opacity: 0.65; font-style: normal; }
 
-.menu {
-  font-size: 16px;
-  line-height: 1;
-  opacity: 0.65;
-  font-style: normal;
-}
-
-.work {
+/* section sub-header (Commissioned works) */
+.section-divider {
+  height: 34px;
+  padding: 6px 10px;
   border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  background: #f5f4f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  font-style: italic;
 }
 
-.work-image {
+.work { border-bottom: 1px solid #ccc; }
+
+/* CAROUSEL */
+.carousel-wrap {
+  position: relative;
   width: 100%;
   aspect-ratio: 4 / 4.35;
+  background: #e8e6e0;
+  overflow: hidden;
+}
+.carousel-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.38s ease;
+}
+.carousel-slide {
+  min-width: 100%;
+  height: 100%;
   background: #e8e6e0;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
   overflow: hidden;
 }
+.carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-.work-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+.placeholder { color: #999; text-align: center; font-size: 12px; }
+.placeholder span { display: block; font-size: 34px; opacity: 0.35; margin-bottom: 8px; }
 
-.placeholder {
-  color: #999;
-  text-align: center;
+/* nav buttons — visible only on hover */
+.c-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(245,244,240,0.82);
+  border: none;
+  width: 24px;
+  height: 36px;
+  cursor: pointer;
   font-size: 12px;
+  color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s;
+  z-index: 3;
+  letter-spacing: 0;
 }
+.carousel-wrap:hover .c-btn { opacity: 1; }
+.c-btn.prev { left: 0; }
+.c-btn.next { right: 0; }
 
-.placeholder span {
-  display: block;
-  font-size: 34px;
-  opacity: 0.35;
-  margin-bottom: 8px;
+/* dots */
+.c-dots {
+  position: absolute;
+  bottom: 7px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.2s;
+  z-index: 3;
 }
+.carousel-wrap:hover .c-dots { opacity: 1; }
+.dot {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: #bbb;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.dot.active { background: #1a1a1a; }
 
+/* WORK INFO */
 .work-info {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  padding: 10px 12px 34px;
+  gap: 16px;
+  padding: 10px 12px 28px;
   font-size: 13px;
 }
+.work-title { font-style: italic; font-size: 13px; padding-top: 2px; }
+.work-meta { font-size: 12px; line-height: 1.5; color: #444; }
+.work-meta .medium { color: #1a1a1a; }
+.work-desc { margin-top: 10px; font-size: 12px; line-height: 1.45; color: #555; }
+.work-sold { display: inline-block; margin-top: 10px; font-size: 12px; color: #999; }
 
-.work-title {
-  font-size: 13px;
+/* BIO COLUMN */
+.bio-column { padding-bottom: 24px; }
+.bio-top { padding: 8px 0 18px; border-bottom: 1px solid #ccc; }
+.bio-grid { display: grid; grid-template-columns: 34% 66%; }
+.bio-contact { padding: 0 8px; font-size: 12px; line-height: 1.5; }
+.bio-text { padding: 0 16px 0 8px; font-size: 12px; line-height: 1.4; }
+.bio-text p { margin-bottom: 12px; }
+
+.cv-section { display: grid; grid-template-columns: 34% 66%; border-bottom: 1px solid #ccc; min-height: 96px; }
+.cv-label { padding: 10px 8px; font-size: 12px; }
+.cv-content { padding: 10px 16px 12px 8px; }
+.cv-entry { margin-bottom: 10px; font-size: 12px; line-height: 1.3; }
+
+/* CONTACT OVERLAY */
+.contact-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(245,244,240,0.97);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
 }
-
-.work-meta {
-  font-size: 13px;
+.contact-overlay.open { display: flex; }
+.contact-box { width: 100%; max-width: 420px; padding: 0 24px; }
+.contact-close {
+  position: absolute;
+  top: 20px; right: 28px;
+  background: none; border: none;
+  font-size: 22px; cursor: pointer;
+  color: #888; font-family: Georgia, serif;
+  line-height: 1;
 }
-
-.work-name {
-  font-style: italic;
-}
-
-.work-desc {
-  margin-top: 18px;
-  font-size: 12px;
-  line-height: 1.45;
-}
-
-.work-more {
-  display: inline-block;
-  margin-top: 14px;
-  font-size: 12px;
-}
-
-.bio-column {
-  padding-bottom: 24px;
-}
-
-.bio-top {
-  padding: 8px 0 18px;
+.contact-close:hover { color: #1a1a1a; }
+.contact-title { font-size: 18px; font-weight: normal; margin-bottom: 6px; }
+.contact-sub { font-size: 12px; color: #999; margin-bottom: 32px; }
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #aaa; margin-bottom: 6px; }
+.form-group input,
+.form-group textarea {
+  width: 100%; padding: 7px 0;
+  background: transparent; border: none;
   border-bottom: 1px solid #ccc;
+  font-family: Georgia, serif; font-size: 13px;
+  color: #1a1a1a; outline: none; resize: none;
+  transition: border-color 0.2s;
 }
-
-.bio-grid {
-  display: grid;
-  grid-template-columns: 34% 66%;
-  gap: 0;
+.form-group input:focus,
+.form-group textarea:focus { border-bottom-color: #1a1a1a; }
+.form-group textarea { height: 80px; }
+.send-btn {
+  margin-top: 6px;
+  padding: 9px 26px;
+  background: #1a1a1a; color: #f5f4f0;
+  border: none; font-family: Georgia, serif;
+  font-size: 12px; letter-spacing: 0.05em;
+  cursor: pointer; transition: opacity 0.2s;
 }
+.send-btn:hover { opacity: 0.7; }
 
-.bio-contact {
-  padding: 0 8px;
+.contact-link {
+  color: #1a1a1a;
   font-size: 12px;
-  line-height: 1.3;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
-
-.bio-text {
-  padding: 0 16px 0 8px;
-  font-size: 12px;
-  line-height: 1.4;
-}
-
-.bio-text p {
-  margin-bottom: 12px;
-}
-
-.cv-section {
-  display: grid;
-  grid-template-columns: 34% 66%;
-  border-bottom: 1px solid #ccc;
-  min-height: 96px;
-}
-
-.cv-label {
-  padding: 10px 8px;
-  font-size: 12px;
-}
-
-.cv-content {
-  padding: 10px 16px 12px 8px;
-}
-
-.cv-entry {
-  margin-bottom: 10px;
-  font-size: 12px;
-  line-height: 1.3;
-}
+.contact-link:hover { opacity: 0.6; }
 
 @media (max-width: 900px) {
   body { overflow: auto; }
-
-  .site {
-    display: block;
-    height: auto;
-  }
-
-  .column {
-    height: auto;
-    overflow: visible;
-    border-right: none;
-    border-bottom: 1px solid #ccc;
-  }
-
-  .work-info,
-  .bio-grid,
-  .cv-section {
-    grid-template-columns: 1fr;
-  }
-
-  .bio-contact,
-  .bio-text,
-  .cv-label,
-  .cv-content {
-    padding-left: 12px;
-    padding-right: 12px;
-  }
+  .site { display: block; height: auto; }
+  .column { height: auto; overflow: visible; border-right: none; border-bottom: 1px solid #ccc; }
+  .work-info, .bio-grid, .cv-section { grid-template-columns: 1fr; }
+  .bio-contact, .bio-text, .cv-label, .cv-content { padding-left: 12px; padding-right: 12px; }
 }
 </style>
 </head>
 
 <body>
+
+<!-- CONTACT OVERLAY -->
+<div class="contact-overlay" id="contactOverlay">
+  <button class="contact-close" onclick="closeContact()">×</button>
+  <div class="contact-box">
+    <div class="contact-title">Contact</div>
+    <div class="contact-sub">adrienrochestudio@gmail.com</div>
+    <form onsubmit="sendMail(event)">
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" id="f-name" placeholder="Your name" required>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="f-email" placeholder="your@email.com" required>
+      </div>
+      <div class="form-group">
+        <label>Subject</label>
+        <input type="text" id="f-subject" placeholder="Subject">
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea id="f-message" placeholder="Your message..." required></textarea>
+      </div>
+      <button type="submit" class="send-btn">Send</button>
+    </form>
+  </div>
+</div>
+
 <main class="site">
 
+  <!-- COL 1 — Accumulation -->
   <section class="column">
-    <div class="column-header">
-      <span>Accumulation</span>
-      <span class="menu">≡</span>
-    </div>
+    <div class="column-header"><span>Accumulation</span><span class="menu">≡</span></div>
 
+    <!-- 1. Ferrari -->
     <article class="work">
-      <div class="work-image"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
+      <div class="carousel-wrap" data-current="0">
+        <div class="carousel-track">
+          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
+          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image 2</div></div>
+          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image 3</div></div>
+        </div>
+        <button class="c-btn prev" onclick="slide(this,-1)">‹</button>
+        <button class="c-btn next" onclick="slide(this,1)">›</button>
+        <div class="c-dots">
+          <div class="dot active"></div><div class="dot"></div><div class="dot"></div>
+        </div>
+      </div>
       <div class="work-info">
         <div class="work-title">1. Crooked Ferrari 250 GT California Spyder</div>
         <div class="work-meta">
-          <div>Graphite pencil on paper </div>
-          <div>50x70 cm </div>
+          <div class="medium">Graphite pencil on paper</div>
+          <div>50 × 70 cm</div>
           <div>2026</div>
-          <p class="work-desc">Description provisoire.</p>
-          <span class="work-more">[More...]</span>
+          <p class="work-desc">A study in tension and elegance — the Ferrari's iconic silhouette distorted by a feverish graphite line, somewhere between reverence and rupture.</p>
+          <span class="work-sold">[Sold]</span>
         </div>
       </div>
     </article>
 
+    <!-- 2. A new hope -->
     <article class="work">
-      <div class="work-image"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
+      <div class="carousel-wrap" data-current="0">
+        <div class="carousel-track">
+          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
+          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image 2</div></div>
+        </div>
+        <button class="c-btn prev" onclick="slide(this,-1)">‹</button>
+        <button class="c-btn next" onclick="slide(this,1)">›</button>
+        <div class="c-dots">
+          <div class="dot active"></div><div class="dot"></div>
+        </div>
+      </div>
       <div class="work-info">
-        <div class="work-title">2. Œuvre à nommer</div>
+        <div class="work-title">2. A New Hope</div>
         <div class="work-meta">
-          <div class="work-name">Titre provisoire</div>
-          <div>Technique à préciser</div>
-          <div>Année</div>
-          <p class="work-desc">Description provisoire.</p>
-          <span class="work-more">[More...]</span>
+          <div class="medium">Graphite pencil on paper</div>
+          <div>50 × 70 cm</div>
+          <div>2026</div>
+          <p class="work-desc">Description à compléter.</p>
+          <span class="work-sold">[Sold]</span>
         </div>
       </div>
     </article>
 
+    <!-- 3. Anthropocene AT-AT -->
     <article class="work">
-      <div class="work-image"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
+      <div class="carousel-wrap" data-current="0">
+        <div class="carousel-track">
+          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
+          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image 2</div></div>
+        </div>
+        <button class="c-btn prev" onclick="slide(this,-1)">‹</button>
+        <button class="c-btn next" onclick="slide(this,1)">›</button>
+        <div class="c-dots">
+          <div class="dot active"></div><div class="dot"></div>
+        </div>
+      </div>
       <div class="work-info">
-        <div class="work-title">3. Œuvre à nommer</div>
+        <div class="work-title">3. Anthropocene AT-AT Walker</div>
         <div class="work-meta">
-          <div class="work-name">Titre provisoire</div>
-          <div>Technique à préciser</div>
-          <div>Année</div>
-          <p class="work-desc">Description provisoire.</p>
-          <span class="work-more">[More...]</span>
+          <div class="medium">Graphite pencil on paper</div>
+          <div>50 × 70 cm</div>
+          <div>2025</div>
+          <p class="work-desc">Description à compléter.</p>
+          <span class="work-sold">[Sold]</span>
         </div>
       </div>
     </article>
 
+    <!-- 4. Fragments -->
     <article class="work">
-      <div class="work-image"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
+      <div class="carousel-wrap" data-current="0">
+        <div class="carousel-track">
+          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
+          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image 2</div></div>
+        </div>
+        <button class="c-btn prev" onclick="slide(this,-1)">‹</button>
+        <button class="c-btn next" onclick="slide(this,1)">›</button>
+        <div class="c-dots">
+          <div class="dot active"></div><div class="dot"></div>
+        </div>
+      </div>
       <div class="work-info">
-        <div class="work-title">4. Œuvre à nommer</div>
+        <div class="work-title">4. Fragments of My Childhood</div>
         <div class="work-meta">
-          <div class="work-name">Titre provisoire</div>
-          <div>Technique à préciser</div>
-          <div>Année</div>
-          <p class="work-desc">Description provisoire.</p>
-          <span class="work-more">[More...]</span>
+          <div class="medium">Graphite pencil on paper</div>
+          <div>100 × 120 cm</div>
+          <div>2025</div>
+          <p class="work-desc">Description à compléter.</p>
+          <span class="work-sold">[Sold]</span>
         </div>
       </div>
     </article>
 
+    <!-- 5. Chanel -->
     <article class="work">
-      <div class="work-image"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
+      <div class="carousel-wrap" data-current="0">
+        <div class="carousel-track">
+          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
+          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image 2</div></div>
+        </div>
+        <button class="c-btn prev" onclick="slide(this,-1)">‹</button>
+        <button class="c-btn next" onclick="slide(this,1)">›</button>
+        <div class="c-dots">
+          <div class="dot active"></div><div class="dot"></div>
+        </div>
+      </div>
       <div class="work-info">
-        <div class="work-title">5. Œuvre à nommer</div>
+        <div class="work-title">5. Chanel 2.55</div>
         <div class="work-meta">
-          <div class="work-name">Titre provisoire</div>
-          <div>Technique à préciser</div>
-          <div>Année</div>
-          <p class="work-desc">Description provisoire.</p>
-          <span class="work-more">[More...]</span>
+          <div class="medium">Graphite pencil on paper</div>
+          <div>50 × 70 cm</div>
+          <div>2025</div>
+          <p class="work-desc">Description à compléter.</p>
+          <span class="work-sold">[Sold]</span>
         </div>
       </div>
     </article>
+
+    <!-- 6. Birkin -->
+    <article class="work">
+      <div class="carousel-wrap" data-current="0">
+        <div class="carousel-track">
+          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
+          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image 2</div></div>
+        </div>
+        <button class="c-btn prev" onclick="slide(this,-1)">‹</button>
+        <button class="c-btn next" onclick="slide(this,1)">›</button>
+        <div class="c-dots">
+          <div class="dot active"></div><div class="dot"></div>
+        </div>
+      </div>
+      <div class="work-info">
+        <div class="work-title">6. Birkin</div>
+        <div class="work-meta">
+          <div class="medium">Graphite pencil on paper</div>
+          <div>50 × 70 cm</div>
+          <div>2025</div>
+          <p class="work-desc">Description à compléter.</p>
+          <span class="work-sold">[Sold]</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- 7. R2D2 -->
+    <article class="work">
+      <div class="carousel-wrap" data-current="0">
+        <div class="carousel-track">
+          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
+          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image 2</div></div>
+        </div>
+        <button class="c-btn prev" onclick="slide(this,-1)">‹</button>
+        <button class="c-btn next" onclick="slide(this,1)">›</button>
+        <div class="c-dots">
+          <div class="dot active"></div><div class="dot"></div>
+        </div>
+      </div>
+      <div class="work-info">
+        <div class="work-title">7. R2D2</div>
+        <div class="work-meta">
+          <div class="medium">Posca on paper</div>
+          <div>60 × 80 cm</div>
+          <div>2025</div>
+          <p class="work-desc">Description à compléter.</p>
+          <span class="work-sold">[Sold]</span>
+        </div>
+      </div>
+    </article>
+
   </section>
 
+  <!-- COL 2 — Beyond accumulation + Commissioned works -->
   <section class="column">
-    <div class="column-header">
-      <span>Beyond accumulation</span>
-      <span class="menu">≡</span>
-    </div>
+    <div class="column-header"><span>Beyond accumulation</span><span class="menu">≡</span></div>
 
+    <!-- Lost in translation -->
     <article class="work">
-      <div class="work-image"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
+      <div class="carousel-wrap" data-current="0">
+        <div class="carousel-track">
+          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
+          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image 2</div></div>
+        </div>
+        <button class="c-btn prev" onclick="slide(this,-1)">‹</button>
+        <button class="c-btn next" onclick="slide(this,1)">›</button>
+        <div class="c-dots">
+          <div class="dot active"></div><div class="dot"></div>
+        </div>
+      </div>
       <div class="work-info">
-        <div class="work-title">1. Œuvre à nommer</div>
+        <div class="work-title">1. Lost in Translation</div>
         <div class="work-meta">
-          <div class="work-name">Titre provisoire</div>
-          <div>Technique à préciser</div>
-          <div>Année</div>
-          <p class="work-desc">Description provisoire.</p>
-          <span class="work-more">[More...]</span>
+          <div class="medium">Acrylique</div>
+          <div>60 × 80 cm</div>
+          <div>2025</div>
+          <p class="work-desc">Description à compléter.</p>
+          <span class="work-sold">[Sold]</span>
         </div>
       </div>
     </article>
 
+    <!-- Commissioned works sub-header -->
+    <div class="section-divider"><span>Commissioned works</span><span class="menu">≡</span></div>
+
+    <!-- Daft Kiss -->
     <article class="work">
-      <div class="work-image"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
+      <div class="carousel-wrap" data-current="0">
+        <div class="carousel-track">
+          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
+          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image 2</div></div>
+        </div>
+        <button class="c-btn prev" onclick="slide(this,-1)">‹</button>
+        <button class="c-btn next" onclick="slide(this,1)">›</button>
+        <div class="c-dots">
+          <div class="dot active"></div><div class="dot"></div>
+        </div>
+      </div>
       <div class="work-info">
-        <div class="work-title">2. Œuvre à nommer</div>
+        <div class="work-title">1. Daft Kiss</div>
         <div class="work-meta">
-          <div class="work-name">Titre provisoire</div>
-          <div>Technique à préciser</div>
-          <div>Année</div>
-          <p class="work-desc">Description provisoire.</p>
-          <span class="work-more">[More...]</span>
+          <div class="medium">Acrylique and Posca on canvas</div>
+          <div>40 × 50 cm</div>
+          <div>2025</div>
+          <p class="work-desc">Description à compléter.</p>
+          <span class="work-sold">[Sold]</span>
         </div>
       </div>
     </article>
 
+    <!-- Nymphe -->
     <article class="work">
-      <div class="work-image"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
+      <div class="carousel-wrap" data-current="0">
+        <div class="carousel-track">
+          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
+          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image 2</div></div>
+        </div>
+        <button class="c-btn prev" onclick="slide(this,-1)">‹</button>
+        <button class="c-btn next" onclick="slide(this,1)">›</button>
+        <div class="c-dots">
+          <div class="dot active"></div><div class="dot"></div>
+        </div>
+      </div>
       <div class="work-info">
-        <div class="work-title">3. Œuvre à nommer</div>
+        <div class="work-title">2. Nymphe</div>
         <div class="work-meta">
-          <div class="work-name">Titre provisoire</div>
-          <div>Technique à préciser</div>
-          <div>Année</div>
-          <p class="work-desc">Description provisoire.</p>
-          <span class="work-more">[More...]</span>
+          <div class="medium">Acrylique et Posca on canvas</div>
+          <div>90 × 120 cm</div>
+          <div>2025</div>
+          <p class="work-desc">Description à compléter.</p>
+          <span class="work-sold">[Sold]</span>
         </div>
       </div>
     </article>
+
+    <!-- Astroboy -->
+    <article class="work">
+      <div class="carousel-wrap" data-current="0">
+        <div class="carousel-track">
+          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
+          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image 2</div></div>
+        </div>
+        <button class="c-btn prev" onclick="slide(this,-1)">‹</button>
+        <button class="c-btn next" onclick="slide(this,1)">›</button>
+        <div class="c-dots">
+          <div class="dot active"></div><div class="dot"></div>
+        </div>
+      </div>
+      <div class="work-info">
+        <div class="work-title">3. Astroboy</div>
+        <div class="work-meta">
+          <div class="medium">Acrylique on canvas</div>
+          <div>30 × 30 cm</div>
+          <div>2025</div>
+          <p class="work-desc">Description à compléter.</p>
+          <span class="work-sold">[Sold]</span>
+        </div>
+      </div>
+    </article>
+
   </section>
 
+  <!-- COL 3 — Artist profile -->
   <aside class="column bio-column">
-    <div class="column-header">
-      <span>Artist profile</span>
-      <span class="menu">≡</span>
-    </div>
+    <div class="column-header"><span>Artist profile</span><span class="menu">≡</span></div>
 
     <section class="bio-top">
       <div class="bio-grid">
-
         <div class="bio-contact">
           <p>Adrien Roche</p>
           <p>Paris</p>
         </div>
-
         <div class="bio-text">
-         <p>Adrien Roche is a French multidisciplinary artist born in 2001. Raised in France while constantly moving across the world, with experiences in Miami, New York, Hong Kong, London, Berlin and across Europe, Africa and the Americas, he is now based in Paris.</p>
-
-<p>His work explores presence, inheritance, accumulation, growth and existential tension. Through painting, drawing and mixed media, he develops visual compositions shaped by contradiction, between refinement and collapse, memory and projection, permanence and transformation.</p>
-
-<p>Influenced by architecture, French and European painting traditions, cinema, music and contemporary visual culture, his practice constantly navigates between heritage and contemporaneity. Organic forms, industrial symbols and fragments of collective imagery coexist within layered spaces marked by both intimacy and systemic observation.</p>
-
-<p>His background in business, sustainability, geopolitics and international cultural development gives his work a dense perspective on images, systems and contemporary transformation.</p>
+          <p>Adrien Roche is a French multidisciplinary artist born in 2001. Raised in France while constantly moving across the world, with experiences in Miami, New York, Hong Kong, London, Berlin and across Europe, Africa and the Americas, he is now based in Paris.</p>
+          <p>His work explores presence, inheritance, accumulation, growth and existential tension. Through painting, drawing and mixed media, he develops visual compositions shaped by contradiction, between refinement and collapse, memory and projection, permanence and transformation.</p>
+          <p>Influenced by architecture, French and European painting traditions, cinema, music and contemporary visual culture, his practice constantly navigates between heritage and contemporaneity. Organic forms, industrial symbols and fragments of collective imagery coexist within layered spaces marked by both intimacy and systemic observation.</p>
+          <p>His background in business, sustainability, geopolitics and international cultural development gives his work a dense perspective on images, systems and contemporary transformation.</p>
         </div>
-
       </div>
     </section>
 
@@ -386,9 +598,7 @@ body {
     <section class="cv-section">
       <div class="cv-label">Languages</div>
       <div class="cv-content">
-        <div class="cv-entry">
-          French, English, German, Spanish, Portuguese
-        </div>
+        <div class="cv-entry">French, English, German, Spanish, Portuguese</div>
       </div>
     </section>
 
@@ -396,13 +606,48 @@ body {
       <div class="cv-label">Contact</div>
       <div class="cv-content">
         <div class="cv-entry">
-          adrienrochestudio@gmail.com
+          <span class="contact-link" onclick="openContact()">adrienrochestudio@gmail.com →</span>
         </div>
       </div>
     </section>
 
   </aside>
-
 </main>
+
+<script>
+function slide(btn, dir) {
+  const wrap = btn.closest('.carousel-wrap');
+  const track = wrap.querySelector('.carousel-track');
+  const slides = wrap.querySelectorAll('.carousel-slide');
+  const dots = wrap.querySelectorAll('.dot');
+  let cur = parseInt(wrap.dataset.current) || 0;
+  cur = (cur + dir + slides.length) % slides.length;
+  wrap.dataset.current = cur;
+  track.style.transform = `translateX(-${cur * 100}%)`;
+  dots.forEach((d, i) => d.classList.toggle('active', i === cur));
+}
+
+function openContact() {
+  document.getElementById('contactOverlay').classList.add('open');
+}
+function closeContact() {
+  document.getElementById('contactOverlay').classList.remove('open');
+}
+
+function sendMail(e) {
+  e.preventDefault();
+  const name = document.getElementById('f-name').value;
+  const email = document.getElementById('f-email').value;
+  const subject = document.getElementById('f-subject').value;
+  const message = document.getElementById('f-message').value;
+  const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+  window.location.href = `mailto:adrienrochestudio@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+}
+
+// close on backdrop click
+document.getElementById('contactOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closeContact();
+});
+</script>
 </body>
 </html>
