@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adrien Roche</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-size: 14px; line-height: 1.6; }
+
+  /* NAV */
+  nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 28px; border-bottom: 1px solid #ccc; background: #f5f4f0; position: sticky; top: 0; z-index: 100; }
+  nav .name { font-size: 15px; letter-spacing: 0.03em; font-weight: normal; cursor: pointer; }
+  nav ul { list-style: none; display: flex; gap: 28px; }
+  nav ul li a { text-decoration: none; color: #1a1a1a; font-size: 13px; letter-spacing: 0.05em; opacity: 0.7; transition: opacity 0.2s; }
+  nav ul li a:hover { opacity: 1; }
+
+  /* PAGES */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* GALLERY PAGE */
+  #page-oeuvres { padding: 0; }
+  .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-left: 1px solid #ccc; }
+  .work-col { border-right: 1px solid #ccc; border-top: 1px solid #ccc; padding: 0; }
+  .work-image { width: 100%; aspect-ratio: 3/4; background: #e8e6e0; display: flex; align-items: center; justify-content: center; overflow: hidden; border-bottom: 1px solid #ccc; }
+  .work-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .work-image .placeholder { text-align: center; color: #aaa; font-size: 12px; line-height: 2; }
+  .work-image .placeholder span { display: block; font-size: 32px; margin-bottom: 8px; opacity: 0.3; }
+  .work-info { padding: 18px 20px 28px; }
+  .work-num { font-size: 12px; color: #888; margin-bottom: 6px; }
+  .work-title { font-size: 14px; font-style: italic; margin-bottom: 2px; }
+  .work-subtitle { font-size: 12px; color: #555; margin-bottom: 12px; }
+  .work-desc { font-size: 12px; color: #444; line-height: 1.65; }
+  .work-more { display: inline-block; margin-top: 10px; font-size: 12px; color: #888; cursor: pointer; }
+
+  /* ABOUT PAGE */
+  #page-about { display: none; }
+  #page-about.active { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 1px solid #ccc; min-height: calc(100vh - 60px); }
+  .about-left { border-right: 1px solid #ccc; padding: 40px 36px; }
+  .about-right { padding: 40px 36px; }
+  .about-photo { width: 100%; aspect-ratio: 1; background: #e8e6e0; margin-bottom: 28px; display: flex; align-items: center; justify-content: center; }
+  .about-photo .placeholder { color: #aaa; font-size: 12px; text-align: center; }
+  .about-label { font-size: 11px; letter-spacing: 0.1em; color: #999; text-transform: uppercase; margin-bottom: 10px; margin-top: 28px; }
+  .about-label:first-child { margin-top: 0; }
+  .about-name-big { font-size: 22px; font-weight: normal; margin-bottom: 6px; }
+  .about-contact-line { font-size: 13px; color: #555; margin-bottom: 4px; }
+  .about-bio { font-size: 13px; color: #333; line-height: 1.75; margin-bottom: 20px; }
+  .cv-entry { margin-bottom: 18px; }
+  .cv-entry .cv-title { font-size: 13px; font-style: italic; }
+  .cv-entry .cv-detail { font-size: 12px; color: #666; }
+  .cv-entry .cv-year { font-size: 12px; color: #999; }
+
+  /* CONTACT PAGE */
+  #page-contact { display: none; }
+  #page-contact.active { display: flex; align-items: flex-start; justify-content: center; padding: 60px 36px; border-top: 1px solid #ccc; min-height: calc(100vh - 60px); }
+  .contact-inner { width: 100%; max-width: 480px; }
+  .contact-title { font-size: 18px; font-weight: normal; margin-bottom: 30px; }
+  .form-group { margin-bottom: 20px; }
+  .form-group label { display: block; font-size: 12px; color: #888; letter-spacing: 0.08em; margin-bottom: 6px; }
+  .form-group input, .form-group textarea { width: 100%; padding: 10px 0; background: transparent; border: none; border-bottom: 1px solid #ccc; font-family: 'Georgia', serif; font-size: 13px; color: #1a1a1a; outline: none; resize: none; transition: border-color 0.2s; }
+  .form-group input:focus, .form-group textarea:focus { border-bottom-color: #1a1a1a; }
+  .form-group textarea { height: 100px; }
+  .submit-btn { margin-top: 10px; padding: 10px 28px; background: #1a1a1a; color: #f5f4f0; border: none; font-family: 'Georgia', serif; font-size: 13px; cursor: pointer; letter-spacing: 0.04em; transition: opacity 0.2s; }
+  .submit-btn:hover { opacity: 0.75; }
+  .contact-info { margin-top: 40px; padding-top: 28px; border-top: 1px solid #ccc; }
+  .contact-info p { font-size: 13px; color: #555; margin-bottom: 6px; }
+
+  /* FOOTER */
+  footer { padding: 16px 28px; border-top: 1px solid #ccc; font-size: 11px; color: #aaa; }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="name" onclick="showPage('oeuvres')">Adrien Roche</span>
+  <ul>
+    <li><a href="#" onclick="showPage('oeuvres');return false;">Œuvres</a></li>
+    <li><a href="#" onclick="showPage('about');return false;">À propos</a></li>
+    <li><a href="#" onclick="showPage('contact');return false;">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- OEUVRES -->
+<div id="page-oeuvres" class="page active">
+  <div class="gallery-grid">
+
+    <div class="work-col">
+      <div class="work-image">
+        <div class="placeholder"><span>◻</span>Remplacez par<br>votre image</div>
+      </div>
+      <div class="work-info">
+        <div class="work-num">1.</div>
+        <div class="work-title">Sans titre I</div>
+        <div class="work-subtitle">Huile sur toile — 2023<br>80 × 60 cm</div>
+        <div class="work-desc">Une exploration des contrastes entre lumière et matière, où la surface peinte devient un territoire à part entière. La couche picturale s'accumule, se stratifie, révèle.</div>
+        <span class="work-more">[Plus...]</span>
+      </div>
+    </div>
+
+    <div class="work-col">
+      <div class="work-image">
+        <div class="placeholder"><span>◻</span>Remplacez par<br>votre image</div>
+      </div>
+      <div class="work-info">
+        <div class="work-num">2.</div>
+        <div class="work-title">Strate n° 4</div>
+        <div class="work-subtitle">Acrylique et encre — 2023<br>100 × 70 cm</div>
+        <div class="work-desc">La répétition du geste comme méthode. Une série de couches translucides qui dialoguent entre elles et interrogent la notion de profondeur dans l'image.</div>
+        <span class="work-more">[Plus...]</span>
+      </div>
+    </div>
+
+    <div class="work-col">
+      <div class="work-image">
+        <div class="placeholder"><span>◻</span>Remplacez par<br>votre image</div>
+      </div>
+      <div class="work-info">
+        <div class="work-num">3.</div>
+        <div class="work-title">Paysage intérieur</div>
+        <div class="work-subtitle">Techniques mixtes — 2022<br>120 × 90 cm</div>
+        <div class="work-desc">Entre figuration et abstraction, cette pièce navigue dans un espace mental, celui d'une géographie imaginée, nourrie de souvenirs et de fragments visuels.</div>
+        <span class="work-more">[Plus...]</span>
+      </div>
+    </div>
+
+    <div class="work-col">
+      <div class="work-image">
+        <div class="placeholder"><span>◻</span>Remplacez par<br>votre image</div>
+      </div>
+      <div class="work-info">
+        <div class="work-num">4.</div>
+        <div class="work-title">Résidu I</div>
+        <div class="work-subtitle">Encre sur papier — 2024<br>42 × 29,7 cm</div>
+        <div class="work-desc">Série de dessins à l'encre explorant la trace, l'effacement et ce qui subsiste après le geste initial. Le papier, froissé puis déroulé, conserve la mémoire.</div>
+        <span class="work-more">[Plus...]</span>
+      </div>
+    </div>
+
+    <div class="work-col">
+      <div class="work-image">
+        <div class="placeholder"><span>◻</span>Remplacez par<br>votre image</div>
+      </div>
+      <div class="work-info">
+        <div class="work-num">5.</div>
+        <div class="work-title">Archipel</div>
+        <div class="work-subtitle">Huile sur toile — 2024<br>150 × 120 cm</div>
+        <div class="work-desc">Un ensemble de formes isolées qui coexistent dans un même plan. La tension entre les masses de couleur crée une narration silencieuse, ouverte à l'interprétation.</div>
+        <span class="work-more">[Plus...]</span>
+      </div>
+    </div>
+
+    <div class="work-col">
+      <div class="work-image">
+        <div class="placeholder"><span>◻</span>Remplacez par<br>votre image</div>
+      </div>
+      <div class="work-info">
+        <div class="work-num">6.</div>
+        <div class="work-title">Fond commun</div>
+        <div class="work-subtitle">Techniques mixtes — 2022<br>60 × 60 cm</div>
+        <div class="work-desc">Collage, peinture et photographie s'articulent pour questionner l'image collective et le regard partagé. Une pièce sur la construction visuelle du commun.</div>
+        <span class="work-more">[Plus...]</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- À PROPOS -->
+<div id="page-about" class="page">
+  <div class="about-left">
+    <div class="about-photo">
+      <div class="placeholder">Photo de l'artiste<br><span style="font-size:11px;color:#bbb">(à remplacer)</span></div>
+    </div>
+    <div class="about-label">Artiste</div>
+    <div class="about-name-big">Adrien Roche</div>
+    <div class="about-contact-line">adrien@exemple.com</div>
+    <div class="about-contact-line">Instagram</div>
+    <div class="about-contact-line">Paris, France</div>
+  </div>
+  <div class="about-right">
+    <div class="about-label">Biographie</div>
+    <div class="about-bio">
+      Adrien Roche est un artiste plasticien basé à Paris. Sa pratique oscille entre peinture, dessin et techniques mixtes, traversée par une interrogation constante sur la matière, la trace et la mémoire visuelle.<br><br>
+      Son travail puise dans la répétition du geste, l'accumulation de couches et la tension entre figuration et abstraction. Il a exposé dans plusieurs galeries et espaces indépendants en France et à l'étranger.<br><br>
+      <em>— Remplacez ce texte par votre propre biographie.</em>
+    </div>
+
+    <div class="about-label">Formation</div>
+    <div class="cv-entry">
+      <div class="cv-title">École Nationale Supérieure des Beaux-Arts</div>
+      <div class="cv-detail">DNSEP mention félicitations</div>
+      <div class="cv-year">2018</div>
+    </div>
+    <div class="cv-entry">
+      <div class="cv-title">École des Arts Décoratifs</div>
+      <div class="cv-detail">Classe préparatoire</div>
+      <div class="cv-year">2014 – 2016</div>
+    </div>
+
+    <div class="about-label">Expositions</div>
+    <div class="cv-entry">
+      <div class="cv-title">Galerie [Nom à compléter]</div>
+      <div class="cv-detail">Exposition personnelle — Paris</div>
+      <div class="cv-year">2024</div>
+    </div>
+    <div class="cv-entry">
+      <div class="cv-title">[Exposition collective]</div>
+      <div class="cv-detail">Nom du lieu — Ville</div>
+      <div class="cv-year">2023</div>
+    </div>
+    <div class="cv-entry">
+      <div class="cv-title">[Résidence artistique]</div>
+      <div class="cv-detail">Lieu et description</div>
+      <div class="cv-year">2022</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div id="page-contact" class="page">
+  <div class="contact-inner">
+    <div class="contact-title">Me contacter</div>
+    <div class="form-group">
+      <label>NOM</label>
+      <input type="text" placeholder="Votre nom">
+    </div>
+    <div class="form-group">
+      <label>EMAIL</label>
+      <input type="email" placeholder="votre@email.com">
+    </div>
+    <div class="form-group">
+      <label>SUJET</label>
+      <input type="text" placeholder="Objet de votre message">
+    </div>
+    <div class="form-group">
+      <label>MESSAGE</label>
+      <textarea placeholder="Votre message..."></textarea>
+    </div>
+    <button class="submit-btn">Envoyer</button>
+    <div class="contact-info">
+      <p>adrien@exemple.com</p>
+      <p>Instagram : @adrienroche</p>
+      <p>Paris, France</p>
+    </div>
+  </div>
+</div>
+
+<footer>© Adrien Roche 2024</footer>
+
+<script>
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+}
+</script>
+</body>
+</html>
