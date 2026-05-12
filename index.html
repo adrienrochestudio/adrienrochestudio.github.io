@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<link rel="icon" type="image/png" href="./favicon.png">
+<link rel="icon" type="image/png" href="./images/favicon.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Adrien Roche</title>
@@ -22,6 +22,14 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
   display: flex; justify-content: space-between; align-items: center;
   font-size: 12px; font-style: italic;
 }
+.header-left { display: flex; align-items: center; gap: 10px; }
+.carousel-label {
+  font-size: 11px; font-style: italic; color: #aaa;
+  display: none;
+  transition: opacity 0.2s;
+}
+.carousel-label.visible { display: inline; }
+
 .menu-btn {
   font-size: 15px; line-height: 1; opacity: 0.45; font-style: normal;
   cursor: pointer; background: none; border: none;
@@ -38,16 +46,17 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
   font-size: 12px; font-style: italic;
   position: sticky; top: 32px; z-index: 9;
 }
+.section-divider .header-left { display: flex; align-items: center; gap: 10px; }
 
-/* GALLERY OVERLAY (≡ view) */
+/* GALLERY OVERLAY (≡ view) — FIXED so it works anywhere on scroll */
 .col-overlay {
   display: none;
-  position: absolute;
-  inset: 0;
+  position: fixed;
   background: #f5f4f0;
-  z-index: 20;
+  z-index: 200;
   overflow-y: auto;
   padding: 48px 14px 24px;
+  box-shadow: -2px 0 12px rgba(0,0,0,0.08);
 }
 .col-overlay.open { display: block; }
 .overlay-close {
@@ -67,9 +76,9 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
 /* bio overlay (col 3) */
 .bio-overlay {
   display: none;
-  position: absolute; inset: 0;
+  position: fixed;
   background: #f5f4f0;
-  z-index: 20;
+  z-index: 200;
   padding: 48px 20px 24px;
   overflow-y: auto;
 }
@@ -95,6 +104,11 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
 /* WORK */
 .work { border-bottom: 1px solid #ccc; }
 .img-outer { padding: 12px 14px 8px; }
+
+/* CAROUSEL MODE — image replaces info block */
+.work-body { display: contents; } /* default: normal layout */
+.work.carousel-mode .img-outer { padding-bottom: 12px; }
+.work.carousel-mode .work-info { display: none; }
 
 /* CAROUSEL */
 .carousel-wrap { position: relative; width: 100%; aspect-ratio: 4/4.5; background: #e8e6e0; overflow: hidden; }
@@ -141,8 +155,17 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
 .cv-content { padding: 10px 14px 12px 6px; }
 .cv-entry { margin-bottom: 8px; font-size: 11px; line-height: 1.4; color: #444; }
 
+/* Instagram link */
+.instagram-link {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 11px; color: #555; text-decoration: none;
+  transition: color 0.2s;
+}
+.instagram-link:hover { color: #1a1a1a; }
+.instagram-link svg { width: 12px; height: 12px; flex-shrink: 0; }
+
 /* CONTACT OVERLAY */
-.contact-overlay { display: none; position: fixed; inset: 0; background: rgba(245,244,240,0.97); z-index: 200; align-items: center; justify-content: center; }
+.contact-overlay { display: none; position: fixed; inset: 0; background: rgba(245,244,240,0.97); z-index: 300; align-items: center; justify-content: center; }
 .contact-overlay.open { display: flex; }
 .contact-box { width: 100%; max-width: 400px; padding: 0 24px; }
 .contact-close { position: absolute; top: 18px; right: 24px; background: none; border: none; font-size: 20px; cursor: pointer; color: #aaa; font-family: Georgia, serif; }
@@ -158,6 +181,18 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
 .send-btn:hover { opacity: 0.7; }
 .contact-link { color: #555; font-size: 11px; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; }
 .contact-link:hover { color: #1a1a1a; }
+
+/* Carousel toggle button */
+.carousel-toggle {
+  font-size: 10px; font-style: normal; opacity: 0.45;
+  cursor: pointer; background: none; border: 1px solid #ccc;
+  font-family: Georgia, serif; color: #1a1a1a;
+  padding: 2px 6px; letter-spacing: 0.04em;
+  transition: opacity 0.2s, background 0.2s;
+  white-space: nowrap;
+}
+.carousel-toggle:hover { opacity: 1; }
+.carousel-toggle.active { opacity: 1; background: #1a1a1a; color: #f5f4f0; border-color: #1a1a1a; }
 
 @media (max-width: 900px) {
   body { overflow: auto; }
@@ -196,29 +231,35 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
       <button class="overlay-close" onclick="closeOverlay('overlay1')">×</button>
       <div class="overlay-title">Accumulation</div>
       <div class="thumb-grid">
-        <div class="thumb"><img src="./ferrari1site.png" alt="Ferrari"></div>
-        <div class="thumb"><img src="./deathstar1site.png" alt="A New Hope"></div>
-        <div class="thumb"><div class="ph">AT-AT</div></div>
-        <div class="thumb"><img src="./dafttree1site.png" alt="Fragments"></div>
-        <div class="thumb"><img src="./chanel1site.png" alt="Chanel"></div>
-        <div class="thumb"><img src="./hermes1site.png" alt="Birkin"></div>
-        <div class="thumb"><img src="./fauconmill1site.png" alt="Falcon"></div>
-        <div class="thumb"><div class="ph">R2D2</div></div>
+        <div class="thumb"><img src="./images/ferrari1site.png" alt="Ferrari"></div>
+        <div class="thumb"><img src="./images/deathstar1site.png" alt="A New Hope"></div>
+        <div class="thumb"><img src="./images/atat1site.png" alt="AT-AT"></div>
+        <div class="thumb"><img src="./images/dafttree1site.png" alt="Fragments"></div>
+        <div class="thumb"><img src="./images/chanel1site.png" alt="Chanel"></div>
+        <div class="thumb"><img src="./images/hermes1site.png" alt="Birkin"></div>
+        <div class="thumb"><img src="./images/fauconmill1site.png" alt="Falcon"></div>
+        <div class="thumb"><img src="./images/r2d21site.png" alt="R2D2"></div>
       </div>
     </div>
 
     <div class="column-header">
-      <span>Accumulation</span>
-      <button class="menu-btn" onclick="toggleOverlay('overlay1')">≡</button>
+      <div class="header-left">
+        <span>Accumulation</span>
+        <span class="carousel-label" id="label-col1">Carousel</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <button class="carousel-toggle" id="toggle-col1" onclick="toggleCarouselMode('col1')" title="Toggle carousel mode">Images</button>
+        <button class="menu-btn" onclick="toggleOverlay('overlay1')">≡</button>
+      </div>
     </div>
 
     <!-- 1. Ferrari -->
     <article class="work">
       <div class="img-outer"><div class="carousel-wrap" data-current="0">
         <div class="carousel-track">
-          <div class="carousel-slide"><img src="./ferrari1site.png" alt="Ferrari 1"></div>
-          <div class="carousel-slide"><img src="./ferrari2site.png" alt="Ferrari 2"></div>
-          <div class="carousel-slide"><img src="./ferrari3site.png" alt="Ferrari 3"></div>
+          <div class="carousel-slide"><img src="./images/ferrari1site.png" alt="Ferrari 1"></div>
+          <div class="carousel-slide"><img src="./images/ferrari2site.png" alt="Ferrari 2"></div>
+          <div class="carousel-slide"><img src="./images/ferrari3site.png" alt="Ferrari 3"></div>
         </div>
         <button class="c-btn prev" onclick="slide(this,-1)">‹</button>
         <button class="c-btn next" onclick="slide(this,1)">›</button>
@@ -239,8 +280,8 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
     <article class="work">
       <div class="img-outer"><div class="carousel-wrap" data-current="0">
         <div class="carousel-track">
-          <div class="carousel-slide"><img src="./deathstar1site.png" alt="A New Hope 1"></div>
-          <div class="carousel-slide"><img src="./deathstar2site.png" alt="A New Hope 2"></div>
+          <div class="carousel-slide"><img src="./images/deathstar1site.png" alt="A New Hope 1"></div>
+          <div class="carousel-slide"><img src="./images/deathstar2site.png" alt="A New Hope 2"></div>
         </div>
         <button class="c-btn prev" onclick="slide(this,-1)">‹</button>
         <button class="c-btn next" onclick="slide(this,1)">›</button>
@@ -261,11 +302,13 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
     <article class="work">
       <div class="img-outer"><div class="carousel-wrap" data-current="0">
         <div class="carousel-track">
-          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
+          <div class="carousel-slide"><img src="./images/atat1site.png" alt="AT-AT 1"></div>
+          <div class="carousel-slide"><img src="./images/atat2site.png" alt="AT-AT 2"></div>
+          <div class="carousel-slide"><img src="./images/atat3site.png" alt="AT-AT 3"></div>
         </div>
         <button class="c-btn prev" onclick="slide(this,-1)">‹</button>
         <button class="c-btn next" onclick="slide(this,1)">›</button>
-        <div class="c-dots"><div class="dot active"></div></div>
+        <div class="c-dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div></div>
       </div></div>
       <div class="work-info">
         <div class="work-title">3. Anthropocene AT-AT Walker</div>
@@ -282,9 +325,9 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
     <article class="work">
       <div class="img-outer"><div class="carousel-wrap" data-current="0">
         <div class="carousel-track">
-          <div class="carousel-slide"><img src="./dafttree1site.png" alt="Fragments 1"></div>
-          <div class="carousel-slide"><img src="./dafttree2site.png" alt="Fragments 2"></div>
-          <div class="carousel-slide"><img src="./dafttree3site.png" alt="Fragments 3"></div>
+          <div class="carousel-slide"><img src="./images/dafttree1site.png" alt="Fragments 1"></div>
+          <div class="carousel-slide"><img src="./images/dafttree2site.png" alt="Fragments 2"></div>
+          <div class="carousel-slide"><img src="./images/dafttree3site.png" alt="Fragments 3"></div>
         </div>
         <button class="c-btn prev" onclick="slide(this,-1)">‹</button>
         <button class="c-btn next" onclick="slide(this,1)">›</button>
@@ -305,7 +348,7 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
     <article class="work">
       <div class="img-outer"><div class="carousel-wrap" data-current="0">
         <div class="carousel-track">
-          <div class="carousel-slide"><img src="./chanel1site.png" alt="Chanel 2.55"></div>
+          <div class="carousel-slide"><img src="./images/chanel1site.png" alt="Chanel 2.55"></div>
         </div>
         <button class="c-btn prev" onclick="slide(this,-1)">‹</button>
         <button class="c-btn next" onclick="slide(this,1)">›</button>
@@ -326,7 +369,7 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
     <article class="work">
       <div class="img-outer"><div class="carousel-wrap" data-current="0">
         <div class="carousel-track">
-          <div class="carousel-slide"><img src="./hermes1site.png" alt="Birkin"></div>
+          <div class="carousel-slide"><img src="./images/hermes1site.png" alt="Birkin"></div>
         </div>
         <button class="c-btn prev" onclick="slide(this,-1)">‹</button>
         <button class="c-btn next" onclick="slide(this,1)">›</button>
@@ -347,7 +390,7 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
     <article class="work">
       <div class="img-outer"><div class="carousel-wrap" data-current="0">
         <div class="carousel-track">
-          <div class="carousel-slide"><img src="./fauconmill1site.png" alt="Millennium Falcon"></div>
+          <div class="carousel-slide"><img src="./images/fauconmill1site.png" alt="Millennium Falcon"></div>
         </div>
         <button class="c-btn prev" onclick="slide(this,-1)">‹</button>
         <button class="c-btn next" onclick="slide(this,1)">›</button>
@@ -368,7 +411,7 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
     <article class="work">
       <div class="img-outer"><div class="carousel-wrap" data-current="0">
         <div class="carousel-track">
-          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
+          <div class="carousel-slide"><img src="./images/r2d21site.png" alt="R2D2"></div>
         </div>
         <button class="c-btn prev" onclick="slide(this,-1)">‹</button>
         <button class="c-btn next" onclick="slide(this,1)">›</button>
@@ -395,24 +438,30 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
       <button class="overlay-close" onclick="closeOverlay('overlay2')">×</button>
       <div class="overlay-title">Beyond accumulation &amp; Commissioned works</div>
       <div class="thumb-grid">
-        <div class="thumb"><img src="./hommeassis1site.png" alt="Lost in Translation"></div>
-        <div class="thumb"><img src="./daftkiss1site.png" alt="Daft Kiss"></div>
-        <div class="thumb"><div class="ph">Nymphe</div></div>
+        <div class="thumb"><img src="./images/hommeassis1site.png" alt="Lost in Translation"></div>
+        <div class="thumb"><img src="./images/daftkiss1site.png" alt="Daft Kiss"></div>
+        <div class="thumb"><img src="./images/nymphe1site.png" alt="Nymphe"></div>
         <div class="thumb"><div class="ph">Astroboy</div></div>
       </div>
     </div>
 
     <div class="column-header">
-      <span>Beyond accumulation</span>
-      <button class="menu-btn" onclick="toggleOverlay('overlay2')">≡</button>
+      <div class="header-left">
+        <span>Beyond accumulation</span>
+        <span class="carousel-label" id="label-col2">Carousel</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <button class="carousel-toggle" id="toggle-col2" onclick="toggleCarouselMode('col2')" title="Toggle carousel mode">Images</button>
+        <button class="menu-btn" onclick="toggleOverlay('overlay2')">≡</button>
+      </div>
     </div>
 
     <!-- Lost in Translation -->
     <article class="work">
       <div class="img-outer"><div class="carousel-wrap" data-current="0">
         <div class="carousel-track">
-          <div class="carousel-slide"><img src="./hommeassis1site.png" alt="Lost in Translation"></div>
-          <div class="carousel-slide"><img src="./hommassis2site.jpg" alt="Lost in Translation detail"></div>
+          <div class="carousel-slide"><img src="./images/hommeassis1site.png" alt="Lost in Translation"></div>
+          <div class="carousel-slide"><img src="./images/hommassis2site.jpg" alt="Lost in Translation detail"></div>
         </div>
         <button class="c-btn prev" onclick="slide(this,-1)">‹</button>
         <button class="c-btn next" onclick="slide(this,1)">›</button>
@@ -430,8 +479,11 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
     </article>
 
     <!-- Commissioned works — sticky sub-header -->
-    <div class="section-divider">
-      <span>Commissioned works</span>
+    <div class="section-divider" id="divider-col2">
+      <div class="header-left">
+        <span>Commissioned works</span>
+        <span class="carousel-label" id="label-col2-commissioned">Carousel</span>
+      </div>
       <span style="font-size:15px;opacity:0.45">≡</span>
     </div>
 
@@ -439,9 +491,9 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
     <article class="work">
       <div class="img-outer"><div class="carousel-wrap" data-current="0">
         <div class="carousel-track">
-          <div class="carousel-slide"><img src="./daftkiss1site.png" alt="Daft Kiss 1"></div>
-          <div class="carousel-slide"><img src="./daftkiss2site.png" alt="Daft Kiss 2"></div>
-          <div class="carousel-slide"><img src="./daftkiss3site.png" alt="Daft Kiss 3"></div>
+          <div class="carousel-slide"><img src="./images/daftkiss1site.png" alt="Daft Kiss 1"></div>
+          <div class="carousel-slide"><img src="./images/daftkiss2site.png" alt="Daft Kiss 2"></div>
+          <div class="carousel-slide"><img src="./images/daftkiss3site.png" alt="Daft Kiss 3"></div>
         </div>
         <button class="c-btn prev" onclick="slide(this,-1)">‹</button>
         <button class="c-btn next" onclick="slide(this,1)">›</button>
@@ -462,7 +514,7 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
     <article class="work">
       <div class="img-outer"><div class="carousel-wrap" data-current="0">
         <div class="carousel-track">
-          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
+          <div class="carousel-slide"><img src="./images/nymphe1site.png" alt="Nymphe"></div>
         </div>
         <button class="c-btn prev" onclick="slide(this,-1)">‹</button>
         <button class="c-btn next" onclick="slide(this,1)">›</button>
@@ -567,6 +619,22 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
     </section>
 
     <section class="cv-section">
+      <div class="cv-label">Instagram</div>
+      <div class="cv-content">
+        <div class="cv-entry">
+          <a class="instagram-link" href="https://www.instagram.com/adrien_roche_/" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4.5"/>
+              <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+            </svg>
+            @adrien_roche_
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="cv-section">
       <div class="cv-label">Contact</div>
       <div class="cv-content">
         <div class="cv-entry">
@@ -579,6 +647,7 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
 </main>
 
 <script>
+// ── Carousel slide ──────────────────────────────────────────────
 function slide(btn, dir) {
   const wrap = btn.closest('.carousel-wrap');
   const track = wrap.querySelector('.carousel-track');
@@ -591,21 +660,86 @@ function slide(btn, dir) {
   dots.forEach((d, i) => d.classList.toggle('active', i === cur));
 }
 
+// ── Overlay positioning (fixed, aligned to column) ─────────────
+function getColumnRect(colId) {
+  return document.getElementById(colId).getBoundingClientRect();
+}
+
+function positionOverlay(overlay, colId) {
+  const rect = getColumnRect(colId);
+  overlay.style.left   = rect.left + 'px';
+  overlay.style.top    = rect.top  + 'px';
+  overlay.style.width  = rect.width + 'px';
+  overlay.style.height = rect.height + 'px';
+}
+
+// Map overlay id → column id
+const overlayColMap = {
+  overlay1: 'col1',
+  overlay2: 'col2',
+  overlay3: 'col3'
+};
+
 function toggleOverlay(id) {
   const el = document.getElementById(id);
+  const colId = overlayColMap[id];
+  if (!el.classList.contains('open')) {
+    positionOverlay(el, colId);
+  }
   el.classList.toggle('open');
 }
+
 function closeOverlay(id) {
   document.getElementById(id).classList.remove('open');
 }
 
-function openContact() { document.getElementById('contactOverlay').classList.add('open'); }
+// Reposition on resize
+window.addEventListener('resize', () => {
+  Object.keys(overlayColMap).forEach(id => {
+    const el = document.getElementById(id);
+    if (el.classList.contains('open')) {
+      positionOverlay(el, overlayColMap[id]);
+    }
+  });
+});
+
+// ── Carousel image-only mode ────────────────────────────────────
+const carouselModeState = { col1: false, col2: false };
+
+function toggleCarouselMode(colId) {
+  const active = !carouselModeState[colId];
+  carouselModeState[colId] = active;
+
+  const col = document.getElementById(colId);
+  const toggleBtn = document.getElementById('toggle-' + colId);
+  const label = document.getElementById('label-' + colId);
+
+  // Toggle all .work articles in this column
+  col.querySelectorAll('article.work').forEach(article => {
+    article.classList.toggle('carousel-mode', active);
+  });
+
+  // Update button state
+  toggleBtn.classList.toggle('active', active);
+
+  // Show/hide "Carousel" italic label in header
+  if (label) label.classList.toggle('visible', active);
+
+  // Also toggle the commissioned works divider label if col2
+  if (colId === 'col2') {
+    const commLabel = document.getElementById('label-col2-commissioned');
+    if (commLabel) commLabel.classList.toggle('visible', active);
+  }
+}
+
+// ── Contact ─────────────────────────────────────────────────────
+function openContact()  { document.getElementById('contactOverlay').classList.add('open'); }
 function closeContact() { document.getElementById('contactOverlay').classList.remove('open'); }
 
 function sendMail(e) {
   e.preventDefault();
-  const name = document.getElementById('f-name').value;
-  const email = document.getElementById('f-email').value;
+  const name    = document.getElementById('f-name').value;
+  const email   = document.getElementById('f-email').value;
   const subject = document.getElementById('f-subject').value;
   const message = document.getElementById('f-message').value;
   const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
