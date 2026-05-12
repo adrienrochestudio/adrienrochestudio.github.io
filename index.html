@@ -7,209 +7,156 @@
 <title>Adrien Roche</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-size: 13px; line-height: 1.45; overflow: hidden; }
 
-body {
-  font-family: 'Georgia', serif;
-  background: #f5f4f0;
-  color: #1a1a1a;
-  font-size: 13px;
-  line-height: 1.45;
-  overflow: hidden;
-}
+.site { display: grid; grid-template-columns: 1fr 1fr 1fr; height: 100vh; width: 100vw; }
 
-.site {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  height: 100vh;
-  width: 100vw;
-}
-
-.column {
-  height: 100vh;
-  overflow-y: auto;
-  border-right: 1px solid #ccc;
-  background: #f5f4f0;
-}
+.column { height: 100vh; overflow-y: auto; border-right: 1px solid #ccc; background: #f5f4f0; position: relative; }
 .column:last-child { border-right: none; }
 
+/* HEADER */
 .column-header {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  height: 32px;
-  padding: 6px 12px;
-  border-bottom: 1px solid #ccc;
-  background: #f5f4f0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 12px;
-  font-style: italic;
+  position: sticky; top: 0; z-index: 10;
+  height: 32px; padding: 6px 12px;
+  border-bottom: 1px solid #ccc; background: #f5f4f0;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 12px; font-style: italic;
 }
-.menu { font-size: 15px; line-height: 1; opacity: 0.5; font-style: normal; }
+.menu-btn {
+  font-size: 15px; line-height: 1; opacity: 0.45; font-style: normal;
+  cursor: pointer; background: none; border: none;
+  font-family: Georgia, serif; color: #1a1a1a; padding: 0 2px;
+  transition: opacity 0.2s;
+}
+.menu-btn:hover { opacity: 1; }
 
 .section-divider {
-  height: 32px;
-  padding: 6px 12px;
-  border-bottom: 1px solid #ccc;
-  border-top: 1px solid #ccc;
+  height: 32px; padding: 6px 12px;
+  border-bottom: 1px solid #ccc; border-top: 1px solid #ccc;
   background: #f5f4f0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 12px;
-  font-style: italic;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 12px; font-style: italic;
+  position: sticky; top: 32px; z-index: 9;
 }
 
+/* GALLERY OVERLAY (≡ view) */
+.col-overlay {
+  display: none;
+  position: absolute;
+  inset: 0;
+  background: #f5f4f0;
+  z-index: 20;
+  overflow-y: auto;
+  padding: 48px 14px 24px;
+}
+.col-overlay.open { display: block; }
+.overlay-close {
+  position: absolute; top: 8px; right: 12px;
+  background: none; border: none; cursor: pointer;
+  font-size: 18px; color: #aaa; font-family: Georgia, serif;
+}
+.overlay-close:hover { color: #1a1a1a; }
+.overlay-title { font-size: 11px; font-style: italic; color: #888; margin-bottom: 14px; }
+
+/* grid of thumbnails */
+.thumb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.thumb { aspect-ratio: 1; background: #e8e6e0; overflow: hidden; }
+.thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.thumb .ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #ccc; font-size: 10px; }
+
+/* bio overlay (col 3) */
+.bio-overlay {
+  display: none;
+  position: absolute; inset: 0;
+  background: #f5f4f0;
+  z-index: 20;
+  padding: 48px 20px 24px;
+  overflow-y: auto;
+}
+.bio-overlay.open { display: flex; flex-direction: column; justify-content: center; }
+.bio-overlay-photo {
+  width: 100%; aspect-ratio: 1;
+  background: #e8e6e0;
+  margin-bottom: 20px;
+  display: flex; align-items: center; justify-content: center;
+  color: #bbb; font-size: 11px;
+}
+.bio-overlay-name { font-size: 15px; margin-bottom: 10px; }
+.bio-overlay-text { font-size: 11px; line-height: 1.6; color: #555; margin-bottom: 24px; }
+.bio-overlay-btn {
+  display: inline-block; padding: 9px 22px;
+  background: #1a1a1a; color: #f5f4f0;
+  border: none; font-family: Georgia, serif;
+  font-size: 11px; letter-spacing: 0.07em;
+  cursor: pointer; transition: opacity 0.2s; align-self: flex-start;
+}
+.bio-overlay-btn:hover { opacity: 0.7; }
+
+/* WORK */
 .work { border-bottom: 1px solid #ccc; }
+.img-outer { padding: 12px 14px 8px; }
 
-/* IMAGE with breathing room */
-.img-outer {
-  padding: 12px 14px 8px;
-  background: #f5f4f0;
-}
-
-.carousel-wrap {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 4 / 4.5;
-  background: #e8e6e0;
-  overflow: hidden;
-}
-.carousel-track {
-  display: flex;
-  height: 100%;
-  transition: transform 0.38s ease;
-}
-.carousel-slide {
-  min-width: 100%;
-  height: 100%;
-  background: #e8e6e0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  overflow: hidden;
-}
+/* CAROUSEL */
+.carousel-wrap { position: relative; width: 100%; aspect-ratio: 4/4.5; background: #e8e6e0; overflow: hidden; }
+.carousel-track { display: flex; height: 100%; transition: transform 0.38s ease; }
+.carousel-slide { min-width: 100%; height: 100%; background: #e8e6e0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; }
 .carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
 .placeholder { color: #bbb; text-align: center; font-size: 11px; }
 .placeholder span { display: block; font-size: 28px; opacity: 0.25; margin-bottom: 6px; }
 
 .c-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(245,244,240,0.78);
-  border: none;
-  width: 22px;
-  height: 34px;
-  cursor: pointer;
-  font-size: 11px;
-  color: #1a1a1a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.2s;
-  z-index: 3;
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: rgba(245,244,240,0.78); border: none;
+  width: 22px; height: 34px; cursor: pointer;
+  font-size: 11px; color: #1a1a1a;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity 0.2s; z-index: 3;
 }
 .carousel-wrap:hover .c-btn { opacity: 1; }
-.c-btn.prev { left: 0; }
-.c-btn.next { right: 0; }
+.c-btn.prev { left: 0; } .c-btn.next { right: 0; }
 
-.c-dots {
-  position: absolute;
-  bottom: 6px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 4px;
-  opacity: 0;
-  transition: opacity 0.2s;
-  z-index: 3;
-}
+.c-dots { position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%); display: flex; gap: 4px; opacity: 0; transition: opacity 0.2s; z-index: 3; }
 .carousel-wrap:hover .c-dots { opacity: 1; }
 .dot { width: 3px; height: 3px; border-radius: 50%; background: #bbb; cursor: pointer; transition: background 0.2s; }
 .dot.active { background: #1a1a1a; }
 
 /* WORK INFO */
-.work-info {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-  padding: 8px 14px 24px;
-}
+.work-info { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; padding: 8px 14px 24px; }
 .work-title { font-style: italic; font-size: 11.5px; padding-top: 1px; line-height: 1.4; color: #1a1a1a; }
 .work-meta { font-size: 11px; line-height: 1.55; color: #555; }
 .work-meta .medium { color: #1a1a1a; }
 .work-desc { margin-top: 8px; font-size: 11px; line-height: 1.5; color: #666; }
 .work-sold { display: inline-block; margin-top: 8px; font-size: 11px; color: #aaa; }
 
-/* BIO COLUMN */
+/* BIO COL */
 .bio-column { padding-bottom: 24px; }
 .bio-top { padding: 10px 0 16px; border-bottom: 1px solid #ccc; }
 .bio-grid { display: grid; grid-template-columns: 34% 66%; }
-.bio-contact { padding: 0 8px 0 12px; font-size: 11px; line-height: 1.55; color: #555; }
-.bio-contact p { margin-bottom: 2px; color: #1a1a1a; }
+.bio-contact { padding: 0 8px 0 12px; font-size: 11px; line-height: 1.55; }
+.bio-contact p { margin-bottom: 2px; }
 .bio-text { padding: 0 14px 0 6px; font-size: 11px; line-height: 1.5; color: #444; }
 .bio-text p { margin-bottom: 10px; }
-
 .cv-section { display: grid; grid-template-columns: 34% 66%; border-bottom: 1px solid #ccc; min-height: 80px; }
 .cv-label { padding: 10px 8px 10px 12px; font-size: 11px; color: #888; }
 .cv-content { padding: 10px 14px 12px 6px; }
 .cv-entry { margin-bottom: 8px; font-size: 11px; line-height: 1.4; color: #444; }
 
 /* CONTACT OVERLAY */
-.contact-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(245,244,240,0.97);
-  z-index: 200;
-  align-items: center;
-  justify-content: center;
-}
+.contact-overlay { display: none; position: fixed; inset: 0; background: rgba(245,244,240,0.97); z-index: 200; align-items: center; justify-content: center; }
 .contact-overlay.open { display: flex; }
 .contact-box { width: 100%; max-width: 400px; padding: 0 24px; }
-.contact-close {
-  position: absolute;
-  top: 18px; right: 24px;
-  background: none; border: none;
-  font-size: 20px; cursor: pointer;
-  color: #aaa; font-family: Georgia, serif;
-  line-height: 1;
-}
+.contact-close { position: absolute; top: 18px; right: 24px; background: none; border: none; font-size: 20px; cursor: pointer; color: #aaa; font-family: Georgia, serif; }
 .contact-close:hover { color: #1a1a1a; }
 .contact-title { font-size: 16px; font-weight: normal; margin-bottom: 4px; }
 .contact-sub { font-size: 11px; color: #aaa; margin-bottom: 28px; }
 .form-group { margin-bottom: 18px; }
 .form-group label { display: block; font-size: 9.5px; letter-spacing: 0.13em; text-transform: uppercase; color: #bbb; margin-bottom: 5px; }
-.form-group input,
-.form-group textarea {
-  width: 100%; padding: 6px 0;
-  background: transparent; border: none;
-  border-bottom: 1px solid #ddd;
-  font-family: Georgia, serif; font-size: 12px;
-  color: #1a1a1a; outline: none; resize: none;
-  transition: border-color 0.2s;
-}
-.form-group input:focus,
-.form-group textarea:focus { border-bottom-color: #1a1a1a; }
+.form-group input, .form-group textarea { width: 100%; padding: 6px 0; background: transparent; border: none; border-bottom: 1px solid #ddd; font-family: Georgia, serif; font-size: 12px; color: #1a1a1a; outline: none; resize: none; transition: border-color 0.2s; }
+.form-group input:focus, .form-group textarea:focus { border-bottom-color: #1a1a1a; }
 .form-group textarea { height: 72px; }
-.send-btn {
-  margin-top: 4px; padding: 8px 24px;
-  background: #1a1a1a; color: #f5f4f0;
-  border: none; font-family: Georgia, serif;
-  font-size: 11px; letter-spacing: 0.06em;
-  cursor: pointer; transition: opacity 0.2s;
-}
+.send-btn { margin-top: 4px; padding: 8px 24px; background: #1a1a1a; color: #f5f4f0; border: none; font-family: Georgia, serif; font-size: 11px; letter-spacing: 0.06em; cursor: pointer; transition: opacity 0.2s; }
 .send-btn:hover { opacity: 0.7; }
-
-.contact-link {
-  color: #555; font-size: 11px; cursor: pointer;
-  text-decoration: underline; text-underline-offset: 2px;
-}
+.contact-link { color: #555; font-size: 11px; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; }
 .contact-link:hover { color: #1a1a1a; }
 
 @media (max-width: 900px) {
@@ -221,7 +168,6 @@ body {
 }
 </style>
 </head>
-
 <body>
 
 <!-- CONTACT OVERLAY -->
@@ -242,10 +188,31 @@ body {
 
 <main class="site">
 
-  <!-- COL 1 — Accumulation -->
-  <section class="column">
-    <div class="column-header"><span>Accumulation</span><span class="menu">≡</span></div>
+  <!-- ══════════════ COL 1 — Accumulation ══════════════ -->
+  <section class="column" id="col1">
 
+    <!-- Gallery overlay (≡) -->
+    <div class="col-overlay" id="overlay1">
+      <button class="overlay-close" onclick="closeOverlay('overlay1')">×</button>
+      <div class="overlay-title">Accumulation</div>
+      <div class="thumb-grid">
+        <div class="thumb"><img src="./ferrari1site.png" alt="Ferrari"></div>
+        <div class="thumb"><img src="./deathstar1site.png" alt="A New Hope"></div>
+        <div class="thumb"><div class="ph">AT-AT</div></div>
+        <div class="thumb"><img src="./dafttree1site.png" alt="Fragments"></div>
+        <div class="thumb"><img src="./chanel1site.png" alt="Chanel"></div>
+        <div class="thumb"><img src="./hermes1site.png" alt="Birkin"></div>
+        <div class="thumb"><img src="./fauconmill1site.png" alt="Falcon"></div>
+        <div class="thumb"><div class="ph">R2D2</div></div>
+      </div>
+    </div>
+
+    <div class="column-header">
+      <span>Accumulation</span>
+      <button class="menu-btn" onclick="toggleOverlay('overlay1')">≡</button>
+    </div>
+
+    <!-- 1. Ferrari -->
     <article class="work">
       <div class="img-outer"><div class="carousel-wrap" data-current="0">
         <div class="carousel-track">
@@ -261,19 +228,19 @@ body {
         <div class="work-title">1. Crooked Ferrari 250 GT California Spyder</div>
         <div class="work-meta">
           <div class="medium">Graphite pencil on paper</div>
-          <div>50 × 70 cm</div>
-          <div>2026</div>
+          <div>50 × 70 cm</div><div>2026</div>
           <p class="work-desc">A study in tension and elegance — the Ferrari's iconic silhouette distorted by a feverish graphite line, somewhere between reverence and rupture.</p>
           <span class="work-sold">[Sold]</span>
         </div>
       </div>
     </article>
 
+    <!-- 2. A New Hope -->
     <article class="work">
       <div class="img-outer"><div class="carousel-wrap" data-current="0">
         <div class="carousel-track">
-          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
-          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image 2</div></div>
+          <div class="carousel-slide"><img src="./deathstar1site.png" alt="A New Hope 1"></div>
+          <div class="carousel-slide"><img src="./deathstar2site.png" alt="A New Hope 2"></div>
         </div>
         <button class="c-btn prev" onclick="slide(this,-1)">‹</button>
         <button class="c-btn next" onclick="slide(this,1)">›</button>
@@ -290,15 +257,15 @@ body {
       </div>
     </article>
 
+    <!-- 3. AT-AT Walker -->
     <article class="work">
       <div class="img-outer"><div class="carousel-wrap" data-current="0">
         <div class="carousel-track">
           <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
-          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image 2</div></div>
         </div>
         <button class="c-btn prev" onclick="slide(this,-1)">‹</button>
         <button class="c-btn next" onclick="slide(this,1)">›</button>
-        <div class="c-dots"><div class="dot active"></div><div class="dot"></div></div>
+        <div class="c-dots"><div class="dot active"></div></div>
       </div></div>
       <div class="work-info">
         <div class="work-title">3. Anthropocene AT-AT Walker</div>
@@ -311,15 +278,17 @@ body {
       </div>
     </article>
 
+    <!-- 4. Fragments -->
     <article class="work">
       <div class="img-outer"><div class="carousel-wrap" data-current="0">
         <div class="carousel-track">
-          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
-          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image 2</div></div>
+          <div class="carousel-slide"><img src="./dafttree1site.png" alt="Fragments 1"></div>
+          <div class="carousel-slide"><img src="./dafttree2site.png" alt="Fragments 2"></div>
+          <div class="carousel-slide"><img src="./dafttree3site.png" alt="Fragments 3"></div>
         </div>
         <button class="c-btn prev" onclick="slide(this,-1)">‹</button>
         <button class="c-btn next" onclick="slide(this,1)">›</button>
-        <div class="c-dots"><div class="dot active"></div><div class="dot"></div></div>
+        <div class="c-dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div></div>
       </div></div>
       <div class="work-info">
         <div class="work-title">4. Fragments of My Childhood</div>
@@ -332,15 +301,15 @@ body {
       </div>
     </article>
 
+    <!-- 5. Chanel -->
     <article class="work">
       <div class="img-outer"><div class="carousel-wrap" data-current="0">
         <div class="carousel-track">
-          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
-          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image 2</div></div>
+          <div class="carousel-slide"><img src="./chanel1site.png" alt="Chanel 2.55"></div>
         </div>
         <button class="c-btn prev" onclick="slide(this,-1)">‹</button>
         <button class="c-btn next" onclick="slide(this,1)">›</button>
-        <div class="c-dots"><div class="dot active"></div><div class="dot"></div></div>
+        <div class="c-dots"><div class="dot active"></div></div>
       </div></div>
       <div class="work-info">
         <div class="work-title">5. Chanel 2.55</div>
@@ -353,15 +322,15 @@ body {
       </div>
     </article>
 
+    <!-- 6. Birkin -->
     <article class="work">
       <div class="img-outer"><div class="carousel-wrap" data-current="0">
         <div class="carousel-track">
-          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
-          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image 2</div></div>
+          <div class="carousel-slide"><img src="./hermes1site.png" alt="Birkin"></div>
         </div>
         <button class="c-btn prev" onclick="slide(this,-1)">‹</button>
         <button class="c-btn next" onclick="slide(this,1)">›</button>
-        <div class="c-dots"><div class="dot active"></div><div class="dot"></div></div>
+        <div class="c-dots"><div class="dot active"></div></div>
       </div></div>
       <div class="work-info">
         <div class="work-title">6. Birkin</div>
@@ -374,18 +343,39 @@ body {
       </div>
     </article>
 
+    <!-- 7. Millennium Falcon -->
+    <article class="work">
+      <div class="img-outer"><div class="carousel-wrap" data-current="0">
+        <div class="carousel-track">
+          <div class="carousel-slide"><img src="./fauconmill1site.png" alt="Millennium Falcon"></div>
+        </div>
+        <button class="c-btn prev" onclick="slide(this,-1)">‹</button>
+        <button class="c-btn next" onclick="slide(this,1)">›</button>
+        <div class="c-dots"><div class="dot active"></div></div>
+      </div></div>
+      <div class="work-info">
+        <div class="work-title">7. Millennium Falcon</div>
+        <div class="work-meta">
+          <div class="medium">Graphite pencil on paper</div>
+          <div>50 × 70 cm</div><div>2025</div>
+          <p class="work-desc">Description à compléter.</p>
+          <span class="work-sold">[Sold]</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- 8. R2D2 -->
     <article class="work">
       <div class="img-outer"><div class="carousel-wrap" data-current="0">
         <div class="carousel-track">
           <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
-          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image 2</div></div>
         </div>
         <button class="c-btn prev" onclick="slide(this,-1)">‹</button>
         <button class="c-btn next" onclick="slide(this,1)">›</button>
-        <div class="c-dots"><div class="dot active"></div><div class="dot"></div></div>
+        <div class="c-dots"><div class="dot active"></div></div>
       </div></div>
       <div class="work-info">
-        <div class="work-title">7. R2D2</div>
+        <div class="work-title">8. R2D2</div>
         <div class="work-meta">
           <div class="medium">Posca on paper</div>
           <div>60 × 80 cm</div><div>2025</div>
@@ -397,10 +387,27 @@ body {
 
   </section>
 
-  <!-- COL 2 -->
-  <section class="column">
-    <div class="column-header"><span>Beyond accumulation</span><span class="menu">≡</span></div>
+  <!-- ══════════════ COL 2 — Beyond accumulation ══════════════ -->
+  <section class="column" id="col2">
 
+    <!-- Gallery overlay (≡) -->
+    <div class="col-overlay" id="overlay2">
+      <button class="overlay-close" onclick="closeOverlay('overlay2')">×</button>
+      <div class="overlay-title">Beyond accumulation &amp; Commissioned works</div>
+      <div class="thumb-grid">
+        <div class="thumb"><img src="./hommeassis1site.png" alt="Lost in Translation"></div>
+        <div class="thumb"><img src="./daftkiss1site.png" alt="Daft Kiss"></div>
+        <div class="thumb"><div class="ph">Nymphe</div></div>
+        <div class="thumb"><div class="ph">Astroboy</div></div>
+      </div>
+    </div>
+
+    <div class="column-header">
+      <span>Beyond accumulation</span>
+      <button class="menu-btn" onclick="toggleOverlay('overlay2')">≡</button>
+    </div>
+
+    <!-- Lost in Translation -->
     <article class="work">
       <div class="img-outer"><div class="carousel-wrap" data-current="0">
         <div class="carousel-track">
@@ -422,17 +429,23 @@ body {
       </div>
     </article>
 
-    <div class="section-divider"><span>Commissioned works</span><span class="menu">≡</span></div>
+    <!-- Commissioned works — sticky sub-header -->
+    <div class="section-divider">
+      <span>Commissioned works</span>
+      <span style="font-size:15px;opacity:0.45">≡</span>
+    </div>
 
+    <!-- Daft Kiss -->
     <article class="work">
       <div class="img-outer"><div class="carousel-wrap" data-current="0">
         <div class="carousel-track">
-          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
-          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image 2</div></div>
+          <div class="carousel-slide"><img src="./daftkiss1site.png" alt="Daft Kiss 1"></div>
+          <div class="carousel-slide"><img src="./daftkiss2site.png" alt="Daft Kiss 2"></div>
+          <div class="carousel-slide"><img src="./daftkiss3site.png" alt="Daft Kiss 3"></div>
         </div>
         <button class="c-btn prev" onclick="slide(this,-1)">‹</button>
         <button class="c-btn next" onclick="slide(this,1)">›</button>
-        <div class="c-dots"><div class="dot active"></div><div class="dot"></div></div>
+        <div class="c-dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div></div>
       </div></div>
       <div class="work-info">
         <div class="work-title">1. Daft Kiss</div>
@@ -445,15 +458,15 @@ body {
       </div>
     </article>
 
+    <!-- Nymphe -->
     <article class="work">
       <div class="img-outer"><div class="carousel-wrap" data-current="0">
         <div class="carousel-track">
           <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
-          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image 2</div></div>
         </div>
         <button class="c-btn prev" onclick="slide(this,-1)">‹</button>
         <button class="c-btn next" onclick="slide(this,1)">›</button>
-        <div class="c-dots"><div class="dot active"></div><div class="dot"></div></div>
+        <div class="c-dots"><div class="dot active"></div></div>
       </div></div>
       <div class="work-info">
         <div class="work-title">2. Nymphe</div>
@@ -466,15 +479,15 @@ body {
       </div>
     </article>
 
+    <!-- Astroboy -->
     <article class="work">
       <div class="img-outer"><div class="carousel-wrap" data-current="0">
         <div class="carousel-track">
           <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
-          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image 2</div></div>
         </div>
         <button class="c-btn prev" onclick="slide(this,-1)">‹</button>
         <button class="c-btn next" onclick="slide(this,1)">›</button>
-        <div class="c-dots"><div class="dot active"></div><div class="dot"></div></div>
+        <div class="c-dots"><div class="dot active"></div></div>
       </div></div>
       <div class="work-info">
         <div class="work-title">3. Astroboy</div>
@@ -489,9 +502,24 @@ body {
 
   </section>
 
-  <!-- COL 3 — Artist profile -->
-  <aside class="column bio-column">
-    <div class="column-header"><span>Artist profile</span><span class="menu">≡</span></div>
+  <!-- ══════════════ COL 3 — Artist profile ══════════════ -->
+  <aside class="column bio-column" id="col3">
+
+    <!-- Bio overlay (≡) -->
+    <div class="bio-overlay" id="overlay3">
+      <button class="overlay-close" onclick="closeOverlay('overlay3')">×</button>
+      <div class="bio-overlay-photo">Photo à ajouter</div>
+      <div class="bio-overlay-name">Adrien Roche</div>
+      <div class="bio-overlay-text">
+        French multidisciplinary artist born in 2001, based in Paris. His work explores presence, inheritance, accumulation and existential tension through painting, drawing and mixed media.
+      </div>
+      <button class="bio-overlay-btn" onclick="closeOverlay('overlay3'); openContact();">Contact →</button>
+    </div>
+
+    <div class="column-header">
+      <span>Artist profile</span>
+      <button class="menu-btn" onclick="toggleOverlay('overlay3')">≡</button>
+    </div>
 
     <section class="bio-top">
       <div class="bio-grid">
@@ -525,8 +553,8 @@ body {
       <div class="cv-content">
         <div class="cv-entry">
           PGE Emlyon Business School 2024<br>
-          Classes préparatoires économiques (Geopolitics, mathematics, economics, philosophy, literature, English, German...)
-          Baccalauréat scientifique - Félicitations du Jury
+          Classes préparatoires économiques (Geopolitics, mathematics, economics, philosophy, literature, English, German...)<br>
+          Baccalauréat scientifique — Félicitations du Jury
         </div>
       </div>
     </section>
@@ -562,8 +590,18 @@ function slide(btn, dir) {
   track.style.transform = `translateX(-${cur * 100}%)`;
   dots.forEach((d, i) => d.classList.toggle('active', i === cur));
 }
+
+function toggleOverlay(id) {
+  const el = document.getElementById(id);
+  el.classList.toggle('open');
+}
+function closeOverlay(id) {
+  document.getElementById(id).classList.remove('open');
+}
+
 function openContact() { document.getElementById('contactOverlay').classList.add('open'); }
 function closeContact() { document.getElementById('contactOverlay').classList.remove('open'); }
+
 function sendMail(e) {
   e.preventDefault();
   const name = document.getElementById('f-name').value;
@@ -573,6 +611,7 @@ function sendMail(e) {
   const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
   window.location.href = `mailto:adrienrochestudio@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
 }
+
 document.getElementById('contactOverlay').addEventListener('click', function(e) {
   if (e.target === this) closeContact();
 });
