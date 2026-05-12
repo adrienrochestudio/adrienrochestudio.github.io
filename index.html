@@ -23,11 +23,7 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
   font-size: 12px; font-style: italic;
 }
 .header-left { display: flex; align-items: center; gap: 10px; }
-.carousel-label {
-  font-size: 11px; font-style: italic; color: #aaa;
-  display: none;
-  transition: opacity 0.2s;
-}
+.carousel-label { font-size: 11px; font-style: italic; color: #aaa; display: none; }
 .carousel-label.visible { display: inline; }
 
 .menu-btn {
@@ -37,6 +33,7 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
   transition: opacity 0.2s;
 }
 .menu-btn:hover { opacity: 1; }
+.menu-btn.active { opacity: 1; }
 
 .section-divider {
   height: 32px; padding: 6px 12px;
@@ -48,14 +45,11 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
 }
 .section-divider .header-left { display: flex; align-items: center; gap: 10px; }
 
-/* GALLERY OVERLAY (≡ view) — FIXED so it works anywhere on scroll */
+/* GALLERY OVERLAY — fixed, aligned to column */
 .col-overlay {
-  display: none;
-  position: fixed;
-  background: #f5f4f0;
-  z-index: 200;
-  overflow-y: auto;
-  padding: 48px 14px 24px;
+  display: none; position: fixed;
+  background: #f5f4f0; z-index: 200;
+  overflow-y: auto; padding: 48px 14px 24px;
   box-shadow: -2px 0 12px rgba(0,0,0,0.08);
 }
 .col-overlay.open { display: block; }
@@ -67,29 +61,23 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
 .overlay-close:hover { color: #1a1a1a; }
 .overlay-title { font-size: 11px; font-style: italic; color: #888; margin-bottom: 14px; }
 
-/* grid of thumbnails */
 .thumb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .thumb { aspect-ratio: 1; background: #e8e6e0; overflow: hidden; }
 .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .thumb .ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #ccc; font-size: 10px; }
 
-/* bio overlay (col 3) */
+/* bio overlay */
 .bio-overlay {
-  display: none;
-  position: fixed;
-  background: #f5f4f0;
-  z-index: 200;
-  padding: 48px 20px 24px;
-  overflow-y: auto;
+  display: none; position: fixed;
+  background: #f5f4f0; z-index: 200;
+  padding: 48px 20px 24px; overflow-y: auto;
 }
 .bio-overlay.open { display: flex; flex-direction: column; justify-content: center; }
 .bio-overlay-photo {
   width: 100%; aspect-ratio: 1;
-  background: #e8e6e0;
-  margin-bottom: 20px;
-  display: flex; align-items: center; justify-content: center;
-  color: #bbb; font-size: 11px;
+  background: #e8e6e0; margin-bottom: 20px; overflow: hidden;
 }
+.bio-overlay-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .bio-overlay-name { font-size: 15px; margin-bottom: 10px; }
 .bio-overlay-text { font-size: 11px; line-height: 1.6; color: #555; margin-bottom: 24px; }
 .bio-overlay-btn {
@@ -105,8 +93,7 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
 .work { border-bottom: 1px solid #ccc; }
 .img-outer { padding: 12px 14px 8px; }
 
-/* CAROUSEL MODE — image replaces info block */
-.work-body { display: contents; } /* default: normal layout */
+/* CAROUSEL IMAGE-ONLY MODE */
 .work.carousel-mode .img-outer { padding-bottom: 12px; }
 .work.carousel-mode .work-info { display: none; }
 
@@ -117,6 +104,10 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
 .carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .placeholder { color: #bbb; text-align: center; font-size: 11px; }
 .placeholder span { display: block; font-size: 28px; opacity: 0.25; margin-bottom: 6px; }
+
+/* hide nav when single slide */
+.carousel-wrap.single-slide .c-btn,
+.carousel-wrap.single-slide .c-dots { display: none !important; }
 
 .c-btn {
   position: absolute; top: 50%; transform: translateY(-50%);
@@ -155,11 +146,9 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
 .cv-content { padding: 10px 14px 12px 6px; }
 .cv-entry { margin-bottom: 8px; font-size: 11px; line-height: 1.4; color: #444; }
 
-/* Instagram link */
 .instagram-link {
   display: inline-flex; align-items: center; gap: 5px;
-  font-size: 11px; color: #555; text-decoration: none;
-  transition: color 0.2s;
+  font-size: 11px; color: #555; text-decoration: none; transition: color 0.2s;
 }
 .instagram-link:hover { color: #1a1a1a; }
 .instagram-link svg { width: 12px; height: 12px; flex-shrink: 0; }
@@ -181,18 +170,6 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
 .send-btn:hover { opacity: 0.7; }
 .contact-link { color: #555; font-size: 11px; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; }
 .contact-link:hover { color: #1a1a1a; }
-
-/* Carousel toggle button */
-.carousel-toggle {
-  font-size: 10px; font-style: normal; opacity: 0.45;
-  cursor: pointer; background: none; border: 1px solid #ccc;
-  font-family: Georgia, serif; color: #1a1a1a;
-  padding: 2px 6px; letter-spacing: 0.04em;
-  transition: opacity 0.2s, background 0.2s;
-  white-space: nowrap;
-}
-.carousel-toggle:hover { opacity: 1; }
-.carousel-toggle.active { opacity: 1; background: #1a1a1a; color: #f5f4f0; border-color: #1a1a1a; }
 
 @media (max-width: 900px) {
   body { overflow: auto; }
@@ -226,7 +203,6 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
   <!-- ══════════════ COL 1 — Accumulation ══════════════ -->
   <section class="column" id="col1">
 
-    <!-- Gallery overlay (≡) -->
     <div class="col-overlay" id="overlay1">
       <button class="overlay-close" onclick="closeOverlay('overlay1')">×</button>
       <div class="overlay-title">Accumulation</div>
@@ -247,10 +223,7 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
         <span>Accumulation</span>
         <span class="carousel-label" id="label-col1">Carousel</span>
       </div>
-      <div style="display:flex;align-items:center;gap:8px;">
-        <button class="carousel-toggle" id="toggle-col1" onclick="toggleCarouselMode('col1')" title="Toggle carousel mode">Images</button>
-        <button class="menu-btn" onclick="toggleOverlay('overlay1')">≡</button>
-      </div>
+      <button class="menu-btn" id="mbtn-col1" onclick="toggleCarouselMode('col1')">≡</button>
     </div>
 
     <!-- 1. Ferrari -->
@@ -270,7 +243,7 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
         <div class="work-meta">
           <div class="medium">Graphite pencil on paper</div>
           <div>50 × 70 cm</div><div>2026</div>
-          <p class="work-desc">A study in tension and elegance — the Ferrari's iconic silhouette distorted by a feverish graphite line, somewhere between reverence and rupture.</p>
+          <p class="work-desc">An icon of speed and desire slowly becomes habitat. From the polished body of the Ferrari emerges an organic structure, disciplined like a bonsai, suspended between luxury and collapse. The work explores a world where growth survives mainly through the refinement of its own illusion.</p>
           <span class="work-sold">[Sold]</span>
         </div>
       </div>
@@ -292,7 +265,7 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
         <div class="work-meta">
           <div class="medium">Graphite pencil on paper</div>
           <div>50 × 70 cm</div><div>2026</div>
-          <p class="work-desc">Description à compléter.</p>
+          <p class="work-desc">Inside the Death Star, a tree begins to grow. Not as redemption, but as the persistence of life within systems built for domination and expansion. The piece imagines a post-capitalist mythology where the ruins of progress become fertile ground for new imaginaries.</p>
           <span class="work-sold">[Sold]</span>
         </div>
       </div>
@@ -315,7 +288,7 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
         <div class="work-meta">
           <div class="medium">Graphite pencil on paper</div>
           <div>50 × 70 cm</div><div>2025</div>
-          <p class="work-desc">Description à compléter.</p>
+          <p class="work-desc">The AT-AT reappears here as a monument to extraction and accumulation, carrying within it the memory of industrial conquest and childhood fascination. A tree ruptures the structure from the inside, introducing instability into a machine designed to control movement, territory, and scale.</p>
           <span class="work-sold">[Sold]</span>
         </div>
       </div>
@@ -338,7 +311,7 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
         <div class="work-meta">
           <div class="medium">Graphite pencil on paper</div>
           <div>100 × 120 cm</div><div>2025</div>
-          <p class="work-desc">Description à compléter.</p>
+          <p class="work-desc">Fragments, toys, memories, symbols — all accumulate until they form a saturated landscape where intimacy and excess become indistinguishable. The work reflects on childhood not as innocence, but as the first architecture of accumulation, inheritance, and desire.</p>
           <span class="work-sold">[Sold]</span>
         </div>
       </div>
@@ -346,7 +319,7 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
 
     <!-- 5. Chanel -->
     <article class="work">
-      <div class="img-outer"><div class="carousel-wrap" data-current="0">
+      <div class="img-outer"><div class="carousel-wrap single-slide" data-current="0">
         <div class="carousel-track">
           <div class="carousel-slide"><img src="./images/chanel1site.png" alt="Chanel 2.55"></div>
         </div>
@@ -359,7 +332,7 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
         <div class="work-meta">
           <div class="medium">Graphite pencil on paper</div>
           <div>50 × 70 cm</div><div>2025</div>
-          <p class="work-desc">Description à compléter.</p>
+          <p class="work-desc">The iconic handbag is transformed by an organic strap that seems to grow beyond the object itself. Luxury appears here as a living system, elegant yet invasive, where refinement and artificiality merge into a single aesthetic language.</p>
           <span class="work-sold">[Sold]</span>
         </div>
       </div>
@@ -367,7 +340,7 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
 
     <!-- 6. Birkin -->
     <article class="work">
-      <div class="img-outer"><div class="carousel-wrap" data-current="0">
+      <div class="img-outer"><div class="carousel-wrap single-slide" data-current="0">
         <div class="carousel-track">
           <div class="carousel-slide"><img src="./images/hermes1site.png" alt="Birkin"></div>
         </div>
@@ -380,7 +353,7 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
         <div class="work-meta">
           <div class="medium">Graphite pencil on paper</div>
           <div>50 × 70 cm</div><div>2025</div>
-          <p class="work-desc">Description à compléter.</p>
+          <p class="work-desc">The Birkin becomes less an accessory than a relic of contemporary worship. Organic forms infiltrate its silhouette, suggesting a world where symbols of status continue to evolve long after their original purpose has faded.</p>
           <span class="work-sold">[Sold]</span>
         </div>
       </div>
@@ -388,7 +361,7 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
 
     <!-- 7. Millennium Falcon -->
     <article class="work">
-      <div class="img-outer"><div class="carousel-wrap" data-current="0">
+      <div class="img-outer"><div class="carousel-wrap single-slide" data-current="0">
         <div class="carousel-track">
           <div class="carousel-slide"><img src="./images/fauconmill1site.png" alt="Millennium Falcon"></div>
         </div>
@@ -401,7 +374,7 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
         <div class="work-meta">
           <div class="medium">Graphite pencil on paper</div>
           <div>50 × 70 cm</div><div>2025</div>
-          <p class="work-desc">Description à compléter.</p>
+          <p class="work-desc">The Millennium Falcon drifts through a universe shaped by exhaustion, memory, and survival. By revisiting this legendary vessel, the work questions the narratives of conquest and escape that structured modern imagination during decades of economic expansion.</p>
           <span class="work-sold">[Sold]</span>
         </div>
       </div>
@@ -409,7 +382,7 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
 
     <!-- 8. R2D2 -->
     <article class="work">
-      <div class="img-outer"><div class="carousel-wrap" data-current="0">
+      <div class="img-outer"><div class="carousel-wrap single-slide" data-current="0">
         <div class="carousel-track">
           <div class="carousel-slide"><img src="./images/r2d21site.png" alt="R2D2"></div>
         </div>
@@ -422,7 +395,7 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
         <div class="work-meta">
           <div class="medium">Posca on paper</div>
           <div>60 × 80 cm</div><div>2025</div>
-          <p class="work-desc">Description à compléter.</p>
+          <p class="work-desc">R2D2 dissolves into a dense mosaic of signs, references, and accumulated symbols. Beneath the familiarity of the figure emerges a reflection on visual overload, where popular culture becomes both archive and residue of an era obsessed with endless consumption.</p>
           <span class="work-sold">[Sold]</span>
         </div>
       </div>
@@ -433,15 +406,13 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
   <!-- ══════════════ COL 2 — Beyond accumulation ══════════════ -->
   <section class="column" id="col2">
 
-    <!-- Gallery overlay (≡) -->
     <div class="col-overlay" id="overlay2">
       <button class="overlay-close" onclick="closeOverlay('overlay2')">×</button>
       <div class="overlay-title">Beyond accumulation &amp; Commissioned works</div>
       <div class="thumb-grid">
         <div class="thumb"><img src="./images/hommeassis1site.png" alt="Lost in Translation"></div>
         <div class="thumb"><img src="./images/daftkiss1site.png" alt="Daft Kiss"></div>
-        <div class="thumb"><img src="./images/nymphe1site.png" alt="Nymphe"></div>
-        <div class="thumb"><div class="ph">Astroboy</div></div>
+        <div class="thumb"><img src="./images/nymphe1site.png" alt="Nymph"></div>
       </div>
     </div>
 
@@ -450,10 +421,7 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
         <span>Beyond accumulation</span>
         <span class="carousel-label" id="label-col2">Carousel</span>
       </div>
-      <div style="display:flex;align-items:center;gap:8px;">
-        <button class="carousel-toggle" id="toggle-col2" onclick="toggleCarouselMode('col2')" title="Toggle carousel mode">Images</button>
-        <button class="menu-btn" onclick="toggleOverlay('overlay2')">≡</button>
-      </div>
+      <button class="menu-btn" id="mbtn-col2" onclick="toggleCarouselMode('col2')">≡</button>
     </div>
 
     <!-- Lost in Translation -->
@@ -470,21 +438,21 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
       <div class="work-info">
         <div class="work-title">1. Lost in Translation</div>
         <div class="work-meta">
-          <div class="medium">Acrylique</div>
+          <div class="medium">Acrylic on canvas</div>
           <div>60 × 80 cm</div><div>2025</div>
-          <p class="work-desc">Description à compléter.</p>
+          <p class="work-desc">First work from the Beyond Accumulation series, this piece shifts the focus from objects to human presence itself. Against a flat pink background loaded with cultural memory and emotional ambiguity, the fragmented figure appears suspended in a world where meaning, identity, and continuity have begun to dissolve.</p>
           <span class="work-sold">[Price available upon request]</span>
         </div>
       </div>
     </article>
 
-    <!-- Commissioned works — sticky sub-header -->
+    <!-- Commissioned works sub-header -->
     <div class="section-divider" id="divider-col2">
       <div class="header-left">
         <span>Commissioned works</span>
         <span class="carousel-label" id="label-col2-commissioned">Carousel</span>
       </div>
-      <span style="font-size:15px;opacity:0.45">≡</span>
+      <button class="menu-btn" id="mbtn-commissioned" onclick="toggleCarouselMode('col2')">≡</button>
     </div>
 
     <!-- Daft Kiss -->
@@ -502,7 +470,7 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
       <div class="work-info">
         <div class="work-title">1. Daft Kiss</div>
         <div class="work-meta">
-          <div class="medium">Acrylique and Posca on canvas</div>
+          <div class="medium">Acrylic and Posca on canvas</div>
           <div>40 × 50 cm</div><div>2025</div>
           <p class="work-desc">Description à compléter.</p>
           <span class="work-sold">[Sold]</span>
@@ -510,43 +478,22 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
       </div>
     </article>
 
-    <!-- Nymphe -->
+    <!-- Nymph -->
     <article class="work">
-      <div class="img-outer"><div class="carousel-wrap" data-current="0">
+      <div class="img-outer"><div class="carousel-wrap single-slide" data-current="0">
         <div class="carousel-track">
-          <div class="carousel-slide"><img src="./images/nymphe1site.png" alt="Nymphe"></div>
+          <div class="carousel-slide"><img src="./images/nymphe1site.png" alt="Nymph"></div>
         </div>
         <button class="c-btn prev" onclick="slide(this,-1)">‹</button>
         <button class="c-btn next" onclick="slide(this,1)">›</button>
         <div class="c-dots"><div class="dot active"></div></div>
       </div></div>
       <div class="work-info">
-        <div class="work-title">2. Nymphe</div>
+        <div class="work-title">2. Nymph</div>
         <div class="work-meta">
-          <div class="medium">Acrylique et Posca on canvas</div>
+          <div class="medium">Acrylic and Posca on canvas</div>
           <div>90 × 120 cm</div><div>2025</div>
-          <p class="work-desc">Description à compléter.</p>
-          <span class="work-sold">[Sold]</span>
-        </div>
-      </div>
-    </article>
-
-    <!-- Astroboy -->
-    <article class="work">
-      <div class="img-outer"><div class="carousel-wrap" data-current="0">
-        <div class="carousel-track">
-          <div class="carousel-slide"><div class="placeholder"><span>▧</span>Image à ajouter</div></div>
-        </div>
-        <button class="c-btn prev" onclick="slide(this,-1)">‹</button>
-        <button class="c-btn next" onclick="slide(this,1)">›</button>
-        <div class="c-dots"><div class="dot active"></div></div>
-      </div></div>
-      <div class="work-info">
-        <div class="work-title">3. Astroboy</div>
-        <div class="work-meta">
-          <div class="medium">Acrylique on canvas</div>
-          <div>30 × 30 cm</div><div>2025</div>
-          <p class="work-desc">Description à compléter.</p>
+          <p class="work-desc">A solitary figure emerges through layers of hair, reflections, and flowing forms that recall both classical painting and ornamental excess. Inspired by the legacy of Bathsheba and the sensual compositions of Gustav Klimt, the work transforms intimacy into a landscape of accumulation, where beauty becomes almost engulfing.</p>
           <span class="work-sold">[Sold]</span>
         </div>
       </div>
@@ -557,10 +504,11 @@ body { font-family: 'Georgia', serif; background: #f5f4f0; color: #1a1a1a; font-
   <!-- ══════════════ COL 3 — Artist profile ══════════════ -->
   <aside class="column bio-column" id="col3">
 
-    <!-- Bio overlay (≡) -->
     <div class="bio-overlay" id="overlay3">
       <button class="overlay-close" onclick="closeOverlay('overlay3')">×</button>
-      <div class="bio-overlay-photo">Photo à ajouter</div>
+      <div class="bio-overlay-photo">
+        <img src="./images/adrienrochesite.png" alt="Adrien Roche">
+      </div>
       <div class="bio-overlay-name">Adrien Roche</div>
       <div class="bio-overlay-text">
         French multidisciplinary artist born in 2001, based in Paris. His work explores presence, inheritance, accumulation and existential tension through painting, drawing and mixed media.
@@ -661,31 +609,19 @@ function slide(btn, dir) {
 }
 
 // ── Overlay positioning (fixed, aligned to column) ─────────────
-function getColumnRect(colId) {
-  return document.getElementById(colId).getBoundingClientRect();
-}
+const overlayColMap = { overlay1: 'col1', overlay2: 'col2', overlay3: 'col3' };
 
 function positionOverlay(overlay, colId) {
-  const rect = getColumnRect(colId);
+  const rect = document.getElementById(colId).getBoundingClientRect();
   overlay.style.left   = rect.left + 'px';
   overlay.style.top    = rect.top  + 'px';
   overlay.style.width  = rect.width + 'px';
   overlay.style.height = rect.height + 'px';
 }
 
-// Map overlay id → column id
-const overlayColMap = {
-  overlay1: 'col1',
-  overlay2: 'col2',
-  overlay3: 'col3'
-};
-
 function toggleOverlay(id) {
   const el = document.getElementById(id);
-  const colId = overlayColMap[id];
-  if (!el.classList.contains('open')) {
-    positionOverlay(el, colId);
-  }
+  if (!el.classList.contains('open')) positionOverlay(el, overlayColMap[id]);
   el.classList.toggle('open');
 }
 
@@ -693,17 +629,14 @@ function closeOverlay(id) {
   document.getElementById(id).classList.remove('open');
 }
 
-// Reposition on resize
 window.addEventListener('resize', () => {
   Object.keys(overlayColMap).forEach(id => {
     const el = document.getElementById(id);
-    if (el.classList.contains('open')) {
-      positionOverlay(el, overlayColMap[id]);
-    }
+    if (el.classList.contains('open')) positionOverlay(el, overlayColMap[id]);
   });
 });
 
-// ── Carousel image-only mode ────────────────────────────────────
+// ── Carousel image-only mode (≡ toggles, synced across col2 header + divider) ──
 const carouselModeState = { col1: false, col2: false };
 
 function toggleCarouselMode(colId) {
@@ -711,24 +644,16 @@ function toggleCarouselMode(colId) {
   carouselModeState[colId] = active;
 
   const col = document.getElementById(colId);
-  const toggleBtn = document.getElementById('toggle-' + colId);
-  const label = document.getElementById('label-' + colId);
+  col.querySelectorAll('article.work').forEach(a => a.classList.toggle('carousel-mode', active));
 
-  // Toggle all .work articles in this column
-  col.querySelectorAll('article.work').forEach(article => {
-    article.classList.toggle('carousel-mode', active);
-  });
-
-  // Update button state
-  toggleBtn.classList.toggle('active', active);
-
-  // Show/hide "Carousel" italic label in header
-  if (label) label.classList.toggle('visible', active);
-
-  // Also toggle the commissioned works divider label if col2
-  if (colId === 'col2') {
-    const commLabel = document.getElementById('label-col2-commissioned');
-    if (commLabel) commLabel.classList.toggle('visible', active);
+  if (colId === 'col1') {
+    document.getElementById('mbtn-col1').classList.toggle('active', active);
+    document.getElementById('label-col1').classList.toggle('visible', active);
+  } else if (colId === 'col2') {
+    document.getElementById('mbtn-col2').classList.toggle('active', active);
+    document.getElementById('mbtn-commissioned').classList.toggle('active', active);
+    document.getElementById('label-col2').classList.toggle('visible', active);
+    document.getElementById('label-col2-commissioned').classList.toggle('visible', active);
   }
 }
 
