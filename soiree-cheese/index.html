@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Soirée cheese</title>
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./icon-180.png">
+<link rel="icon" href="./icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Cheese">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#F7F1E1">
+<link rel="stylesheet" href="./style.css">
+<script type="module" src="./app.js"></script>
+</head>
+<body>
+<main id="accueil" class="ecran" hidden>
+  <header class="tete">
+    <h1>Soirée cheese</h1>
+    <img class="souris" src="./petite-souris.png" alt="" width="300" height="226">
+  </header>
+
+  <section class="partie" aria-labelledby="titre-degustation">
+    <h2 id="titre-degustation">Dégustation</h2>
+    <div class="grille" id="grille-degustation"></div>
+  </section>
+
+  <section class="partie" aria-labelledby="titre-trivia">
+    <div class="partie-tete">
+      <h2 id="titre-trivia">Trivia</h2>
+      <button type="button" class="bouton" id="lancer-de">Lancer le dé</button>
+    </div>
+    <ol class="legende" id="legende"></ol>
+    <div class="grille" id="grille-trivia"></div>
+  </section>
+
+  <p class="installer" id="installer" hidden>Pour l'installer sur l'iPhone : Partager, puis Sur l'écran d'accueil.</p>
+  <button type="button" class="lien" id="remise-a-zero">Tout remettre à zéro</button>
+  <p class="erreur" id="erreur" hidden></p>
+</main>
+
+<div id="carte" class="ecran ecran-carte" hidden>
+  <nav class="barre">
+    <button type="button" class="lien" id="retour">Accueil</button>
+    <span class="position" id="position"></span>
+  </nav>
+  <article class="contenu" id="contenu"></article>
+  <nav class="pied">
+    <button type="button" class="bouton secondaire" id="precedente">Précédente</button>
+    <button type="button" class="bouton secondaire" id="suivante">Suivante</button>
+  </nav>
+</div>
+
+<div id="de" class="voile" hidden>
+  <div class="de-boite" role="dialog" aria-modal="true" aria-labelledby="de-chiffre">
+    <p class="de-chiffre" id="de-chiffre" aria-live="polite"></p>
+    <p class="de-categorie" id="de-categorie"></p>
+    <div class="de-actions" id="de-actions" hidden>
+      <button type="button" class="bouton" id="de-relancer">Relancer</button>
+      <button type="button" class="lien" id="de-fermer">Fermer</button>
+    </div>
+  </div>
+</div>
+
+<div id="maj" class="maj" hidden>
+  <span>Nouvelle version disponible.</span>
+  <button type="button" class="lien" id="maj-recharger">Recharger</button>
+</div>
+</body>
+</html>

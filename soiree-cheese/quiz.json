@@ -1,0 +1,795 @@
+{
+ "parties": [
+  {
+   "id": "degustation",
+   "titre": "Dégustation",
+   "cartes": [
+    {
+     "n": 1,
+     "titre": "Le plateau",
+     "moment": "Avant la première bouchée",
+     "questions": [
+      {
+       "theme": "Le lait",
+       "adrien": "Sans goûter, donne le lait de ces quatre fromages : Ossau-Iraty, Munster, Fourme de Montbrison, Selles-sur-Cher.",
+       "ana": "Le Roquefort est fait avec le lait de quel animal ?",
+       "ana_en": "Roquefort is made with milk from which animal?",
+       "options": [
+        "A. La vache (cow)",
+        "B. La chèvre (goat)",
+        "C. La brebis (ewe)"
+       ],
+       "reponse": "Brebis, vache, vache, chèvre",
+       "reponse_ana": "C. La brebis",
+       "detail": "Le Roquefort n'utilise que le lait de brebis de race Lacaune.",
+       "sources": [
+        "https://extranet.inao.gouv.fr/fichier/PNOCDCRoquefort.pdf",
+        "https://en.wikipedia.org/wiki/Ossau-Iraty",
+        "https://en.wikipedia.org/wiki/Munster_cheese",
+        "https://fr.wikipedia.org/wiki/Fourme_de_Montbrison",
+        "https://www.produits-laitiers-aop.fr/?p=2928"
+       ]
+      },
+      {
+       "theme": "La couleur",
+       "adrien": "Pourquoi les fromages de chèvre sont-ils plus blancs que les fromages de vache ?",
+       "ana": "Pourquoi le fromage de chèvre est-il si blanc ?",
+       "ana_en": "Why is goat's cheese so white?",
+       "options": [
+        "A. On le lave à l'eau (it is washed in water)",
+        "B. La chèvre transforme le jaune de l'herbe en vitamine (the goat turns the yellow of grass into a vitamin)",
+        "C. On y ajoute de la farine (flour is added)"
+       ],
+       "reponse": "La chèvre transforme le bêta-carotène de l'herbe en vitamine A, qui est incolore",
+       "reponse_ana": "B. La chèvre transforme le jaune de l'herbe en vitamine",
+       "detail": "Le bêta-carotène est un pigment jaune. La vache en garde une partie dans son lait, la chèvre presque rien.",
+       "sources": [
+        "https://cheesescientist.com/science/why-is-goats-milk-cheese-white/"
+       ]
+      },
+      {
+       "theme": "La poudre noire",
+       "adrien": "Avec quoi est poudrée la croûte du Selles-sur-Cher ?",
+       "ana": "La poudre noire sur le Selles-sur-Cher, c'est :",
+       "ana_en": "The black powder on the Selles-sur-Cher is:",
+       "options": [
+        "A. Du poivre (pepper)",
+        "B. Du charbon végétal (vegetable charcoal)",
+        "C. De l'encre de seiche (squid ink)"
+       ],
+       "reponse": "Du charbon végétal salé",
+       "reponse_ana": "B. Du charbon végétal",
+       "detail": "Le charbon aide la moisissure de la croûte à se former. Cette croûte se mange.",
+       "sources": [
+        "https://www.produits-laitiers-aop.fr/?p=2928",
+        "https://en.wikipedia.org/wiki/Selles-sur-Cher_cheese"
+       ]
+      },
+      {
+       "theme": "Le nez",
+       "adrien": "Sens le Munster. De quel massif de montagne vient-il ?",
+       "ana": "Sens le Munster. Son nom vient d'un lieu où vivaient des moines. Lequel ?",
+       "ana_en": "Smell the Munster. Its name comes from a place where monks lived. Which one?",
+       "options": [
+        "A. Un château (a castle)",
+        "B. Un monastère (a monastery)",
+        "C. Une ferme (a farm)"
+       ],
+       "reponse": "Les Vosges",
+       "reponse_ana": "B. Un monastère",
+       "detail": "Sa croûte est frottée avec des ferments du rouge, qui lui donnent sa couleur orangée et son odeur. Le latin « monasterium » a donné Munster.",
+       "sources": [
+        "https://fr.wikipedia.org/wiki/Munster_(fromage)",
+        "https://en.wikipedia.org/wiki/Munster_cheese"
+       ]
+      },
+      {
+       "theme": "Le temps en cave",
+       "adrien": "Combien de jours au minimum le Rocamadour est-il affiné ? (à 3 près)",
+       "ana": "Combien de temps le Comté reste-t-il en cave, au minimum ?",
+       "ana_en": "How long does Comté stay in the cellar, at the very least?",
+       "options": [
+        "A. 4 jours (4 days)",
+        "B. 4 mois (4 months)",
+        "C. 4 ans (4 years)"
+       ],
+       "reponse": "6 jours",
+       "reponse_ana": "B. 4 mois",
+       "detail": "Le Rocamadour est souvent vendu à 12 ou 15 jours. Le Comté 30 mois de ce soir a passé deux ans et demi en cave.",
+       "sources": [
+        "https://en.wikipedia.org/wiki/Rocamadour_cheese",
+        "https://www.inc-conso.fr/content/le-comte-les-secrets-dun-fromage-jurassien"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "titre": "Service 1, les petits",
+     "moment": "Après le Rocamadour, le Selles-sur-Cher, la Rigotte de Condrieu et le Saint-Marcellin",
+     "questions": [
+      {
+       "theme": "À l'aveugle",
+       "adrien": "Yeux fermés, Ana te fait goûter un des quatre fromages du service. Lequel est-ce ?",
+       "ana": "Un seul fromage de ce service est au lait de vache. Lequel ?",
+       "ana_en": "Only one cheese in this round is made with cow's milk. Which one?",
+       "options": [
+        "A. La Rigotte de Condrieu",
+        "B. Le Saint-Marcellin",
+        "C. Le Rocamadour"
+       ],
+       "reponse": "Celui qu'Ana a choisi",
+       "reponse_ana": "B. Le Saint-Marcellin",
+       "detail": "Les trois autres fromages du service sont au lait de chèvre.",
+       "sources": [
+        "https://www.fromage-saint-marcellin.fr/wp-content/uploads/2020/05/DossierPresse2020_Saint-Marcellin-IGP.pdf",
+        "https://extranet.inao.gouv.fr/fichier/PNODURigottedeCondrieu.pdf",
+        "https://en.wikipedia.org/wiki/Rocamadour_cheese",
+        "https://www.produits-laitiers-aop.fr/?p=2928"
+       ]
+      },
+      {
+       "theme": "La rivière",
+       "adrien": "Le Selles-sur-Cher porte le nom d'une rivière. Dans quel fleuve se jette-t-elle ?",
+       "ana": "Le Selles-sur-Cher vient de la région des :",
+       "ana_en": "Selles-sur-Cher comes from the region of the:",
+       "options": [
+        "A. Châteaux de la Loire (Loire Valley castles)",
+        "B. Plages de Bretagne (Brittany beaches)",
+        "C. Volcans d'Auvergne (Auvergne volcanoes)"
+       ],
+       "reponse": "La Loire",
+       "reponse_ana": "A. Châteaux de la Loire",
+       "detail": "Le Cher rejoint la Loire à Villandry, en Indre-et-Loire. Le fromage se fait dans le Cher, l'Indre et le Loir-et-Cher.",
+       "sources": [
+        "https://fr.wikipedia.org/wiki/Cher_(rivi%C3%A8re)",
+        "https://en.wikipedia.org/wiki/Selles-sur-Cher_cheese"
+       ]
+      },
+      {
+       "theme": "Le nom",
+       "adrien": "Le mot « rigotte » viendrait d'un mot local du massif du Pilat. Que désigne ce mot ?",
+       "ana": "Le nom « Rigotte » viendrait d'un mot local qui désigne :",
+       "ana_en": "The name \"Rigotte\" is said to come from a local word for:",
+       "options": [
+        "A. De petits ruisseaux (small streams)",
+        "B. Un éclat de rire (a burst of laughter)",
+        "C. Une jeune chèvre (a young goat)"
+       ],
+       "reponse": "Les petits ruisseaux (rigoles) qui descendent des pentes",
+       "reponse_ana": "A. De petits ruisseaux",
+       "detail": "En francoprovençal et en auvergnat, on dit « rigole » ou « rigot ». La Rigotte est affinée au moins 8 jours.",
+       "sources": [
+        "https://fr.wikipedia.org/wiki/Rigotte_de_Condrieu",
+        "https://extranet.inao.gouv.fr/fichier/PNODURigottedeCondrieu.pdf"
+       ]
+      },
+      {
+       "theme": "Le poids",
+       "adrien": "Combien pèse un Rocamadour en moyenne ? (à 15 g près)",
+       "ana": "Un Rocamadour pèse environ :",
+       "ana_en": "A Rocamadour weighs about:",
+       "options": [
+        "A. 35 g",
+        "B. 350 g",
+        "C. 3,5 kg"
+       ],
+       "reponse": "35 g",
+       "reponse_ana": "A. 35 g",
+       "detail": "Il en faut près de trente pour faire un kilo.",
+       "sources": [
+        "https://en.wikipedia.org/wiki/Rocamadour_cheese"
+       ]
+      },
+      {
+       "theme": "L'ancien lait",
+       "adrien": "Jusqu'aux années 1980, le Saint-Marcellin mélangeait le lait de vache avec celui de quel animal ?",
+       "ana": "Le Saint-Marcellin vient du Dauphiné, autour de Grenoble. Au pied de quelles montagnes ?",
+       "ana_en": "Saint-Marcellin comes from the Dauphiné, around Grenoble. At the foot of which mountains?",
+       "options": [
+        "A. Les Alpes (the Alps)",
+        "B. Les Pyrénées (the Pyrenees)",
+        "C. Les Vosges (the Vosges)"
+       ],
+       "reponse": "La chèvre",
+       "reponse_ana": "A. Les Alpes",
+       "detail": "Son IGP couvre 274 communes de l'Isère, de la Drôme et de la Savoie. Il pèse environ 80 g.",
+       "sources": [
+        "https://fr.wikipedia.org/wiki/Saint-marcellin_(fromage)"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "titre": "Service 2, les tommes",
+     "moment": "Après la Tomme aux fleurs, l'Ossau-Iraty, le Saint-Nectaire et le Comté 12 mois",
+     "questions": [
+      {
+       "theme": "À l'aveugle",
+       "adrien": "Yeux fermés, Ana te fait goûter un des quatre fromages du service. Lequel est-ce ?",
+       "ana": "Yeux fermés, Adrien te fait goûter l'Ossau-Iraty, le Saint-Nectaire ou le Comté 12 mois. Lait de vache ou de brebis ?",
+       "ana_en": "Eyes closed, Adrien gives you the Ossau-Iraty, the Saint-Nectaire or the 12-month Comté. Cow's milk or ewe's milk?",
+       "options": [
+        "A. Vache (cow)",
+        "B. Brebis (ewe)"
+       ],
+       "reponse": "Celui qu'Ana a choisi",
+       "reponse_ana": "Ossau-Iraty : brebis. Saint-Nectaire et Comté : vache",
+       "detail": "L'Ossau-Iraty se fait avec des brebis de races locales : basco-béarnaise, manech tête rousse et manech tête noire.",
+       "sources": [
+        "https://fr.wikipedia.org/wiki/Ossau-iraty",
+        "https://en.wikipedia.org/wiki/Saint-Nectaire",
+        "https://en.wikipedia.org/wiki/Comt%C3%A9_cheese"
+       ]
+      },
+      {
+       "theme": "La paille",
+       "adrien": "Sur quoi le Saint-Nectaire est-il affiné ?",
+       "ana": "Le Saint-Nectaire est affiné posé sur :",
+       "ana_en": "Saint-Nectaire is aged lying on:",
+       "options": [
+        "A. De la paille (straw)",
+        "B. Du sable (sand)",
+        "C. Des feuilles de vigne (vine leaves)"
+       ],
+       "reponse": "De la paille de seigle",
+       "reponse_ana": "A. De la paille",
+       "detail": "Le cahier des charges impose au moins 28 jours sur paille de seigle. Jusqu'au XVIIe siècle, on l'appelait « fromage de seigle ».",
+       "sources": [
+        "https://fr.wikipedia.org/wiki/Saint-nectaire",
+        "https://en.wikipedia.org/wiki/Saint-Nectaire"
+       ]
+      },
+      {
+       "theme": "La plaque",
+       "adrien": "Sur la croûte du Saint-Nectaire, que signale une plaque verte ovale ?",
+       "ana": "Sur le Saint-Nectaire, une petite plaque verte et ovale veut dire que le fromage est fait :",
+       "ana_en": "On a Saint-Nectaire, a small green oval tag means the cheese is made:",
+       "options": [
+        "A. À la ferme (on the farm)",
+        "B. À l'usine (in a factory)",
+        "C. En Suisse (in Switzerland)"
+       ],
+       "reponse": "Un fromage fermier, fait à la ferme",
+       "reponse_ana": "A. À la ferme",
+       "detail": "Une plaque carrée signale un Saint-Nectaire laitier, fait par un artisan ou un industriel. Le système existe depuis 1964.",
+       "sources": [
+        "https://fr.wikipedia.org/wiki/Saint-nectaire",
+        "https://en.wikipedia.org/wiki/Saint-Nectaire"
+       ]
+      },
+      {
+       "theme": "Le temps en cave",
+       "adrien": "Combien de jours au minimum est affiné un grand Ossau-Iraty, de 4 à 7 kg ? (à 30 près)",
+       "ana": "L'Ossau-Iraty est affiné au moins :",
+       "ana_en": "Ossau-Iraty is aged for at least:",
+       "options": [
+        "A. 1 jour (1 day)",
+        "B. 80 jours (80 days)",
+        "C. 10 ans (10 years)"
+       ],
+       "reponse": "120 jours",
+       "reponse_ana": "B. 80 jours",
+       "detail": "Les petits formats, de 2 à 3 kg, demandent au moins 80 jours.",
+       "sources": [
+        "https://en.wikipedia.org/wiki/Ossau-Iraty"
+       ]
+      },
+      {
+       "theme": "La confiture",
+       "adrien": "Au Pays basque, avec quelle confiture sert-on souvent l'Ossau-Iraty ?",
+       "ana": "Au Brésil, on mange le fromage avec de la goiabada. Au Pays basque, l'Ossau-Iraty se mange avec une confiture de :",
+       "ana_en": "In Brazil, cheese is eaten with goiabada. In the Basque Country, Ossau-Iraty is eaten with a jam made of:",
+       "options": [
+        "A. Cerises noires (black cherries)",
+        "B. Myrtilles (blueberries)",
+        "C. Mûres (blackberries)"
+       ],
+       "reponse": "La confiture de cerises noires",
+       "reponse_ana": "A. Cerises noires",
+       "detail": "Au Brésil, le duo fromage et goiabada s'appelle Romeu e Julieta : le fromage joue Roméo, la goiabada Juliette.",
+       "sources": [
+        "https://fr.wikipedia.org/wiki/Ossau-iraty",
+        "https://pt.wikipedia.org/wiki/Romeu_e_Julieta_(sobremesa)"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "titre": "Service 3, les forts",
+     "moment": "Après le Comté 30 mois, la Fourme de Montbrison, le Munster et le Roquefort",
+     "questions": [
+      {
+       "theme": "À l'aveugle",
+       "adrien": "Yeux fermés, Ana te fait goûter un des quatre fromages du service. Lequel est-ce ?",
+       "ana": "Yeux fermés, Adrien te fait goûter le Comté 30 mois ou le Munster. Lequel est-ce ?",
+       "ana_en": "Eyes closed, Adrien gives you either the 30-month Comté or the Munster. Which one is it?",
+       "options": [
+        "A. Le Comté 30 mois",
+        "B. Le Munster"
+       ],
+       "reponse": "Celui qu'Ana a choisi",
+       "reponse_ana": "Celui qu'Adrien a choisi",
+       "detail": "Trois fromages de ce service sont au lait de vache. Seul le Roquefort est au lait de brebis.",
+       "sources": [
+        "https://en.wikipedia.org/wiki/Comt%C3%A9_cheese",
+        "https://fr.wikipedia.org/wiki/Fourme_de_Montbrison",
+        "https://en.wikipedia.org/wiki/Munster_cheese",
+        "https://extranet.inao.gouv.fr/fichier/PNOCDCRoquefort.pdf"
+       ]
+      },
+      {
+       "theme": "Le croquant",
+       "adrien": "D'où viennent les petits grains qui croquent dans le Comté 30 mois ?",
+       "ana": "Les petits grains qui croquent dans le vieux Comté, c'est :",
+       "ana_en": "The little crunchy bits in old Comté are:",
+       "options": [
+        "A. Du sel (salt)",
+        "B. Du sucre (sugar)",
+        "C. Une protéine du lait qui a cristallisé (a milk protein that has crystallised)"
+       ],
+       "reponse": "Des protéines du lait : ce sont des cristaux de tyrosine",
+       "reponse_ana": "C. Une protéine du lait qui a cristallisé",
+       "detail": "La tyrosine est un acide aminé. Elle se libère quand les protéines du lait se décomposent avec le temps, puis forme des cristaux.",
+       "sources": [
+        "https://culturecheesemag.com/cheese-iq/science-aged-hard-cheeses-tyrosine-crystals/"
+       ]
+      },
+      {
+       "theme": "Le bleu",
+       "adrien": "Combien de jours au minimum un Roquefort doit-il mûrir ? (à 30 près)",
+       "ana": "Le bleu du Roquefort, c'est :",
+       "ana_en": "The blue in Roquefort is:",
+       "options": [
+        "A. Un colorant (a food colouring)",
+        "B. Un champignon (a mould)",
+        "C. Une algue (seaweed)"
+       ],
+       "reponse": "90 jours",
+       "reponse_ana": "B. Un champignon",
+       "detail": "Le champignon s'appelle Penicillium roqueforti. C'est lui qui forme les veines bleues.",
+       "sources": [
+        "https://extranet.inao.gouv.fr/fichier/PNOCDCRoquefort.pdf",
+        "https://en.wikipedia.org/wiki/Roquefort"
+       ]
+      },
+      {
+       "theme": "Le mot",
+       "adrien": "« Fourme » et « fromage » viennent du même mot latin. Lequel ?",
+       "ana": "Le mot « fromage » vient du latin « forma ». Pourquoi ?",
+       "ana_en": "The French word \"fromage\" comes from the Latin \"forma\". Why?",
+       "options": [
+        "A. On le met dans un moule (it is put in a mould)",
+        "B. Il est rond (it is round)",
+        "C. Il vient d'une ferme (it comes from a farm)"
+       ],
+       "reponse": "Forma",
+       "reponse_ana": "A. On le met dans un moule",
+       "detail": "« Caseus formaticus » voulait dire « fromage moulé ». L'ancien français disait « formage ».",
+       "sources": [
+        "https://fr.wikipedia.org/wiki/Fromage"
+       ]
+      },
+      {
+       "theme": "La graine",
+       "adrien": "Quelle graine sert-on en Alsace avec le Munster ?",
+       "ana": "Avec le Munster, en Alsace, on met des graines de :",
+       "ana_en": "With Munster, in Alsace, people add seeds of:",
+       "options": [
+        "A. Carvi (caraway)",
+        "B. Sésame (sesame)",
+        "C. Lin (flax)"
+       ],
+       "reponse": "Le carvi, dit « cumin des prés »",
+       "reponse_ana": "A. Carvi",
+       "detail": "On l'appelle « cumin des prés », mais ce n'est pas le cumin de cuisine.",
+       "sources": [
+        "https://fr.wikipedia.org/wiki/Munster_(fromage)"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "trivia",
+   "titre": "Trivia",
+   "categories": [
+    {
+     "id": 1,
+     "nom": "Géo & terroirs"
+    },
+    {
+     "id": 2,
+     "nom": "Histoire & légendes"
+    },
+    {
+     "id": 3,
+     "nom": "Arts & écran"
+    },
+    {
+     "id": 4,
+     "nom": "Mots & expressions"
+    },
+    {
+     "id": 5,
+     "nom": "Labo"
+    },
+    {
+     "id": 6,
+     "nom": "À table"
+    }
+   ],
+   "cartes": [
+    {
+     "n": 1,
+     "categorie": 1,
+     "adrien": "Dans quel département sont creusées les caves où mûrit tout le Roquefort ?",
+     "ana": "Où sont creusées les caves du Roquefort ?",
+     "ana_en": "Where are the Roquefort cellars dug?",
+     "options": [
+      "A. Dans une montagne (inside a mountain)",
+      "B. Sous un château (under a castle)",
+      "C. Dans une mine de sel (in a salt mine)"
+     ],
+     "reponse": "L'Aveyron",
+     "reponse_ana": "A. Dans une montagne",
+     "detail": "Depuis 1961, seul un fromage affiné dans les caves du mont Combalou, à Roquefort-sur-Soulzon, peut porter ce nom.",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Roquefort"
+     ]
+    },
+    {
+     "n": 2,
+     "categorie": 1,
+     "adrien": "De quel département vient surtout le Reblochon ?",
+     "ana": "Le Reblochon, le fromage de la tartiflette, vient :",
+     "ana_en": "Reblochon, the cheese used in tartiflette, comes from:",
+     "options": [
+      "A. Des Alpes (the Alps)",
+      "B. De Bretagne (Brittany)",
+      "C. De Provence (Provence)"
+     ],
+     "reponse": "La Haute-Savoie",
+     "reponse_ana": "A. Des Alpes",
+     "detail": "Selon la tradition, son nom vient de « re-blocher », traire une deuxième fois. Le lait de la seconde traite, plus crémeux, restait au paysan.",
+     "sources": [
+      "https://fr.wikipedia.org/wiki/Reblochon"
+     ]
+    },
+    {
+     "n": 3,
+     "categorie": 1,
+     "adrien": "Le Cantal porte le nom de montagnes. Qu'étaient-elles autrefois ?",
+     "ana": "Le Cantal vient de montagnes qui sont d'anciens :",
+     "ana_en": "Cantal comes from mountains that used to be:",
+     "options": [
+      "A. Volcans (volcanoes)",
+      "B. Glaciers (glaciers)",
+      "C. Récifs de corail (coral reefs)"
+     ],
+     "reponse": "Un volcan",
+     "reponse_ana": "A. Volcans",
+     "detail": "Les monts du Cantal sont les restes du plus grand stratovolcan visible d'Europe.",
+     "sources": [
+      "https://fr.wikipedia.org/wiki/Monts_du_Cantal"
+     ]
+    },
+    {
+     "n": 4,
+     "categorie": 2,
+     "adrien": "En quelle année le Roquefort devient-il la première appellation d'origine protégée par une loi en France ? (à 15 ans près)",
+     "ana": "Le Roquefort a été le premier fromage protégé par une loi en France. En quelle année ?",
+     "ana_en": "Roquefort was the first cheese protected by law in France. In which year?",
+     "options": [
+      "A. 1789",
+      "B. 1925",
+      "C. 2005"
+     ],
+     "reponse": "1925",
+     "reponse_ana": "B. 1925",
+     "detail": "La loi du 26 juillet 1925 garantit son appellation d'origine.",
+     "sources": [
+      "https://extranet.inao.gouv.fr/fichier/PNOCDCRoquefort.pdf",
+      "https://en.wikipedia.org/wiki/Roquefort"
+     ]
+    },
+    {
+     "n": 5,
+     "categorie": 2,
+     "adrien": "Selon l'anecdote, Talleyrand aurait sacré le Brie « roi des fromages » lors de quel congrès ?",
+     "ana": "Selon l'anecdote, un diplomate français aurait sacré le Brie « roi des fromages ». Dans quelle ville ?",
+     "ana_en": "According to the story, a French diplomat crowned Brie \"king of cheeses\". In which city?",
+     "options": [
+      "A. Vienne (Vienna)",
+      "B. Rio de Janeiro",
+      "C. New York"
+     ],
+     "reponse": "Le congrès de Vienne",
+     "reponse_ana": "A. Vienne",
+     "detail": "Le congrès de Vienne a réorganisé l'Europe en 1814 et 1815, après la chute de Napoléon. L'anecdote n'est pas prouvée.",
+     "sources": [
+      "https://fr.wikipedia.org/wiki/Brie_de_Meaux"
+     ]
+    },
+    {
+     "n": 6,
+     "categorie": 2,
+     "adrien": "Selon la tradition, quel ministre de Louis XIV aurait fait créer la Mimolette pour concurrencer l'édam hollandais ?",
+     "ana": "La Mimolette doit sa couleur orange à une graine que les Brésiliens connaissent bien. Laquelle ?",
+     "ana_en": "Mimolette gets its orange colour from a seed Brazilians know well. Which one?",
+     "options": [
+      "A. L'urucum (annatto)",
+      "B. L'açaí",
+      "C. Le guaraná"
+     ],
+     "reponse": "Colbert",
+     "reponse_ana": "A. L'urucum",
+     "detail": "En français, l'urucum s'appelle le roucou. La couleur servait à distinguer le fromage français des fromages hollandais.",
+     "sources": [
+      "https://fr.wikipedia.org/wiki/Mimolette"
+     ]
+    },
+    {
+     "n": 7,
+     "categorie": 3,
+     "adrien": "Selon Dalí, quel fromage fondu au soleil lui a inspiré les montres molles de « La Persistance de la mémoire » ?",
+     "ana": "Dalí a peint des montres molles en pensant à un fromage qui coule. Lequel ?",
+     "ana_en": "Dalí painted soft watches while thinking of a runny cheese. Which one?",
+     "options": [
+      "A. Le Camembert",
+      "B. Le Comté",
+      "C. Le Roquefort"
+     ],
+     "reponse": "Le Camembert",
+     "reponse_ana": "A. Le Camembert",
+     "detail": "Il l'a dit au physicien Ilya Prigogine, qui y voyait la relativité. Le tableau date de 1931 et se trouve au MoMA de New York.",
+     "sources": [
+      "https://en.wikipedia.org/wiki/The_Persistence_of_Memory"
+     ]
+    },
+    {
+     "n": 8,
+     "categorie": 3,
+     "adrien": "En quelle année paraît le premier recueil des Fables de La Fontaine ? (à 20 ans près)",
+     "ana": "Dans une fable française, un renard flatte un oiseau pour lui voler son fromage. Quel oiseau ?",
+     "ana_en": "In a French fable, a fox flatters a bird to steal its cheese. Which bird?",
+     "options": [
+      "A. Un corbeau (a crow)",
+      "B. Un pigeon (a pigeon)",
+      "C. Un perroquet (a parrot)"
+     ],
+     "reponse": "1668",
+     "reponse_ana": "A. Un corbeau",
+     "detail": "« Le Corbeau et le Renard » est dans le livre I. Le renard obtient le fromage en vantant la voix du corbeau.",
+     "sources": [
+      "https://fr.wikipedia.org/wiki/Le_Corbeau_et_le_Renard"
+     ]
+    },
+    {
+     "n": 9,
+     "categorie": 3,
+     "adrien": "Dans « Astérix en Corse », qu'est-ce qui fait exploser le bateau des pirates ?",
+     "ana": "Dans une BD d'Astérix, l'odeur d'un fromage corse fait exploser :",
+     "ana_en": "In an Asterix comic, the smell of a Corsican cheese blows up:",
+     "options": [
+      "A. Un bateau (a ship)",
+      "B. Un château (a castle)",
+      "C. Une montagne (a mountain)"
+     ],
+     "reponse": "L'odeur d'un fromage corse",
+     "reponse_ana": "A. Un bateau",
+     "detail": "L'album paraît en 1973, après une prépublication dans le journal Pilote.",
+     "sources": [
+      "https://fr.wikipedia.org/wiki/Ast%C3%A9rix_en_Corse"
+     ]
+    },
+    {
+     "n": 10,
+     "categorie": 4,
+     "adrien": "Au XVIIe siècle, on servait le fromage juste après un fruit. Lequel est resté dans une expression française ?",
+     "ana": "En France, « entre la poire et le fromage » veut dire :",
+     "ana_en": "In France, \"entre la poire et le fromage\" (between the pear and the cheese) means:",
+     "options": [
+      "A. Vers la fin du repas (towards the end of the meal)",
+      "B. Au petit-déjeuner (at breakfast)",
+      "C. Au marché (at the market)"
+     ],
+     "reponse": "La poire",
+     "reponse_ana": "A. Vers la fin du repas",
+     "detail": "Aujourd'hui, l'expression désigne aussi un moment de conversation détendue, ou une chose faite à la hâte.",
+     "sources": [
+      "https://www.expressio.fr/expressions/entre-la-poire-et-le-fromage"
+     ]
+    },
+    {
+     "n": 11,
+     "categorie": 4,
+     "adrien": "Comment appelle-t-on en France un graphique rond découpé en parts ?",
+     "ana": "En France, un graphique rond découpé en parts porte le nom d'un fromage. Lequel ?",
+     "ana_en": "In France, a round chart cut into slices is named after a cheese. Which one?",
+     "options": [
+      "A. Un camembert",
+      "B. Un comté",
+      "C. Un roquefort"
+     ],
+     "reponse": "Un camembert",
+     "reponse_ana": "A. Un camembert",
+     "detail": "Sa forme rappelle la découpe du fromage en portions.",
+     "sources": [
+      "https://fr.wikipedia.org/wiki/Diagramme_circulaire"
+     ]
+    },
+    {
+     "n": 12,
+     "categorie": 4,
+     "adrien": "Qu'y a-t-il dans un « fromage de tête » ?",
+     "ana": "Le « fromage de tête », c'est :",
+     "ana_en": "\"Fromage de tête\" is:",
+     "options": [
+      "A. De la viande en gelée (meat in jelly)",
+      "B. Un fromage de vache (a cow's milk cheese)",
+      "C. Un dessert (a dessert)"
+     ],
+     "reponse": "De la viande de tête de porc en gelée, sans fromage",
+     "reponse_ana": "A. De la viande en gelée",
+     "detail": "C'est une charcuterie. Le nom viendrait de la préparation : la tête cuite toute une nuit, désossée puis moulée.",
+     "sources": [
+      "https://fr.wikipedia.org/wiki/Fromage_de_t%C3%AAte"
+     ]
+    },
+    {
+     "n": 13,
+     "categorie": 5,
+     "adrien": "Combien de litres de lait faut-il pour une meule de Comté de 40 kg ? (à 100 près)",
+     "ana": "Pour une meule de Comté de 40 kg, il faut :",
+     "ana_en": "For a 40 kg wheel of Comté, you need:",
+     "options": [
+      "A. 4 litres de lait (4 litres of milk)",
+      "B. 40 litres (40 litres)",
+      "C. 400 litres (400 litres)"
+     ],
+     "reponse": "Environ 400 litres",
+     "reponse_ana": "C. 400 litres",
+     "detail": "Les sources donnent 400 à 450 litres. Seules les vaches montbéliardes et simmentals françaises peuvent donner ce lait.",
+     "sources": [
+      "https://www.inc-conso.fr/content/le-comte-les-secrets-dun-fromage-jurassien",
+      "https://www.futura-sciences.com/sante/questions-reponses/alimentation-litres-lait-faut-il-fabriquer-fromage-12749/"
+     ]
+    },
+    {
+     "n": 14,
+     "categorie": 5,
+     "adrien": "La présure fait cailler le lait. De quel organe d'un jeune animal est-elle tirée ?",
+     "ana": "La présure, qui fait cailler le lait, vient traditionnellement de l'estomac :",
+     "ana_en": "Rennet, which curdles milk, traditionally comes from the stomach of:",
+     "options": [
+      "A. D'un veau (a calf)",
+      "B. D'un poisson (a fish)",
+      "C. D'un poulet (a chicken)"
+     ],
+     "reponse": "De l'estomac (la caillette) du veau",
+     "reponse_ana": "A. D'un veau",
+     "detail": "Elle vient de la caillette, le quatrième estomac des jeunes ruminants. Son enzyme s'appelle la chymosine.",
+     "sources": [
+      "https://fr.wikipedia.org/wiki/Pr%C3%A9sure"
+     ]
+    },
+    {
+     "n": 15,
+     "categorie": 5,
+     "adrien": "« Au lait cru » : à combien de degrés au maximum ce lait a-t-il été chauffé ? (à 5 près)",
+     "ana": "« Lait cru » veut dire que le lait :",
+     "ana_en": "\"Lait cru\" (raw milk) means the milk:",
+     "options": [
+      "A. N'a pas été chauffé fort (has not been heated much)",
+      "B. A été trait le jour même (was milked the same day)",
+      "C. Est sans sel (has no salt)"
+     ],
+     "reponse": "40 °C",
+     "reponse_ana": "A. N'a pas été chauffé fort",
+     "detail": "Le Comté, le Roquefort et le Rocamadour de ce soir sont au lait cru.",
+     "sources": [
+      "https://fr.wikipedia.org/wiki/Lait_cru",
+      "https://en.wikipedia.org/wiki/Comt%C3%A9_cheese",
+      "https://fr.wikipedia.org/wiki/Roquefort",
+      "https://en.wikipedia.org/wiki/Rocamadour_cheese"
+     ]
+    },
+    {
+     "n": 16,
+     "categorie": 5,
+     "adrien": "Il faut environ 10 litres de lait pour 1 kg de Beaufort, et 5 pour 1 kg de chèvre frais. Pourquoi cet écart ?",
+     "ana": "Un fromage dur demande plus de lait qu'un fromage frais. Pourquoi ?",
+     "ana_en": "A hard cheese needs more milk than a fresh cheese. Why?",
+     "options": [
+      "A. Il contient moins d'eau (it contains less water)",
+      "B. Il contient du sucre (it contains sugar)",
+      "C. Il est plus gros (it is bigger)"
+     ],
+     "reponse": "Le Beaufort contient moins d'eau",
+     "reponse_ana": "A. Il contient moins d'eau",
+     "detail": "Le Roquefort demande environ 4,3 litres par kilo, le Camembert environ 8.",
+     "sources": [
+      "https://www.futura-sciences.com/sante/questions-reponses/alimentation-litres-lait-faut-il-fabriquer-fromage-12749/"
+     ]
+    },
+    {
+     "n": 17,
+     "categorie": 6,
+     "adrien": "Le mot « raclette » vient d'un verbe. Lequel ?",
+     "ana": "La raclette vient d'un pays voisin de la France. Lequel ?",
+     "ana_en": "Raclette comes from a country next to France. Which one?",
+     "options": [
+      "A. La Suisse (Switzerland)",
+      "B. L'Italie (Italy)",
+      "C. L'Espagne (Spain)"
+     ],
+     "reponse": "Racler",
+     "reponse_ana": "A. La Suisse",
+     "detail": "Le plat vient du Valais. En 1788, le mot désignait d'abord un petit racloir.",
+     "sources": [
+      "https://www.cnrtl.fr/etymologie/raclette",
+      "https://fr.wikipedia.org/wiki/Raclette"
+     ]
+    },
+    {
+     "n": 18,
+     "categorie": 6,
+     "adrien": "Quel vin du Jura, fait avec le seul cépage savagnin, accompagne le Comté ?",
+     "ana": "Avec le Comté, on boit un vin du Jura qui porte le nom d'une couleur. Laquelle ?",
+     "ana_en": "With Comté, people drink a Jura wine named after a colour. Which one?",
+     "options": [
+      "A. Jaune (yellow)",
+      "B. Bleu (blue)",
+      "C. Noir (black)"
+     ],
+     "reponse": "Le vin jaune",
+     "reponse_ana": "A. Jaune",
+     "detail": "Il vieillit au moins 6 ans et 3 mois avant d'être mis en bouteille, dans un clavelin.",
+     "sources": [
+      "https://fr.wikipedia.org/wiki/Vin_jaune"
+     ]
+    },
+    {
+     "n": 19,
+     "categorie": 6,
+     "adrien": "De quelle région viennent les gougères ?",
+     "ana": "Les gougères ressemblent au pão de queijo. Ce sont de petites boules de :",
+     "ana_en": "Gougères look like pão de queijo. They are small balls of:",
+     "options": [
+      "A. Pâte à choux au fromage (choux pastry with cheese)",
+      "B. Riz au fromage (rice with cheese)",
+      "C. Purée de pommes de terre (mashed potatoes)"
+     ],
+     "reponse": "La Bourgogne",
+     "reponse_ana": "A. Pâte à choux au fromage",
+     "detail": "Elles viennent des environs d'Auxerre. On y met un fromage au goût fort, comme le comté ou le gruyère.",
+     "sources": [
+      "https://fr.wikipedia.org/wiki/Goug%C3%A8re"
+     ]
+    },
+    {
+     "n": 20,
+     "categorie": 6,
+     "adrien": "Quel fromage, non affiné, fond dans la truffade d'Auvergne ?",
+     "ana": "La truffade, plat d'Auvergne, mélange du fromage fondu avec :",
+     "ana_en": "Truffade, a dish from Auvergne, mixes melted cheese with:",
+     "options": [
+      "A. Des pommes de terre (potatoes)",
+      "B. Du riz (rice)",
+      "C. Des pâtes (pasta)"
+     ],
+     "reponse": "La tome fraîche de Cantal",
+     "reponse_ana": "A. Des pommes de terre",
+     "detail": "La recette d'origine se contente de pommes de terre, d'ail, de tome fraîche, de sel et de poivre.",
+     "sources": [
+      "https://fr.wikipedia.org/wiki/Truffade"
+     ]
+    }
+   ]
+  }
+ ]
+}
