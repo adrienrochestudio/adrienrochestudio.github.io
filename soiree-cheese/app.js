@@ -217,7 +217,6 @@ function rendreCarte(id) {
   const contenu = $("contenu");
   contenu.replaceChildren();
 
-  $("position").textContent = (index + 1) + " sur " + cartes.length;
 
   const tete = el("header", "carte-tete");
   const ligne = el("p", "carte-id");
@@ -236,24 +235,6 @@ function rendreCarte(id) {
 
   const qs = questionsDe(idPartie, carte);
   qs.forEach((q, i) => contenu.appendChild(rendreQuestion(id, q, i, qs.length)));
-
-  const sources = qs.flatMap((q) => q.sources || []);
-  if (sources.length) {
-    const d = el("details", "sources");
-    d.appendChild(el("summary", null, "Sources"));
-    const ul = el("ul");
-    for (const s of [...new Set(sources)]) {
-      const li = el("li");
-      const a = el("a", null, s);
-      a.href = s;
-      a.target = "_blank";
-      a.rel = "noopener";
-      li.appendChild(a);
-      ul.appendChild(li);
-    }
-    d.appendChild(ul);
-    contenu.appendChild(d);
-  }
 
   for (const b of $("selecteur").querySelectorAll("button")) {
     b.setAttribute("aria-pressed", String(b.dataset.profil === profil));
