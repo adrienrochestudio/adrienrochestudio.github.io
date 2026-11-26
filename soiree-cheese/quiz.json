@@ -21,7 +21,7 @@
        ],
        "reponse": "Brebis, vache, vache, chèvre",
        "reponse_ana": "C. La brebis",
-       "detail": "Le Roquefort n'utilise que le lait de brebis de race Lacaune.",
+       "detail": "Le Roquefort se fait seulement avec le lait d'une seule race de brebis, la Lacaune.",
        "sources": [
         "https://extranet.inao.gouv.fr/fichier/PNOCDCRoquefort.pdf",
         "https://en.wikipedia.org/wiki/Ossau-Iraty",
@@ -40,9 +40,9 @@
         "B. La chèvre transforme le jaune de l'herbe en vitamine (the goat turns the yellow of grass into a vitamin)",
         "C. On y ajoute de la farine (flour is added)"
        ],
-       "reponse": "La chèvre transforme le bêta-carotène de l'herbe en vitamine A, qui est incolore",
+       "reponse": "La chèvre transforme le pigment jaune de l'herbe en vitamine A, qui n'a pas de couleur",
        "reponse_ana": "B. La chèvre transforme le jaune de l'herbe en vitamine",
-       "detail": "Le bêta-carotène est un pigment jaune. La vache en garde une partie dans son lait, la chèvre presque rien.",
+       "detail": "Ce pigment jaune passe en partie dans le lait de la vache, alors que la chèvre n'en laisse presque rien.",
        "sources": [
         "https://cheesescientist.com/science/why-is-goats-milk-cheese-white/"
        ]
@@ -77,7 +77,7 @@
        ],
        "reponse": "Les Vosges",
        "reponse_ana": "B. Un monastère",
-       "detail": "Sa croûte est frottée avec des ferments du rouge, qui lui donnent sa couleur orangée et son odeur. Le latin « monasterium » a donné Munster.",
+       "detail": "Pendant qu'il mûrit, on frotte sa croûte avec de l'eau salée et des bactéries, ce qui lui donne sa couleur orangée et son odeur. Son nom vient du mot latin qui veut dire monastère.",
        "sources": [
         "https://fr.wikipedia.org/wiki/Munster_(fromage)",
         "https://en.wikipedia.org/wiki/Munster_cheese"
@@ -85,7 +85,7 @@
       },
       {
        "theme": "Le temps en cave",
-       "adrien": "Combien de jours au minimum le Rocamadour est-il affiné ? (à 3 près)",
+       "adrien": "Combien de jours au minimum le Rocamadour doit-il mûrir avant d'être vendu ? (à 3 près)",
        "ana": "Combien de temps le Comté reste-t-il en cave, au minimum ?",
        "ana_en": "How long does Comté stay in the cellar, at the very least?",
        "options": [
@@ -148,7 +148,7 @@
       },
       {
        "theme": "Le nom",
-       "adrien": "Le mot « rigotte » viendrait d'un mot local du massif du Pilat. Que désigne ce mot ?",
+       "adrien": "Le nom « Rigotte » viendrait d'un mot du patois local, dans les montagnes près de Condrieu. Que désigne ce mot ?",
        "ana": "Le nom « Rigotte » viendrait d'un mot local qui désigne :",
        "ana_en": "The name \"Rigotte\" is said to come from a local word for:",
        "options": [
@@ -156,9 +156,9 @@
         "B. Un éclat de rire (a burst of laughter)",
         "C. Une jeune chèvre (a young goat)"
        ],
-       "reponse": "Les petits ruisseaux (rigoles) qui descendent des pentes",
+       "reponse": "Les petits ruisseaux qui descendent des pentes",
        "reponse_ana": "A. De petits ruisseaux",
-       "detail": "En francoprovençal et en auvergnat, on dit « rigole » ou « rigot ». La Rigotte est affinée au moins 8 jours.",
+       "detail": "Dans les patois de la région, ces ruisseaux s'appellent « rigole » ou « rigot ». La Rigotte mûrit au moins 8 jours avant d'être vendue.",
        "sources": [
         "https://fr.wikipedia.org/wiki/Rigotte_de_Condrieu",
         "https://extranet.inao.gouv.fr/fichier/PNODURigottedeCondrieu.pdf"
@@ -184,8 +184,8 @@
       {
        "theme": "L'ancien lait",
        "adrien": "Jusqu'aux années 1980, le Saint-Marcellin mélangeait le lait de vache avec celui de quel animal ?",
-       "ana": "Le Saint-Marcellin vient du Dauphiné, autour de Grenoble. Au pied de quelles montagnes ?",
-       "ana_en": "Saint-Marcellin comes from the Dauphiné, around Grenoble. At the foot of which mountains?",
+       "ana": "Le Saint-Marcellin vient de la région de Grenoble. Au pied de quelles montagnes ?",
+       "ana_en": "Saint-Marcellin comes from the area around Grenoble. At the foot of which mountains?",
        "options": [
         "A. Les Alpes (the Alps)",
         "B. Les Pyrénées (the Pyrenees)",
@@ -193,7 +193,7 @@
        ],
        "reponse": "La chèvre",
        "reponse_ana": "A. Les Alpes",
-       "detail": "Son IGP couvre 274 communes de l'Isère, de la Drôme et de la Savoie. Il pèse environ 80 g.",
+       "detail": "On a le droit de le fabriquer dans 274 communes de l'Isère, de la Drôme et de la Savoie, et chaque fromage pèse environ 80 g.",
        "sources": [
         "https://fr.wikipedia.org/wiki/Saint-marcellin_(fromage)"
        ]
@@ -216,7 +216,7 @@
        ],
        "reponse": "Celui qu'Ana a choisi",
        "reponse_ana": "Ossau-Iraty : brebis. Saint-Nectaire et Comté : vache",
-       "detail": "L'Ossau-Iraty se fait avec des brebis de races locales : basco-béarnaise, manech tête rousse et manech tête noire.",
+       "detail": "L'Ossau-Iraty se fait seulement avec le lait de trois races de brebis du Pays basque et du Béarn.",
        "sources": [
         "https://fr.wikipedia.org/wiki/Ossau-iraty",
         "https://en.wikipedia.org/wiki/Saint-Nectaire",
@@ -225,9 +225,9 @@
       },
       {
        "theme": "La paille",
-       "adrien": "Sur quoi le Saint-Nectaire est-il affiné ?",
-       "ana": "Le Saint-Nectaire est affiné posé sur :",
-       "ana_en": "Saint-Nectaire is aged lying on:",
+       "adrien": "Pendant qu'il mûrit en cave, sur quoi le Saint-Nectaire est-il posé ?",
+       "ana": "Pendant qu'il mûrit en cave, le Saint-Nectaire est posé sur :",
+       "ana_en": "While it ripens in the cellar, Saint-Nectaire lies on:",
        "options": [
         "A. De la paille (straw)",
         "B. Du sable (sand)",
@@ -235,7 +235,7 @@
        ],
        "reponse": "De la paille de seigle",
        "reponse_ana": "A. De la paille",
-       "detail": "Le cahier des charges impose au moins 28 jours sur paille de seigle. Jusqu'au XVIIe siècle, on l'appelait « fromage de seigle ».",
+       "detail": "Les règles du Saint-Nectaire demandent au moins 28 jours sur de la paille de seigle, une céréale proche du blé. Jusqu'au XVIIe siècle, on l'appelait d'ailleurs « fromage de seigle ».",
        "sources": [
         "https://fr.wikipedia.org/wiki/Saint-nectaire",
         "https://en.wikipedia.org/wiki/Saint-Nectaire"
@@ -253,7 +253,7 @@
        ],
        "reponse": "Un fromage fermier, fait à la ferme",
        "reponse_ana": "A. À la ferme",
-       "detail": "Une plaque carrée signale un Saint-Nectaire laitier, fait par un artisan ou un industriel. Le système existe depuis 1964.",
+       "detail": "Une plaque carrée signale un Saint-Nectaire fait par une fromagerie ou une usine. Ces plaques existent depuis 1964.",
        "sources": [
         "https://fr.wikipedia.org/wiki/Saint-nectaire",
         "https://en.wikipedia.org/wiki/Saint-Nectaire"
@@ -261,9 +261,9 @@
       },
       {
        "theme": "Le temps en cave",
-       "adrien": "Combien de jours au minimum est affiné un grand Ossau-Iraty, de 4 à 7 kg ? (à 30 près)",
-       "ana": "L'Ossau-Iraty est affiné au moins :",
-       "ana_en": "Ossau-Iraty is aged for at least:",
+       "adrien": "Combien de jours au minimum un grand Ossau-Iraty, de 4 à 7 kg, doit-il mûrir en cave ? (à 30 près)",
+       "ana": "L'Ossau-Iraty mûrit en cave au moins :",
+       "ana_en": "Ossau-Iraty ripens in the cellar for at least:",
        "options": [
         "A. 1 jour (1 day)",
         "B. 80 jours (80 days)",
@@ -328,11 +328,11 @@
        "options": [
         "A. Du sel (salt)",
         "B. Du sucre (sugar)",
-        "C. Une protéine du lait qui a cristallisé (a milk protein that has crystallised)"
+        "C. Une protéine du lait qui a formé des grains (a milk protein that has formed grains)"
        ],
-       "reponse": "Des protéines du lait : ce sont des cristaux de tyrosine",
-       "reponse_ana": "C. Une protéine du lait qui a cristallisé",
-       "detail": "La tyrosine est un acide aminé. Elle se libère quand les protéines du lait se décomposent avec le temps, puis forme des cristaux.",
+       "reponse": "Des protéines du lait, qui forment de petits cristaux avec le temps",
+       "reponse_ana": "C. Une protéine du lait qui a formé des grains",
+       "detail": "Pendant les longs mois en cave, les protéines du lait se défont peu à peu. Une partie de ce qu'elles libèrent s'assemble alors en petits grains qui croquent sous la dent.",
        "sources": [
         "https://culturecheesemag.com/cheese-iq/science-aged-hard-cheeses-tyrosine-crystals/"
        ]
@@ -349,7 +349,7 @@
        ],
        "reponse": "90 jours",
        "reponse_ana": "B. Un champignon",
-       "detail": "Le champignon s'appelle Penicillium roqueforti. C'est lui qui forme les veines bleues.",
+       "detail": "Ce champignon porte même le nom du fromage, et c'est lui qui dessine les veines bleues dans la pâte.",
        "sources": [
         "https://extranet.inao.gouv.fr/fichier/PNOCDCRoquefort.pdf",
         "https://en.wikipedia.org/wiki/Roquefort"
@@ -367,7 +367,7 @@
        ],
        "reponse": "Forma",
        "reponse_ana": "A. On le met dans un moule",
-       "detail": "« Caseus formaticus » voulait dire « fromage moulé ». L'ancien français disait « formage ».",
+       "detail": "Les Romains parlaient de « fromage moulé », et au Moyen Âge on disait « formage » avant de dire « fromage ».",
        "sources": [
         "https://fr.wikipedia.org/wiki/Fromage"
        ]
@@ -382,9 +382,9 @@
         "B. Sésame (sesame)",
         "C. Lin (flax)"
        ],
-       "reponse": "Le carvi, dit « cumin des prés »",
+       "reponse": "Le carvi, une petite graine qu'on appelle aussi « cumin des prés »",
        "reponse_ana": "A. Carvi",
-       "detail": "On l'appelle « cumin des prés », mais ce n'est pas le cumin de cuisine.",
+       "detail": "On l'appelle « cumin des prés », mais ce n'est pas le cumin qu'on utilise d'habitude en cuisine.",
        "sources": [
         "https://fr.wikipedia.org/wiki/Munster_(fromage)"
        ]
@@ -436,7 +436,7 @@
      ],
      "reponse": "L'Aveyron",
      "reponse_ana": "A. Dans une montagne",
-     "detail": "Depuis 1961, seul un fromage affiné dans les caves du mont Combalou, à Roquefort-sur-Soulzon, peut porter ce nom.",
+     "detail": "Depuis 1961, seul un fromage qui a mûri dans les caves naturelles de la montagne au-dessus du village de Roquefort-sur-Soulzon peut porter ce nom.",
      "sources": [
       "https://en.wikipedia.org/wiki/Roquefort"
      ]
@@ -472,7 +472,7 @@
      ],
      "reponse": "Un volcan",
      "reponse_ana": "A. Volcans",
-     "detail": "Les monts du Cantal sont les restes du plus grand stratovolcan visible d'Europe.",
+     "detail": "Les monts du Cantal sont les restes du plus grand volcan visible d'Europe.",
      "sources": [
       "https://fr.wikipedia.org/wiki/Monts_du_Cantal"
      ]
@@ -480,7 +480,7 @@
     {
      "n": 4,
      "categorie": 2,
-     "adrien": "En quelle année le Roquefort devient-il la première appellation d'origine protégée par une loi en France ? (à 15 ans près)",
+     "adrien": "En quelle année le Roquefort devient-il le premier fromage dont le nom est protégé par une loi en France ? (à 15 ans près)",
      "ana": "Le Roquefort a été le premier fromage protégé par une loi en France. En quelle année ?",
      "ana_en": "Roquefort was the first cheese protected by law in France. In which year?",
      "options": [
@@ -490,7 +490,7 @@
      ],
      "reponse": "1925",
      "reponse_ana": "B. 1925",
-     "detail": "La loi du 26 juillet 1925 garantit son appellation d'origine.",
+     "detail": "La loi du 26 juillet 1925 réserve le nom de Roquefort aux fromages qui viennent vraiment de là-bas.",
      "sources": [
       "https://extranet.inao.gouv.fr/fichier/PNOCDCRoquefort.pdf",
       "https://en.wikipedia.org/wiki/Roquefort"
@@ -521,13 +521,13 @@
      "ana": "La Mimolette doit sa couleur orange à une graine que les Brésiliens connaissent bien. Laquelle ?",
      "ana_en": "Mimolette gets its orange colour from a seed Brazilians know well. Which one?",
      "options": [
-      "A. L'urucum (annatto)",
-      "B. L'açaí",
-      "C. Le guaraná"
+      "A. L'urucum (annatto seeds)",
+      "B. L'açaí (açaí berries)",
+      "C. Le guaraná (guarana seeds)"
      ],
      "reponse": "Colbert",
      "reponse_ana": "A. L'urucum",
-     "detail": "En français, l'urucum s'appelle le roucou. La couleur servait à distinguer le fromage français des fromages hollandais.",
+     "detail": "En français, l'urucum s'appelle le roucou. Cette couleur servait à distinguer le fromage français des fromages hollandais.",
      "sources": [
       "https://fr.wikipedia.org/wiki/Mimolette"
      ]
@@ -545,7 +545,7 @@
      ],
      "reponse": "Le Camembert",
      "reponse_ana": "A. Le Camembert",
-     "detail": "Il l'a dit au physicien Ilya Prigogine, qui y voyait la relativité. Le tableau date de 1931 et se trouve au MoMA de New York.",
+     "detail": "Il l'a expliqué à un physicien qui pensait que les montres molles parlaient du temps selon Einstein. Le tableau date de 1931 et se trouve au MoMA de New York.",
      "sources": [
       "https://en.wikipedia.org/wiki/The_Persistence_of_Memory"
      ]
@@ -581,7 +581,7 @@
      ],
      "reponse": "L'odeur d'un fromage corse",
      "reponse_ana": "A. Un bateau",
-     "detail": "L'album paraît en 1973, après une prépublication dans le journal Pilote.",
+     "detail": "L'album paraît en 1973, après avoir été publié par épisodes dans le journal Pilote.",
      "sources": [
       "https://fr.wikipedia.org/wiki/Ast%C3%A9rix_en_Corse"
      ]
@@ -662,17 +662,17 @@
     {
      "n": 14,
      "categorie": 5,
-     "adrien": "La présure fait cailler le lait. De quel organe d'un jeune animal est-elle tirée ?",
-     "ana": "La présure, qui fait cailler le lait, vient traditionnellement de l'estomac :",
-     "ana_en": "Rennet, which curdles milk, traditionally comes from the stomach of:",
+     "adrien": "Pour faire un fromage, on ajoute au lait un produit qui le fait prendre, comme un yaourt. De quel organe d'un jeune animal vient-il ?",
+     "ana": "Le produit qui fait prendre le lait pour faire du fromage vient traditionnellement de l'estomac :",
+     "ana_en": "The product that makes milk set to make cheese traditionally comes from the stomach of:",
      "options": [
       "A. D'un veau (a calf)",
       "B. D'un poisson (a fish)",
       "C. D'un poulet (a chicken)"
      ],
-     "reponse": "De l'estomac (la caillette) du veau",
+     "reponse": "De l'estomac du veau",
      "reponse_ana": "A. D'un veau",
-     "detail": "Elle vient de la caillette, le quatrième estomac des jeunes ruminants. Son enzyme s'appelle la chymosine.",
+     "detail": "Ce produit s'appelle la présure. On la tire du quatrième estomac des jeunes veaux, là où le lait de leur mère prend avant d'être digéré.",
      "sources": [
       "https://fr.wikipedia.org/wiki/Pr%C3%A9sure"
      ]
@@ -729,7 +729,7 @@
      ],
      "reponse": "Racler",
      "reponse_ana": "A. La Suisse",
-     "detail": "Le plat vient du Valais. En 1788, le mot désignait d'abord un petit racloir.",
+     "detail": "Le plat vient du Valais, un canton suisse. En 1788, le mot désignait d'abord un petit outil pour racler.",
      "sources": [
       "https://www.cnrtl.fr/etymologie/raclette",
       "https://fr.wikipedia.org/wiki/Raclette"
@@ -738,7 +738,7 @@
     {
      "n": 18,
      "categorie": 6,
-     "adrien": "Quel vin du Jura, fait avec le seul cépage savagnin, accompagne le Comté ?",
+     "adrien": "Quel vin blanc du Jura, fait avec un seul raisin local, le savagnin, accompagne souvent le Comté ?",
      "ana": "Avec le Comté, on boit un vin du Jura qui porte le nom d'une couleur. Laquelle ?",
      "ana_en": "With Comté, people drink a Jura wine named after a colour. Which one?",
      "options": [
@@ -748,7 +748,7 @@
      ],
      "reponse": "Le vin jaune",
      "reponse_ana": "A. Jaune",
-     "detail": "Il vieillit au moins 6 ans et 3 mois avant d'être mis en bouteille, dans un clavelin.",
+     "detail": "On le laisse vieillir au moins 6 ans et 3 mois avant de le vendre.",
      "sources": [
       "https://fr.wikipedia.org/wiki/Vin_jaune"
      ]
@@ -774,7 +774,7 @@
     {
      "n": 20,
      "categorie": 6,
-     "adrien": "Quel fromage, non affiné, fond dans la truffade d'Auvergne ?",
+     "adrien": "Quel fromage tout jeune, qui n'a pas encore mûri, fond dans la truffade d'Auvergne ?",
      "ana": "La truffade, plat d'Auvergne, mélange du fromage fondu avec :",
      "ana_en": "Truffade, a dish from Auvergne, mixes melted cheese with:",
      "options": [
@@ -782,9 +782,9 @@
       "B. Du riz (rice)",
       "C. Des pâtes (pasta)"
      ],
-     "reponse": "La tome fraîche de Cantal",
+     "reponse": "La tome fraîche de Cantal, c'est-à-dire du Cantal pas encore mûri",
      "reponse_ana": "A. Des pommes de terre",
-     "detail": "La recette d'origine se contente de pommes de terre, d'ail, de tome fraîche, de sel et de poivre.",
+     "detail": "La recette d'origine se contente de pommes de terre, d'ail, de ce fromage frais, de sel et de poivre.",
      "sources": [
       "https://fr.wikipedia.org/wiki/Truffade"
      ]

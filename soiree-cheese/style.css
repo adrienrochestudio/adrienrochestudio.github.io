@@ -387,3 +387,18 @@ h2 {
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
 }
+
+/* ---------- Charte soirée cheese v2 : une seule couleur de texte (bordeaux), Gill Sans léger, pas de gras, cartes centrées ---------- */
+:root {
+  --texte: #5A1E2C;
+  --doux: #5A1E2C;
+  --ocre-fonce: #5A1E2C;
+  --police: "Gill Sans", "Gill Sans MT", "Avenir Next", system-ui, sans-serif;
+}
+body, body * { font-weight: 300 !important; }
+body { color: var(--texte); }
+.bouton { background: transparent; color: var(--texte); border: 1px solid var(--texte); }
+.bouton:active { background: #EFE5CC; }
+.carte, .carte-tete, .carte-id, .question, .joueur, .theme, .reponse, .detail { text-align: center; }
+.carte-id { justify-content: center; }
+.joueur-nom, .theme { letter-spacing: 0.06em; }
