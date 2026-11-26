@@ -1,11 +1,12 @@
 // Changer VERSION à chaque déploiement, sinon l'iPhone garde l'ancienne version.
-const VERSION = "v2";
+const VERSION = "v3";
 const CACHE = `soiree-cheese-${VERSION}`;
 const FICHIERS = [
   "./",
   "./index.html",
   "./style.css",
   "./app.js",
+  "./rafraichir.js",
   "./quiz.json",
   "./manifest.webmanifest",
   "./petite-souris.png",
@@ -52,12 +53,11 @@ self.addEventListener("fetch", (e) => {
     return;
   }
 
-  // Fichiers de l'app : cache d'abord.
+  // Fichiers de l'app : réseau d'abord (un rechargement montre toujours la dernière version), cache si hors ligne.
   e.respondWith(
-    caches.match(e.request, { ignoreSearch: true }).then((enCache) =>
-      enCache ||
-      fetch(e.request).then((rep) => mettreEnCache(e.request, rep))
-        .catch(() => (e.request.mode === "navigate" ? caches.match("./index.html") : undefined))
-    )
+    fetch(e.request, { cache: "no-cache" })
+      .then((rep) => mettreEnCache(e.request, rep))
+      .catch(() => caches.match(e.request, { ignoreSearch: true })
+        .then((enCache) => enCache || (e.request.mode === "navigate" ? caches.match("./index.html") : undefined)))
   );
 });

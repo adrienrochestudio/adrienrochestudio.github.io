@@ -402,3 +402,10 @@ body { color: var(--texte); }
 .carte, .carte-tete, .carte-id, .question, .joueur, .theme, .reponse, .detail { text-align: center; }
 .carte-id { justify-content: center; }
 .joueur-nom, .theme { letter-spacing: 0.06em; }
+
+/* ---------- Tirer pour recharger ---------- */
+#ptr { position: fixed; top: 0; left: 0; right: 0; display: flex; justify-content: center; pointer-events: none;
+  padding-top: calc(env(safe-area-inset-top) + 6px); transform: translateY(-100%); opacity: 0; z-index: 50; }
+#ptr span { font-size: 13px; letter-spacing: 0.04em; color: var(--texte); background: var(--carte); border: 1px solid var(--filet);
+  border-radius: 14px; padding: 6px 12px; }
+#ptr.pret span { border-color: var(--texte); }
