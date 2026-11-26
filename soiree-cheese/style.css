@@ -118,13 +118,6 @@ h1 {
 }
 
 .partie { margin-bottom: 36px; }
-.partie-tete {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 10px;
-}
 h2 {
   font-size: 21px;
   font-weight: 600;
@@ -166,12 +159,9 @@ h2 {
 }
 .vignette:active { background: #F1E7CF; }
 .vignette.jouee {
+  opacity: 0.35;
   background: transparent;
-  border-color: #E6DBC0;
-  color: #A29682;
-  font-weight: 500;
 }
-.vignette.jouee .pastille { opacity: 0.45; }
 
 .pastille {
   display: inline-block;
@@ -328,43 +318,59 @@ h2 {
 }
 .pied .bouton { min-width: 44%; min-height: 50px; }
 
-/* ---------- Dé ---------- */
+/* ---------- Choix du profil ---------- */
 
 .voile {
   position: fixed;
   inset: 0;
   background: rgba(59, 49, 40, 0.28);
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
-  padding: 24px;
   z-index: 10;
 }
-.de-boite {
-  width: min(300px, 100%);
+.feuille {
+  width: min(560px, 100%);
   background: var(--carte);
-  border-radius: 6px;
-  padding: 28px 24px 22px;
+  border-radius: 10px 10px 0 0;
+  padding: 22px calc(env(safe-area-inset-right) + var(--marge)) calc(env(safe-area-inset-bottom) + 14px) calc(env(safe-area-inset-left) + var(--marge));
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   text-align: center;
 }
-.de-chiffre {
-  width: 88px;
-  height: 88px;
-  margin: 0 auto 16px;
-  border-radius: 10px;
-  background: var(--c, var(--ocre));
-  color: #2E2519;
-  font-size: 44px;
-  font-weight: 600;
-  line-height: 88px;
-  font-variant-numeric: tabular-nums;
-}
-.de-categorie { font-size: 19px; min-height: 1.4em; }
-.de-actions {
-  margin-top: 18px;
+.feuille-titre { font-size: 17px; margin-bottom: 6px; }
+.feuille .bouton { min-height: 52px; font-size: 19px; }
+.feuille .lien { align-self: center; }
+
+.selecteur {
   display: flex;
   justify-content: center;
-  gap: 16px;
+  gap: 4px;
+  margin: -6px 0 6px;
+}
+.selecteur button {
+  min-height: 44px;
+  padding: 0 12px;
+  border: 0;
+  background: none;
+  color: var(--texte);
+  font-size: 15px;
+  opacity: 0.55;
+  cursor: pointer;
+}
+.selecteur button[aria-pressed="true"] {
+  opacity: 1;
+  text-decoration: underline;
+  text-decoration-color: var(--ocre);
+  text-underline-offset: 6px;
+}
+
+.indice { margin-top: 4px; font-size: 15px; }
+.joueur-indice {
+  margin-top: 6px;
+  font-style: italic;
+  font-size: 16px;
 }
 
 /* ---------- Mise à jour ---------- */

@@ -19,6 +19,11 @@
         "B. La chèvre (goat)",
         "C. La brebis (ewe)"
        ],
+       "options_adrien": [
+        "A. Brebis, vache, vache, chèvre",
+        "B. Vache, vache, brebis, chèvre",
+        "C. Brebis, chèvre, vache, chèvre"
+       ],
        "reponse": "Brebis, vache, vache, chèvre",
        "reponse_ana": "C. La brebis",
        "detail": "Le Roquefort se fait seulement avec le lait d'une seule race de brebis, la Lacaune.",
@@ -40,6 +45,11 @@
         "B. La chèvre transforme le jaune de l'herbe en vitamine (the goat turns the yellow of grass into a vitamin)",
         "C. On y ajoute de la farine (flour is added)"
        ],
+       "options_adrien": [
+        "A. La chèvre mange moins d'herbe que la vache",
+        "B. La chèvre transforme le pigment jaune de l'herbe en vitamine A",
+        "C. Le lait de chèvre contient moins de matière grasse"
+       ],
        "reponse": "La chèvre transforme le pigment jaune de l'herbe en vitamine A, qui n'a pas de couleur",
        "reponse_ana": "B. La chèvre transforme le jaune de l'herbe en vitamine",
        "detail": "Ce pigment jaune passe en partie dans le lait de la vache, alors que la chèvre n'en laisse presque rien.",
@@ -56,6 +66,11 @@
         "A. Du poivre (pepper)",
         "B. Du charbon végétal (vegetable charcoal)",
         "C. De l'encre de seiche (squid ink)"
+       ],
+       "options_adrien": [
+        "A. De la poudre de champignon noir",
+        "B. Du charbon végétal salé",
+        "C. Du poivre noir moulu"
        ],
        "reponse": "Du charbon végétal salé",
        "reponse_ana": "B. Du charbon végétal",
@@ -75,6 +90,11 @@
         "B. Un monastère (a monastery)",
         "C. Une ferme (a farm)"
        ],
+       "options_adrien": [
+        "A. Le Jura",
+        "B. Les Vosges",
+        "C. Les Alpes"
+       ],
        "reponse": "Les Vosges",
        "reponse_ana": "B. Un monastère",
        "detail": "Pendant qu'il mûrit, on frotte sa croûte avec de l'eau salée et des bactéries, ce qui lui donne sa couleur orangée et son odeur. Son nom vient du mot latin qui veut dire monastère.",
@@ -92,6 +112,11 @@
         "A. 4 jours (4 days)",
         "B. 4 mois (4 months)",
         "C. 4 ans (4 years)"
+       ],
+       "options_adrien": [
+        "A. 2 jours",
+        "B. 6 jours",
+        "C. 20 jours"
        ],
        "reponse": "6 jours",
        "reponse_ana": "B. 4 mois",
@@ -118,6 +143,8 @@
         "B. Le Saint-Marcellin",
         "C. Le Rocamadour"
        ],
+       "options_adrien": [],
+       "indice_adrien": "Ana te dit la première lettre du nom du fromage avant que tu répondes.",
        "reponse": "Celui qu'Ana a choisi",
        "reponse_ana": "B. Le Saint-Marcellin",
        "detail": "Les trois autres fromages du service sont au lait de chèvre.",
@@ -131,15 +158,20 @@
       {
        "theme": "La rivière",
        "adrien": "Le Selles-sur-Cher porte le nom d'une rivière. Dans quel fleuve se jette-t-elle ?",
-       "ana": "Le Selles-sur-Cher vient de la région des :",
-       "ana_en": "Selles-sur-Cher comes from the region of the:",
+       "ana": "Le Selles-sur-Cher vient de la région de quel château ?",
+       "ana_en": "Selles-sur-Cher comes from the area around which château?",
        "options": [
-        "A. Châteaux de la Loire (Loire Valley castles)",
-        "B. Plages de Bretagne (Brittany beaches)",
-        "C. Volcans d'Auvergne (Auvergne volcanoes)"
+        "A. Chambord",
+        "B. Versailles",
+        "C. Le Mont-Saint-Michel"
+       ],
+       "options_adrien": [
+        "A. La Seine",
+        "B. La Loire",
+        "C. La Garonne"
        ],
        "reponse": "La Loire",
-       "reponse_ana": "A. Châteaux de la Loire",
+       "reponse_ana": "A. Chambord",
        "detail": "Le Cher rejoint la Loire à Villandry, en Indre-et-Loire. Le fromage se fait dans le Cher, l'Indre et le Loir-et-Cher.",
        "sources": [
         "https://fr.wikipedia.org/wiki/Cher_(rivi%C3%A8re)",
@@ -155,6 +187,11 @@
         "A. De petits ruisseaux (small streams)",
         "B. Un éclat de rire (a burst of laughter)",
         "C. Une jeune chèvre (a young goat)"
+       ],
+       "options_adrien": [
+        "A. Les petits ruisseaux qui descendent des pentes",
+        "B. Les petites chèvres des montagnes",
+        "C. Les murets de pierre entre les champs"
        ],
        "reponse": "Les petits ruisseaux qui descendent des pentes",
        "reponse_ana": "A. De petits ruisseaux",
@@ -174,6 +211,11 @@
         "B. 350 g",
         "C. 3,5 kg"
        ],
+       "options_adrien": [
+        "A. 15 g",
+        "B. 35 g",
+        "C. 60 g"
+       ],
        "reponse": "35 g",
        "reponse_ana": "A. 35 g",
        "detail": "Il en faut près de trente pour faire un kilo.",
@@ -190,6 +232,11 @@
         "A. Les Alpes (the Alps)",
         "B. Les Pyrénées (the Pyrenees)",
         "C. Les Vosges (the Vosges)"
+       ],
+       "options_adrien": [
+        "A. La brebis",
+        "B. La chèvre",
+        "C. La bufflonne"
        ],
        "reponse": "La chèvre",
        "reponse_ana": "A. Les Alpes",
@@ -214,6 +261,8 @@
         "A. Vache (cow)",
         "B. Brebis (ewe)"
        ],
+       "options_adrien": [],
+       "indice_adrien": "Ana te dit la première lettre du nom du fromage avant que tu répondes.",
        "reponse": "Celui qu'Ana a choisi",
        "reponse_ana": "Ossau-Iraty : brebis. Saint-Nectaire et Comté : vache",
        "detail": "L'Ossau-Iraty se fait seulement avec le lait de trois races de brebis du Pays basque et du Béarn.",
@@ -233,6 +282,11 @@
         "B. Du sable (sand)",
         "C. Des feuilles de vigne (vine leaves)"
        ],
+       "options_adrien": [
+        "A. Des planches de sapin",
+        "B. De la paille de seigle",
+        "C. Des feuilles de châtaignier"
+       ],
        "reponse": "De la paille de seigle",
        "reponse_ana": "A. De la paille",
        "detail": "Les règles du Saint-Nectaire demandent au moins 28 jours sur de la paille de seigle, une céréale proche du blé. Jusqu'au XVIIe siècle, on l'appelait d'ailleurs « fromage de seigle ».",
@@ -251,7 +305,12 @@
         "B. À l'usine (in a factory)",
         "C. En Suisse (in Switzerland)"
        ],
-       "reponse": "Un fromage fermier, fait à la ferme",
+       "options_adrien": [
+        "A. Un fromage fait à la ferme",
+        "B. Un fromage au lait cru",
+        "C. Un fromage qui a mûri plus de deux mois"
+       ],
+       "reponse": "Un fromage fait à la ferme",
        "reponse_ana": "A. À la ferme",
        "detail": "Une plaque carrée signale un Saint-Nectaire fait par une fromagerie ou une usine. Ces plaques existent depuis 1964.",
        "sources": [
@@ -268,6 +327,11 @@
         "A. 1 jour (1 day)",
         "B. 80 jours (80 days)",
         "C. 10 ans (10 years)"
+       ],
+       "options_adrien": [
+        "A. 60 jours",
+        "B. 120 jours",
+        "C. 200 jours"
        ],
        "reponse": "120 jours",
        "reponse_ana": "B. 80 jours",
@@ -286,7 +350,12 @@
         "B. Myrtilles (blueberries)",
         "C. Mûres (blackberries)"
        ],
-       "reponse": "La confiture de cerises noires",
+       "options_adrien": [
+        "A. Une confiture de figues",
+        "B. Une confiture de cerises noires",
+        "C. Une pâte de coings"
+       ],
+       "reponse": "Une confiture de cerises noires",
        "reponse_ana": "A. Cerises noires",
        "detail": "Au Brésil, le duo fromage et goiabada s'appelle Romeu e Julieta : le fromage joue Roméo, la goiabada Juliette.",
        "sources": [
@@ -310,6 +379,8 @@
         "A. Le Comté 30 mois",
         "B. Le Munster"
        ],
+       "options_adrien": [],
+       "indice_adrien": "Ana te dit la première lettre du nom du fromage avant que tu répondes.",
        "reponse": "Celui qu'Ana a choisi",
        "reponse_ana": "Celui qu'Adrien a choisi",
        "detail": "Trois fromages de ce service sont au lait de vache. Seul le Roquefort est au lait de brebis.",
@@ -330,7 +401,12 @@
         "B. Du sucre (sugar)",
         "C. Une protéine du lait qui a formé des grains (a milk protein that has formed grains)"
        ],
-       "reponse": "Des protéines du lait, qui forment de petits cristaux avec le temps",
+       "options_adrien": [
+        "A. Des grains de sel qui ont durci",
+        "B. Des protéines du lait qui forment de petits cristaux",
+        "C. Des miettes de croûte entrées dans la pâte"
+       ],
+       "reponse": "Des protéines du lait qui forment de petits cristaux",
        "reponse_ana": "C. Une protéine du lait qui a formé des grains",
        "detail": "Pendant les longs mois en cave, les protéines du lait se défont peu à peu. Une partie de ce qu'elles libèrent s'assemble alors en petits grains qui croquent sous la dent.",
        "sources": [
@@ -346,6 +422,11 @@
         "A. Un colorant (a food colouring)",
         "B. Un champignon (a mould)",
         "C. Une algue (seaweed)"
+       ],
+       "options_adrien": [
+        "A. 30 jours",
+        "B. 90 jours",
+        "C. 1 an"
        ],
        "reponse": "90 jours",
        "reponse_ana": "B. Un champignon",
@@ -365,6 +446,11 @@
         "B. Il est rond (it is round)",
         "C. Il vient d'une ferme (it comes from a farm)"
        ],
+       "options_adrien": [
+        "A. Forma, le moule",
+        "B. Furnus, le four",
+        "C. Formica, la fourmi"
+       ],
        "reponse": "Forma",
        "reponse_ana": "A. On le met dans un moule",
        "detail": "Les Romains parlaient de « fromage moulé », et au Moyen Âge on disait « formage » avant de dire « fromage ».",
@@ -381,6 +467,11 @@
         "A. Carvi (caraway)",
         "B. Sésame (sesame)",
         "C. Lin (flax)"
+       ],
+       "options_adrien": [
+        "A. Le fenouil",
+        "B. Le carvi",
+        "C. L'anis"
        ],
        "reponse": "Le carvi, une petite graine qu'on appelle aussi « cumin des prés »",
        "reponse_ana": "A. Carvi",
@@ -434,6 +525,11 @@
       "B. Sous un château (under a castle)",
       "C. Dans une mine de sel (in a salt mine)"
      ],
+     "options_adrien": [
+      "A. Le Tarn",
+      "B. L'Aveyron",
+      "C. La Lozère"
+     ],
      "reponse": "L'Aveyron",
      "reponse_ana": "A. Dans une montagne",
      "detail": "Depuis 1961, seul un fromage qui a mûri dans les caves naturelles de la montagne au-dessus du village de Roquefort-sur-Soulzon peut porter ce nom.",
@@ -452,6 +548,11 @@
       "B. De Bretagne (Brittany)",
       "C. De Provence (Provence)"
      ],
+     "options_adrien": [
+      "A. Les Hautes-Alpes",
+      "B. La Haute-Savoie",
+      "C. L'Isère"
+     ],
      "reponse": "La Haute-Savoie",
      "reponse_ana": "A. Des Alpes",
      "detail": "Selon la tradition, son nom vient de « re-blocher », traire une deuxième fois. Le lait de la seconde traite, plus crémeux, restait au paysan.",
@@ -467,8 +568,13 @@
      "ana_en": "Cantal comes from mountains that used to be:",
      "options": [
       "A. Volcans (volcanoes)",
-      "B. Glaciers (glaciers)",
-      "C. Récifs de corail (coral reefs)"
+      "B. Plages (beaches)",
+      "C. Déserts (deserts)"
+     ],
+     "options_adrien": [
+      "A. Un volcan",
+      "B. Un glacier",
+      "C. Un fond de mer"
      ],
      "reponse": "Un volcan",
      "reponse_ana": "A. Volcans",
@@ -487,6 +593,11 @@
       "A. 1789",
       "B. 1925",
       "C. 2005"
+     ],
+     "options_adrien": [
+      "A. 1905",
+      "B. 1925",
+      "C. 1955"
      ],
      "reponse": "1925",
      "reponse_ana": "B. 1925",
@@ -507,6 +618,11 @@
       "B. Rio de Janeiro",
       "C. New York"
      ],
+     "options_adrien": [
+      "A. Le congrès de Vienne",
+      "B. Le congrès de Berlin",
+      "C. Le congrès de Paris"
+     ],
      "reponse": "Le congrès de Vienne",
      "reponse_ana": "A. Vienne",
      "detail": "Le congrès de Vienne a réorganisé l'Europe en 1814 et 1815, après la chute de Napoléon. L'anecdote n'est pas prouvée.",
@@ -524,6 +640,11 @@
       "A. L'urucum (annatto seeds)",
       "B. L'açaí (açaí berries)",
       "C. Le guaraná (guarana seeds)"
+     ],
+     "options_adrien": [
+      "A. Colbert",
+      "B. Mazarin",
+      "C. Louvois"
      ],
      "reponse": "Colbert",
      "reponse_ana": "A. L'urucum",
@@ -543,6 +664,11 @@
       "B. Le Comté",
       "C. Le Roquefort"
      ],
+     "options_adrien": [
+      "A. Le Camembert",
+      "B. Le Brie",
+      "C. Le Munster"
+     ],
      "reponse": "Le Camembert",
      "reponse_ana": "A. Le Camembert",
      "detail": "Il l'a expliqué à un physicien qui pensait que les montres molles parlaient du temps selon Einstein. Le tableau date de 1931 et se trouve au MoMA de New York.",
@@ -560,6 +686,11 @@
       "A. Un corbeau (a crow)",
       "B. Un pigeon (a pigeon)",
       "C. Un perroquet (a parrot)"
+     ],
+     "options_adrien": [
+      "A. 1608",
+      "B. 1668",
+      "C. 1728"
      ],
      "reponse": "1668",
      "reponse_ana": "A. Un corbeau",
@@ -579,6 +710,11 @@
       "B. Un château (a castle)",
       "C. Une montagne (a mountain)"
      ],
+     "options_adrien": [
+      "A. L'odeur d'un fromage corse",
+      "B. Un tonneau de potion magique",
+      "C. Un sanglier rôti trop épicé"
+     ],
      "reponse": "L'odeur d'un fromage corse",
      "reponse_ana": "A. Un bateau",
      "detail": "L'album paraît en 1973, après avoir été publié par épisodes dans le journal Pilote.",
@@ -596,6 +732,11 @@
       "A. Vers la fin du repas (towards the end of the meal)",
       "B. Au petit-déjeuner (at breakfast)",
       "C. Au marché (at the market)"
+     ],
+     "options_adrien": [
+      "A. La pomme",
+      "B. La poire",
+      "C. La figue"
      ],
      "reponse": "La poire",
      "reponse_ana": "A. Vers la fin du repas",
@@ -615,6 +756,11 @@
       "B. Un comté",
       "C. Un roquefort"
      ],
+     "options_adrien": [
+      "A. Un camembert",
+      "B. Un brie",
+      "C. Une tomme"
+     ],
      "reponse": "Un camembert",
      "reponse_ana": "A. Un camembert",
      "detail": "Sa forme rappelle la découpe du fromage en portions.",
@@ -633,6 +779,11 @@
       "B. Un fromage de vache (a cow's milk cheese)",
       "C. Un dessert (a dessert)"
      ],
+     "options_adrien": [
+      "A. De la viande de tête de porc en gelée",
+      "B. Un fromage de vache moulé en forme de tête",
+      "C. Du fromage de chèvre mélangé à de la viande"
+     ],
      "reponse": "De la viande de tête de porc en gelée, sans fromage",
      "reponse_ana": "A. De la viande en gelée",
      "detail": "C'est une charcuterie. Le nom viendrait de la préparation : la tête cuite toute une nuit, désossée puis moulée.",
@@ -650,6 +801,11 @@
       "A. 4 litres de lait (4 litres of milk)",
       "B. 40 litres (40 litres)",
       "C. 400 litres (400 litres)"
+     ],
+     "options_adrien": [
+      "A. 200 litres",
+      "B. 400 litres",
+      "C. 800 litres"
      ],
      "reponse": "Environ 400 litres",
      "reponse_ana": "C. 400 litres",
@@ -670,6 +826,11 @@
       "B. D'un poisson (a fish)",
       "C. D'un poulet (a chicken)"
      ],
+     "options_adrien": [
+      "A. Du foie du veau",
+      "B. De l'estomac du veau",
+      "C. De l'intestin de l'agneau"
+     ],
      "reponse": "De l'estomac du veau",
      "reponse_ana": "A. D'un veau",
      "detail": "Ce produit s'appelle la présure. On la tire du quatrième estomac des jeunes veaux, là où le lait de leur mère prend avant d'être digéré.",
@@ -687,6 +848,11 @@
       "A. N'a pas été chauffé fort (has not been heated much)",
       "B. A été trait le jour même (was milked the same day)",
       "C. Est sans sel (has no salt)"
+     ],
+     "options_adrien": [
+      "A. 40 °C",
+      "B. 60 °C",
+      "C. 72 °C"
      ],
      "reponse": "40 °C",
      "reponse_ana": "A. N'a pas été chauffé fort",
@@ -709,6 +875,11 @@
       "B. Il contient du sucre (it contains sugar)",
       "C. Il est plus gros (it is bigger)"
      ],
+     "options_adrien": [
+      "A. Le Beaufort contient moins d'eau",
+      "B. On ajoute de la crème au chèvre frais",
+      "C. Le Beaufort est plus salé"
+     ],
      "reponse": "Le Beaufort contient moins d'eau",
      "reponse_ana": "A. Il contient moins d'eau",
      "detail": "Le Roquefort demande environ 4,3 litres par kilo, le Camembert environ 8.",
@@ -726,6 +897,11 @@
       "A. La Suisse (Switzerland)",
       "B. L'Italie (Italy)",
       "C. L'Espagne (Spain)"
+     ],
+     "options_adrien": [
+      "A. Racler",
+      "B. Rôtir",
+      "C. Raboter"
      ],
      "reponse": "Racler",
      "reponse_ana": "A. La Suisse",
@@ -746,6 +922,11 @@
       "B. Bleu (blue)",
       "C. Noir (black)"
      ],
+     "options_adrien": [
+      "A. Le vin jaune",
+      "B. Le vin de paille",
+      "C. Le crémant du Jura"
+     ],
      "reponse": "Le vin jaune",
      "reponse_ana": "A. Jaune",
      "detail": "On le laisse vieillir au moins 6 ans et 3 mois avant de le vendre.",
@@ -764,6 +945,11 @@
       "B. Riz au fromage (rice with cheese)",
       "C. Purée de pommes de terre (mashed potatoes)"
      ],
+     "options_adrien": [
+      "A. L'Alsace",
+      "B. La Bourgogne",
+      "C. La Lorraine"
+     ],
      "reponse": "La Bourgogne",
      "reponse_ana": "A. Pâte à choux au fromage",
      "detail": "Elles viennent des environs d'Auxerre. On y met un fromage au goût fort, comme le comté ou le gruyère.",
@@ -781,6 +967,11 @@
       "A. Des pommes de terre (potatoes)",
       "B. Du riz (rice)",
       "C. Des pâtes (pasta)"
+     ],
+     "options_adrien": [
+      "A. La tome fraîche de Cantal",
+      "B. Un Saint-Nectaire jeune",
+      "C. Le Reblochon"
      ],
      "reponse": "La tome fraîche de Cantal, c'est-à-dire du Cantal pas encore mûri",
      "reponse_ana": "A. Des pommes de terre",

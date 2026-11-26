@@ -28,10 +28,7 @@
   </section>
 
   <section class="partie" aria-labelledby="titre-trivia">
-    <div class="partie-tete">
-      <h2 id="titre-trivia">Trivia</h2>
-      <button type="button" class="bouton" id="lancer-de">Lancer le dé</button>
-    </div>
+    <h2 id="titre-trivia">Trivia</h2>
     <ol class="legende" id="legende"></ol>
     <div class="grille" id="grille-trivia"></div>
   </section>
@@ -46,6 +43,11 @@
     <button type="button" class="lien" id="retour">Accueil</button>
     <span class="position" id="position"></span>
   </nav>
+  <div class="selecteur" id="selecteur" role="group" aria-label="Profil">
+    <button type="button" data-profil="adrien">Adrien</button>
+    <button type="button" data-profil="ana">Ana</button>
+    <button type="button" data-profil="deux">Les deux</button>
+  </div>
   <article class="contenu" id="contenu"></article>
   <nav class="pied">
     <button type="button" class="bouton secondaire" id="precedente">Précédente</button>
@@ -53,14 +55,13 @@
   </nav>
 </div>
 
-<div id="de" class="voile" hidden>
-  <div class="de-boite" role="dialog" aria-modal="true" aria-labelledby="de-chiffre">
-    <p class="de-chiffre" id="de-chiffre" aria-live="polite"></p>
-    <p class="de-categorie" id="de-categorie"></p>
-    <div class="de-actions" id="de-actions" hidden>
-      <button type="button" class="bouton" id="de-relancer">Relancer</button>
-      <button type="button" class="lien" id="de-fermer">Fermer</button>
-    </div>
+<div id="profil" class="voile voile-bas" hidden>
+  <div class="feuille" role="dialog" aria-modal="true" aria-labelledby="profil-titre">
+    <p class="feuille-titre" id="profil-titre">Qui joue cette carte ?</p>
+    <button type="button" class="bouton" data-profil="adrien">Adrien</button>
+    <button type="button" class="bouton" data-profil="ana">Ana</button>
+    <button type="button" class="bouton" data-profil="deux">Les deux</button>
+    <button type="button" class="lien" id="profil-annuler">Annuler</button>
   </div>
 </div>
 

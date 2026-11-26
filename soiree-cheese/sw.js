@@ -1,5 +1,5 @@
 // Changer VERSION à chaque déploiement, sinon l'iPhone garde l'ancienne version.
-const VERSION = "v3";
+const VERSION = "v4";
 const CACHE = `soiree-cheese-${VERSION}`;
 const FICHIERS = [
   "./",

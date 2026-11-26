@@ -5,6 +5,25 @@ const $ = (id) => document.getElementById(id);
 
 let quiz = null;            // contenu de quiz.json
 const retournees = new Set(); // questions retournées pendant la session : "D1-0", "T3-0"
+const CLE_PROFIL = "soiree-cheese:profil";
+const PROFILS = ["adrien", "ana", "deux"];
+let profil = lireProfil();     // profil de la série de cartes en cours
+let carteDemandee = null;      // carte choisie sur l'accueil, en attente du profil
+
+function lireProfil() {
+  try {
+    const p = sessionStorage.getItem(CLE_PROFIL);
+    return PROFILS.includes(p) ? p : "deux";
+  } catch {
+    return "deux";
+  }
+}
+
+function choisirProfil(p) {
+  if (!PROFILS.includes(p)) return;
+  profil = p;
+  try { sessionStorage.setItem(CLE_PROFIL, p); } catch {}
+}
 
 // ---------- Stockage des cartes jouées ----------
 
@@ -89,13 +108,12 @@ function rendreAccueil() {
       const b = el("button", "vignette");
       b.type = "button";
       b.dataset.id = id;
-      b.appendChild(el("span", "vignette-num", id));
+      b.appendChild(el("span", "vignette-num", String(carte.n)));
       if (idPartie === "trivia") b.appendChild(pastille(carte.categorie));
-      if (jouees.has(id)) {
-        b.classList.add("jouee");
-        b.setAttribute("aria-label", id + ", jouée");
-      }
-      b.addEventListener("click", () => ouvrir(id, false));
+      const nomPartie = partie(idPartie).titre || idPartie;
+      b.setAttribute("aria-label", nomPartie + " " + carte.n + (jouees.has(id) ? ", jouée" : ""));
+      if (jouees.has(id)) b.classList.add("jouee");
+      b.addEventListener("click", () => demanderProfil(id));
       grille.appendChild(b);
     }
   }
@@ -123,18 +141,29 @@ function trouver(id) {
   return { idPartie, cartes, index, carte: cartes[index] };
 }
 
-function blocJoueur(nom, texte, sousTitre, options) {
+function listeOptions(options) {
+  return Array.isArray(options) ? options.filter((o) => typeof o === "string" && o.trim()) : [];
+}
+
+function blocJoueur(nom, texte, sousTitre, options, indice) {
   const b = el("div", "joueur");
-  b.appendChild(el("p", "joueur-nom", nom));
+  if (nom) b.appendChild(el("p", "joueur-nom", nom));
   b.appendChild(el("p", "joueur-question", texte));
+  if (typeof indice === "string" && indice.trim()) {
+    const bouton = el("button", "lien indice", "Indice");
+    bouton.type = "button";
+    bouton.addEventListener("click", () => bouton.replaceWith(el("p", "joueur-indice", indice)));
+    b.appendChild(bouton);
+  }
   if (sousTitre) {
     const en = el("p", "joueur-en", sousTitre);
     en.lang = "en";
     b.appendChild(en);
   }
-  if (options && options.length) {
+  const opts = listeOptions(options);
+  if (opts.length) {
     const ul = el("ul", "options");
-    for (const o of options) ul.appendChild(el("li", null, o));
+    for (const o of opts) ul.appendChild(el("li", null, o));
     b.appendChild(ul);
   }
   return b;
@@ -142,7 +171,7 @@ function blocJoueur(nom, texte, sousTitre, options) {
 
 function blocReponse(nom, texte) {
   const b = el("div", "joueur");
-  b.appendChild(el("p", "joueur-nom", nom));
+  if (nom) b.appendChild(el("p", "joueur-nom", nom));
   b.appendChild(el("p", "reponse", texte));
   return b;
 }
@@ -156,12 +185,15 @@ function rendreQuestion(id, q, i, total) {
 
   const retournee = retournees.has(cle);
   const face = el("div", "face" + (retournee ? " face-reponse" : ""));
+  const deux = profil === "deux";
+  const pourAdrien = profil !== "ana";
+  const pourAna = profil !== "adrien";
   if (!retournee) {
-    face.appendChild(blocJoueur("Adrien", q.adrien));
-    face.appendChild(blocJoueur("Ana", q.ana, q.ana_en, q.options));
+    if (pourAdrien) face.appendChild(blocJoueur(deux ? "Adrien" : null, q.adrien, null, q.options_adrien, q.indice_adrien));
+    if (pourAna) face.appendChild(blocJoueur(deux ? "Ana" : null, q.ana, q.ana_en, q.options));
   } else {
-    face.appendChild(blocReponse("Adrien", q.reponse));
-    face.appendChild(blocReponse("Ana", q.reponse_ana || q.reponse));
+    if (pourAdrien) face.appendChild(blocReponse(deux ? "Adrien" : null, q.reponse));
+    if (pourAna) face.appendChild(blocReponse(deux ? "Ana" : null, q.reponse_ana || q.reponse));
     if (q.detail) face.appendChild(el("p", "detail", q.detail));
   }
   sec.appendChild(face);
@@ -189,7 +221,7 @@ function rendreCarte(id) {
 
   const tete = el("header", "carte-tete");
   const ligne = el("p", "carte-id");
-  ligne.appendChild(el("span", null, id));
+  ligne.appendChild(el("span", null, String(carte.n)));
   if (idPartie === "trivia") {
     const c = categorie(carte.categorie);
     ligne.appendChild(pastille(carte.categorie));
@@ -223,6 +255,9 @@ function rendreCarte(id) {
     contenu.appendChild(d);
   }
 
+  for (const b of $("selecteur").querySelectorAll("button")) {
+    b.setAttribute("aria-pressed", String(b.dataset.profil === profil));
+  }
   $("precedente").disabled = index === 0;
   $("suivante").disabled = index === cartes.length - 1;
   contenu.scrollTop = 0;
@@ -268,72 +303,18 @@ function afficher() {
   }
 }
 
-// ---------- Dé ----------
+// ---------- Choix du profil ----------
 
-const reduireAnimations = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-const attendre = (ms) => new Promise((r) => setTimeout(r, ms));
-
-function tirer() {
-  const nb = partie("trivia").categories.length || 6;
-  if (window.crypto && crypto.getRandomValues) {
-    const a = new Uint32Array(1);
-    crypto.getRandomValues(a);
-    return (a[0] % nb) + 1;
-  }
-  return Math.floor(Math.random() * nb) + 1;
+function demanderProfil(id) {
+  carteDemandee = id;
+  $("profil").hidden = false;
+  const actif = $("profil").querySelector(`[data-profil="${profil}"]`);
+  (actif || $("profil").querySelector("[data-profil]")).focus();
 }
 
-function cartesLibres(cat) {
-  const jouees = lireJouees();
-  return partie("trivia").cartes.filter((c) => c.categorie === cat && !jouees.has("T" + c.n));
-}
-
-function montrerDe(chiffre) {
-  const c = categorie(chiffre);
-  const zone = $("de-chiffre");
-  zone.textContent = String(chiffre);
-  zone.className = "de-chiffre c" + chiffre;
-  $("de-categorie").textContent = c ? c.nom : "";
-}
-
-let deEnCours = false;
-
-async function lancerDe() {
-  if (deEnCours) return;
-  deEnCours = true;
-  $("de-actions").hidden = true;
-  $("de").hidden = false;
-
-  if (!reduireAnimations()) {
-    let precedent = 0;
-    for (const pause of [60, 70, 80, 95, 115, 140, 170]) {
-      let n;
-      do { n = Math.floor(Math.random() * 6) + 1; } while (n === precedent);
-      precedent = n;
-      montrerDe(n);
-      await attendre(pause);
-    }
-  }
-  const cat = tirer();
-  montrerDe(cat);
-
-  const libres = cartesLibres(cat);
-  if (libres.length) {
-    await attendre(reduireAnimations() ? 400 : 750);
-    $("de").hidden = true;
-    deEnCours = false;
-    ouvrir("T" + libres[0].n, false);
-  } else {
-    $("de-categorie").textContent = (categorie(cat)?.nom || "") + " : plus de carte à jouer.";
-    $("de-actions").hidden = false;
-    deEnCours = false;
-    $("de-relancer").focus();
-  }
-}
-
-function fermerDe() {
-  if (deEnCours) return;
-  $("de").hidden = true;
+function fermerProfil() {
+  carteDemandee = null;
+  $("profil").hidden = true;
 }
 
 // ---------- Gestes ----------
@@ -371,9 +352,11 @@ function brancherServiceWorker() {
       });
     });
   }).catch(() => {});
+  // Recharger seulement quand une nouvelle version remplace l'ancienne, pas à la première installation.
+  const avaitControleur = !!navigator.serviceWorker.controller;
   let recharge = false;
   navigator.serviceWorker.addEventListener("controllerchange", () => {
-    if (!recharge) { recharge = true; location.reload(); }
+    if (avaitControleur && !recharge) { recharge = true; location.reload(); }
   });
 }
 
@@ -389,10 +372,25 @@ async function demarrer() {
   $("retour").addEventListener("click", accueil);
   $("precedente").addEventListener("click", () => voisine(-1));
   $("suivante").addEventListener("click", () => voisine(1));
-  $("lancer-de").addEventListener("click", lancerDe);
-  $("de-relancer").addEventListener("click", lancerDe);
-  $("de-fermer").addEventListener("click", fermerDe);
-  $("de").addEventListener("click", (e) => { if (e.target === $("de")) fermerDe(); });
+  for (const b of $("profil").querySelectorAll("[data-profil]")) {
+    b.addEventListener("click", () => {
+      const id = carteDemandee;
+      choisirProfil(b.dataset.profil);
+      fermerProfil();
+      if (id) ouvrir(id, false);
+    });
+  }
+  $("profil-annuler").addEventListener("click", fermerProfil);
+  $("profil").addEventListener("click", (e) => { if (e.target === $("profil")) fermerProfil(); });
+  for (const b of $("selecteur").querySelectorAll("button")) {
+    b.addEventListener("click", () => {
+      if (b.dataset.profil === profil) return;
+      choisirProfil(b.dataset.profil);
+      const haut = $("contenu").scrollTop;
+      rendreCarte(courante());
+      $("contenu").scrollTop = haut;
+    });
+  }
   $("remise-a-zero").addEventListener("click", () => {
     if (!confirm("Remettre toutes les cartes à zéro ?")) return;
     try { localStorage.removeItem(CLE_JOUEES); } catch {}
@@ -400,6 +398,7 @@ async function demarrer() {
     rendreAccueil();
   });
   document.addEventListener("keydown", (e) => {
+    if (!$("profil").hidden) { if (e.key === "Escape") fermerProfil(); return; }
     if ($("carte").hidden) return;
     if (e.key === "ArrowLeft") voisine(-1);
     else if (e.key === "ArrowRight") voisine(1);
@@ -416,7 +415,6 @@ async function demarrer() {
     afficher();
   } catch (err) {
     $("accueil").hidden = false;
-    $("lancer-de").disabled = true;
     const e = $("erreur");
     e.hidden = false;
     e.textContent = "Impossible de charger les questions : " + err.message;
